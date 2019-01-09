@@ -71,10 +71,10 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('/') }}" aria-controls="home">Home</a>
-                </li>{{--
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('campus_life') }}" aria-controls="campus_life">Campus Life</a>
-                </li>--}}
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('student.present', 1) }}" aria-controls="">Present Students</a>
                 </li>
