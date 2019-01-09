@@ -1,0 +1,732 @@
+/**
+ * Name : international.diu.ac;
+ * Url : international.diu.ac;
+ * Date : 2018-Nov-29;
+ * Designer Name : Md. Mesbaul Islam;
+ * Contact : 01738120411;
+ * E-mail : rony.max24@gmail.com;
+ * Author URI: http://mesbaul.info;
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
+body{
+	color: #333;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 18px;
+	font-family: 'Roboto Condensed', sans-serif;
+	background-color: rgba(0,0,0,0.1);
+}
+h1, h2, h3, h4, h5, h6{
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 700;
+}
+a{
+	color: rgba(51, 51, 51, 1);
+	text-decoration: none;
+	transition: 0.3s;
+}
+a:hover,
+a:focus{
+	color: rgba(51, 51, 51, 0.8);
+	text-decoration: none;
+	transition: 0.3s;
+	outline: none;
+}
+img{
+	max-width: 100%;
+	display: block;
+	vertical-align: middle;
+	transition: 0.3s;
+}
+
+
+h1, h2, h3, h4, h5, h6{
+	padding: 0;
+	margin: 0;
+}
+p{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	margin-bottom: 0
+}
+.diu-display-table{
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+.diu-display-table-cell{
+	display: table-cell;
+	vertical-align: middle;
+}
+.card{border-radius: 0}
+
+.diu-apply-btn{
+	padding: 0px 10px;
+	margin: 0;
+	white-space: nowrap;
+	font-size: 17px;
+	line-height: 30px;
+	font-weight: 700;
+	color: #F9CC57;
+	border-color: #F9CC57;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 30px;
+	box-sizing: border-box;
+	cursor: pointer;
+	webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
+	opacity: 1;
+	transform: translate3d(0px, 0px, 0px);
+	transform-origin: 50% 50% 0px;
+	display: inline-block;
+}
+.diu-apply-btn:hover,
+.diu-apply-btn:focus{
+	border-color: #F9CC57;
+	background-color: #F9CC57;
+	color: #fff;
+	webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
+}
+.owl-dots{
+	padding-top: 15px;
+	text-align: center;
+}
+.owl-dots button{
+	background-color: #fff !important;
+	border: 1px solid #fff !important;
+	border-radius: 50px;
+	height: 8px;
+	width: 8px;
+	margin: 0 3px;
+}
+.owl-dots button.active{background-color: #F9CC57 !important;}
+.diu-fg{
+	position: relative;
+	margin-bottom: 1.3rem;
+}
+.diu-fg label{
+	position: absolute;
+	left: 0;
+	top: 0;
+	-webkit-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+	margin: 0;
+	color: #fff;
+}
+
+.diu-fg.focused label{
+	color: #fff;
+	top: -15px;
+	-webkit-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+.form-row .diu-fg label{left: 5px;}
+
+.diu-fg .form-control{
+	padding: 1rem 0;
+	height: 55px;
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #fff;
+	border-radius: 0;
+    box-shadow: none;
+    outline: transparent;
+	position: relative;
+	z-index: 99;
+	color: #fff;
+}
+.diu-fg .form-control:active,
+.diu-fg .form-control:focus{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #e6e6e6;
+    box-shadow: none;
+    outline: transparent;
+}
+.diu-fg textarea.form-control{
+	height: auto;
+}
+.diu-fg input[type="file"].form-control{
+    height: auto;
+    border-bottom: none;
+}
+
+.diu-fg .form-control.is-invalid,
+.diu-fg textarea.form-control.is-invalid{
+	border-bottom: 1px solid #f00;
+}
+
+
+.diu-fg.diu-fg-file input[type="file"]{
+	margin-top: 22px;
+}
+
+header .diu-contacts{
+	position: relative;
+}
+header .diu-contacts p{
+	font-size: 25px;
+	line-height: 25px;
+}
+header .diu-contacts ul li{
+	padding-top: 5px;
+	width: 25px;
+}
+header .diu-contacts ul li a{
+	display: block;
+}
+header.navbar .navbar-brand h4{
+	margin-left: 15px;
+	font-size: 25px;
+	line-height: 25px;
+}
+header.navbar .navbar-brand h4 small{
+	font-size: 22.5px;
+}
+
+
+
+nav.navbar{
+	padding: 0 1rem;
+	background-color: rgba(52, 58, 64, 0.6);
+	z-index: 3;
+}
+nav.navbar .container .diu-mega{position: relative;}
+nav.navbar .navbar-nav .nav-item{
+	line-height: 30px;
+	font-size: 14px;
+	text-transform: uppercase;
+	
+}
+nav.navbar .navbar-nav .nav-item a{
+	color: #fff;
+	padding: .5rem .8rem;
+}
+nav.navbar .navbar-nav .nav-item.dropdown.diu-mega-menu{
+	position: static !important;
+}
+nav.navbar .navbar-nav .nav-item.dropdown.diu-mega-menu .dropdown-menu{
+	width: 100%;
+	margin: 0 !important;
+	border-radius: 0;
+	border: transparent;
+}
+
+
+.diu-z-index-up {
+    position: relative;
+    z-index: 99;
+}
+
+.diu-section-bg{
+	background-color: #F9CC57;
+}
+.diu-section-bg .diu-left-bottom{
+	height: 100%;
+	background-image: url('images/left_bottom_bg.png');
+	background-size: 250px;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	color: #fff;
+}
+.diu-section-title{
+	padding: 15px 0 30px;
+	position: relative;
+}
+.diu-section-title h3{
+	line-height: 38px;
+	font-weight: 700;
+	font-size: 36px;
+    text-transform: uppercase;
+}
+.diu-section-title p{
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: 400;
+	margin-bottom: 0;
+}
+.diu-page-title{
+	background-image: url('images/convocation-bg.jpg');
+	background-attachment: scroll;
+	background-size: cover;
+	background-position: center top;
+	margin-top: -46px;
+	padding: 84px 0 50px;
+	position: relative;
+}
+.diu-page-title h3{
+	font-size: 36px;
+	color: rgba(255, 255, 255, 1);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-bottom: 5px;
+}
+
+.diu-banner {
+	z-index: 1;
+	position: relative;
+	margin-top: -46px;
+	background-color: #f5f5f5;
+}
+.diu-banner .diu-carousel .carousel-caption{
+	height: 100%;
+	left: 0;
+	right: 0;
+}
+.diu-banner .diu-carousel .carousel-caption h1{
+	font-size: 50px;
+	line-height: 75px;
+	font-weight: 700;
+	color: rgb(234, 184, 48);
+	text-transform: uppercase;
+}
+.diu-banner .diu-carousel .carousel-caption h2{
+	font-size: 70px;
+	line-height: 75px;
+	font-weight: 700;
+	color: rgb(255, 255, 255);
+	text-transform: uppercase;
+}
+
+
+
+
+
+.diu-courses-category {
+	margin-top: -100px;
+	z-index: 0;
+	position: relative;
+}
+.diu-courses-category .diu-card{
+	border-radius: 10px;
+	overflow: hidden;
+	min-height: 220px;
+}
+.diu-courses-category .diu-course-icons{
+	margin: auto;
+	padding: 15px;
+	width: 100px;
+}
+
+
+section{
+    padding: 50px 0 0;
+}
+
+article p{
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.diu-price-layout{
+	padding: 80px 0;
+	background-color: #f5f5f5;
+	text-align: center;
+	overflow: hidden;
+	clear: both;
+}
+.diu-price-layout table{
+	width: 100%;
+}
+.diu-price-layout table tr th,
+.diu-price-layout table tr td{
+	border: 4px solid #f5f5f5;
+	background-color: #fff;
+	border-radius: 5px;
+	line-height: 40px;
+}
+.diu-price-layout table tr th:nth-child(1){width: 250px;}
+.diu-price-layout table tr th:nth-child(2),
+.diu-price-layout table tr th:nth-child(3),
+.diu-price-layout table tr th:nth-child(4){width: 200px;}
+.diu-price-layout table tr th:nth-child(5){background-color: transparent}
+.diu-price-layout table tr td{
+	padding: 10px;
+}
+.diu-price-layout tr th h3{
+	padding: 15px;
+	line-height: 25px;
+	min-height: 85px
+}
+.diu-price-layout tr th h3 small{
+	font-size: 14px;
+}
+.diu-price-layout table tr th.active{
+    background-color: #F9CC57;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+
+.diu-resource-person{
+	padding-bottom: 50px;
+}
+.diu-resource-person .diu-card-img{
+	height: 240px;
+	overflow: hidden;
+}
+.diu-resource-person .diu-card-img img{
+	height: 100%;
+}
+.diu-resource-person .card-body {
+    min-height: 55px;
+    padding: 0.5rem;
+}
+.diu-resource-person .card-footer {
+    min-height: 55px;
+    padding: 0.5rem;
+}
+
+
+
+.diu-achievement{
+	padding: 80px 0;
+	background-image: url('images/achivements.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+}
+.diu-achievement .diu-counter{padding-top: 15px;}
+.diu-achievement .diu-counter h3{
+	line-height: 55px;
+	font-weight: 700;
+	font-size: 35px;
+}
+
+
+.diu-spotlight .diu-left-bottom{
+	padding-bottom: 50px
+}
+.diu-spotlight [data-toggle="modal"]{
+    cursor: pointer;
+}
+.diu-spotlight .modal-content{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.diu-spotlight-popup .diu-section-title{
+    padding: 0 0 5px;
+}
+.diu-spotlight-popup button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 10px;
+    width: 33px;
+    background-color: #f00;
+    color: #fff;
+    opacity: 1;
+}
+
+
+
+.diu-partnerships{
+	background-color: #fff;
+	padding-bottom: 50px
+}
+.diu-partners .item{
+	height: 150px;
+	display: table;
+	padding: 0 30px;
+	overflow: hidden;
+}
+.diu-partners .item a{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.diu-partners .owl-dots button{
+	background-color: #F9CC57 !important;
+	border: 1px solid #F9CC57 !important;
+}
+.diu-partners .owl-dots button.active{background-color: #fff !important;}
+
+
+.diu-icon-bar{
+	position: fixed;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	background-color: #343a40;
+	z-index: 3;
+	padding-top: 0;
+}
+.diu-icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+}
+
+.diu-icon-bar a:hover {
+  background-color: #000;
+}
+
+
+.diu-icon-bar a.facebook{
+    background-color: #3b5998;
+}
+.diu-icon-bar a.twitter{
+    background-color: #55acee;
+}
+.diu-icon-bar a.google{
+    background-color: #dc4e41;
+}
+.diu-icon-bar a.linkedin{
+    background-color: #0077b5;
+}
+.diu-icon-bar a.youtube{
+    background-color: #b31217;
+}
+
+.diu-icon-bar a.facebook:hover{
+    background-color: #fff;
+    color: #3b5998;
+}
+.diu-icon-bar a.twitter:hover{
+    background-color: #fff;
+    color: #55acee;
+}
+.diu-icon-bar a.google:hover{
+    background-color: #fff;
+    color: #dc4e41;
+}
+.diu-icon-bar a.linkedin:hover{
+    background-color: #fff;
+    color: #0077b5;
+}
+.diu-icon-bar a.youtube:hover{
+    background-color: #fff;
+    color: #b31217;
+}
+
+
+
+
+
+.login_registration_modal .modal-content{
+    overflow: hidden;
+}
+.login_registration_modal .modal-content::before{
+    content: '';
+    position: absolute;
+    height: 206%;
+    width: 97%;
+    background: #fcfcff;
+    border-radius: 50%;
+    left: -42%;
+    z-index: 0;
+    top: -47%;
+    box-shadow: inset 0 0 51px rgba(0, 0, 0, 0.1);
+}
+.login_registration_modal .modal-content  .modal-header,
+.login_registration_modal .modal-content  .modal-footer{
+    position: relative;
+}
+
+
+.diu-lr-header,
+.diu-lr-footer{
+	padding: 0.8rem 0;
+}
+
+.diu-article{
+    margin-bottom: 50px;
+}
+.diu-article article{
+	padding: 15px 0;
+}
+.diu-people{
+    position: relative;
+    display: flex;
+	overflow: hidden;
+	height: 150px;
+	border: 1px solid #fff;
+}
+.diu-people .diu-people-img{
+    display: table;
+    width: 125px;
+    height: 100%;
+}
+.diu-people .diu-people-img.empty{
+	background-color: #E5E4EC;
+}
+.diu-people .diu-people-img .people-img{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.diu-people .diu-people-info{
+    display: block;
+    width: 100%;
+    padding: 15px;
+}
+
+
+
+
+
+.diu-teachers{
+	padding-bottom: calc(50px - 1.5rem);
+}
+
+.diu-gallery{
+	padding-bottom: 50px;
+}
+.diu-gallery-grid{
+    overflow: hidden;
+}
+.diu-gallery-grid .diu-img-grid{
+    position: relative;
+    float: left;
+    box-sizing: border-box;
+}
+.diu-gallery-grid .diu-img-grid img{
+    border: 1px solid #fff;
+}
+.diu-gallery-grid .diu-img-grid:nth-child(1){
+    width: 66.676%;
+}
+.diu-gallery-grid .diu-img-grid:nth-child(2),
+.diu-gallery-grid .diu-img-grid:nth-child(3){
+    width: 33.33%;
+}
+.diu-gallery-grid .diu-img-grid:nth-child(4),
+.diu-gallery-grid .diu-img-grid:nth-child(5){
+    width: 50%;
+}
+
+
+.diu-thumbs{
+	position: relative;
+}
+.diu-popup-youtube{
+	display: block;
+	color: rgba(70, 188, 114, 1);
+	z-index: 99;
+	border: 2px solid rgba(70, 188, 114, 1);
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	padding: 5px;
+	position: relative;
+}
+.diu-popup-youtube span{
+	font-size: 30px;
+	line-height: 65px;
+	border: 2px solid rgba(70, 188, 114, 1);
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	text-align: center;
+	color: rgba(70, 188, 114, 1);
+	display: block;
+	background: #fff;
+	padding-left: 4px;
+	transition: all 0.3s ease 0s;
+}
+.diu-popup-youtube:hover span,
+.diu-popup-youtube:focus span{
+	border: 2px solid rgba(70, 188, 114, 0.8);
+	background: transparent;
+	transition: all 0.3s ease 0s;
+}
+
+.diu-faculty .container{
+    max-width: 768px;
+}
+.diu-faculty-programs{
+    padding-bottom: 50px;
+}
+.diu-faculty-programs .diu-apply-btn{
+    background-color: #fff;
+    color: #F9CC57;
+    border-color: #fff;
+}
+section.diu-google-map{
+	height: 500px;
+	padding: 0;
+}
+
+
+section.diu-contact-us form{
+    max-width: 640px;
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+
+
+footer.diu-footer{
+	padding-top: 50px;
+	background-image: url(images/footer-bg.jpg);
+	background-position: center bottom;
+}
+footer.diu-footer .diu-footer-social{
+	padding: 25px;
+	font-size: 20px;
+}
+footer.diu-footer .diu-footer-copyright{
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+	padding: 15px 0;
+}
+
+footer.diu-footer .diu-section-header{padding-bottom: 10px;}
+footer.diu-footer .diu-section-header h2{
+	font-size: 16px;
+	line-height: 18px;
+	margin-bottom: 5px;
+}
+footer.diu-footer .diu-scroll-top{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	border-radius: 50%;
+	background-color: rgba(70, 188, 114, 1);
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 20px;
+	z-index: 9999;
+}
+
+footer.diu-footer .diu-contact-info ul li{
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 20px;
+}
+footer.diu-footer .diu-contact-info ul li span{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+footer.diu-footer .diu-contact-info ul li span{
+	font-size: 25px;
+	line-height: 25px;
+}
+footer.diu-footer .diu-contact-info ul li p{
+	font-size: 16px;
+	line-height: 22px;
+}
+
+
+
+footer.diu-footer .diu-scroll-top:hover,
+footer.diu-footer .diu-scroll-top:focus{color: rgba(255, 255, 255, 0.8)}

@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #fff;
+    color: #202124;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+header.db-header{
+    position: relative;
+    background-color: transparent;
+    box-shadow: inset 0 -1px 0 rgba(100,121,143,0.122);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+header.db-header .db-area{
+    padding: 8px;
+    color: black;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+}
+header.db-header .db-brand{
+    box-sizing: border-box;
+    padding-right: 45px;
+    flex: 1 0 auto;
+}
+header.db-header .db-title{
+    justify-content: flex-start;
+    flex: 1 1 100%;
+    overflow: hidden;
+}
+header.db-header .db-tools{
+    box-sizing: border-box;
+    padding-left: 32px;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+}
+header.db-header .db-brand .db-toggle{
+    margin: 0 4px;
+    overflow: hidden;
+    vertical-align: middle;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+}
+header.db-header .db-logo a{
+    display: block;
+}
+header.db-header .db-tools .db-tools-icon{
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+    white-space: nowrap;
+    line-height: 16px;
+}
+header.db-header .db-tools-icon > a{
+    display: block;
+}
+header.db-header .db-account > a{
+    background-color: rgba(60,64,67,0.12);
+    padding: 4px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+header.db-header .db-account-pic{
+    border-radius: 50px;
+    overflow: hidden;
+    height: 32px;
+    width: 32px;
+}
+header.db-header .db-flex{
+    height: 48px;
+    vertical-align: middle;
+    white-space: nowrap;
+    -moz-box-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -moz-user-select: -moz-none;
+}
+header.db-header .db-dropdown{
+    position: relative;
+}
+header.db-header .db-dropdown-menu{
+    overflow-y: auto;
+    width: 320px;
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #000;
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    display: none;
+    outline: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    -moz-animation: gb__a .2s;
+    animation: gb__a .2s;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -moz-user-select: text;
+    z-index: 99;
+}
+
+
+
+
+
+section.db-section .db-area{
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+aside.db-aside{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    max-width: 200px;
+    min-width: 200px;
+    height: 100vh;
+    transition-duration: .15s;
+    transition-property: background-color,box-shadow;
+    transition-timing-function: cubic-bezier(0.4,0.0,0.2,1);
+}
+article.db-article{
+    width: 100%;
+    background-color: #f5f5f5;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+
+
+aside.db-aside .db-column{
+    padding: 0 8px;
+}
+aside.db-aside .db-nav{
+    height: calc(100vh - 10.5rem);
+}
+aside.db-aside .db-row{
+    margin: 8px 0;
+}
+
+
+
+aside.db-aside .db-navigation{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    width: 100%;
+    max-height: calc(100vh - 11.5rem);
+    text-overflow: ellipsis;
+}
+aside.db-aside .db-navigation li{
+    line-height: 35px;
+    border: 4px solid transparent;
+    border-radius: 0 66px 66px 0;
+}
+aside.db-aside .db-navigation li a{
+    display: block;
+    padding-left: 15px;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #202124;
+    text-shadow: none;
+    position: relative;
+}
+aside.db-aside .db-navigation li.db-dropdown .db-dropdown-menu{
+    display: none;
+}
+aside.db-aside .db-navigation li.db-dropdown.open .db-dropdown-menu{
+    display: block;
+}
+
+aside.db-aside .db-navigation li.db-dropdown > a::before{
+    font-family: "Material Icons";
+    position: absolute;
+    left: 0;
+    content: "\e5cc";
+}
+aside.db-aside .db-navigation li.db-dropdown.open > a::before {
+    content: "\e313";
+}
+
+.db-btn{
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302),0 1px 3px 1px rgba(60,64,67,0.149);
+    letter-spacing: .25px;
+    text-align: center;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 24px;
+    height: 48px;
+    padding: 0;
+    margin: 0 10px;
+    text-transform: none;
+    position: relative;
+    color: #3c4043;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+    line-height: 48px;
+}
+
+.db-card{
+    position: relative;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: .25rem;
+}
+.db-card .db-card-body{
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+.db-card .db-card-footer{
+    padding: .75rem 1.25rem;
+    background-color: rgba(0, 0, 0, .03);
+    border-top: 1px solid rgba(0, 0, 0, .125);
+}
+
+.db-profile{
+    display: flex;
+}
+.db-profile .db-profile-pic{
+    margin-right: 20px;
+    position: relative;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    vertical-align: top;
+    height: 96px;
+    width: 96px;
+}
+.db-profile .db-profile-pic img{
+    width: 100%;
+    height: 100%;
+}
+.db-account-info {
+    position: relative;
+}
+.db-account-info a{
+    position: absolute;
+    bottom: 0;
+}
+.db-profile p{
+    margin-bottom: 2px;
+}
