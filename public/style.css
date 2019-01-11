@@ -170,6 +170,12 @@ ul{
 	margin-top: 22px;
 }
 
+.form-control.custom-select{
+	padding: 0rem 2rem 0 0.75rem;
+	border-radius: 0;
+}
+
+
 header .diu-contacts{
 	position: relative;
 }

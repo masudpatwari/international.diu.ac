@@ -2,69 +2,170 @@
 @section('content')
     <div class="card mx-auto" style="max-width: 768px">
         <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-3">Agent No</dt>
-                <dd class="col-sm-9">{{ $agent->agent_no }}</dd>
-                <dt class="col-sm-3">Name of Agent</dt>
-                <dd class="col-sm-9">{{ $agent->relUser->name }}</dd>
-                <dt class="col-sm-3">Type of Agent</dt>
-                <dd class="col-sm-9">
-                    <p class="text-capitalize">{{ $agent->type_of_agent }}</p>
-                </dd>
-                <dt class="col-sm-3">Country Name</dt>
-                <dd class="col-sm-9">{{ $agent->country_name }}</dd>
-                <dt class="col-sm-3">E-mail Address</dt>
-                <dd class="col-sm-9">{{ $agent->relUser->email }}</dd>
-                <dt class="col-sm-3">Present address/Office Address</dt>
-                <dd class="col-sm-9">
-                    <dl class="row">
-                        <dd class="col-sm-12">{{ $agent->pra_address }}</dd>
-                        <dt class="col-sm-4">Mobile Phone No</dt>
-                        <dd class="col-sm-8">{{ $agent->pra_mobile_no }}</dd>
-                        <dt class="col-sm-4">Fax Number</dt>
-                        <dd class="col-sm-8">{{ $agent->pra_fax_no }}</dd>
-                    </dl>
-                </dd>
-                <dt class="col-sm-3">Permanent Address/Registered Office</dt>
-                <dd class="col-sm-9">
-                    <dl class="row">
-                        <dd class="col-sm-12">{{ $agent->per_address }}</dd>
-                        <dt class="col-sm-4">Lan Phone Number</dt>
-                        <dd class="col-sm-8">{{ $agent->per_lan_phone_no }}</dd>
-                        <dt class="col-sm-4">Mobile Phone No</dt>
-                        <dd class="col-sm-8">{{ $agent->per_mobile_no }}</dd>
-                        <dt class="col-sm-4">Fax Number</dt>
-                        <dd class="col-sm-8">{{ $agent->per_fax_no }}</dd>
-                    </dl>
-                </dd>
-                <dt class="col-sm-3">Authorized Person Name</dt>
-                <dd class="col-sm-9">
-                    <dl class="row">
-                        <dd class="col-sm-12">{{ $agent->pri_person_name }}</dd>
-                        <dt class="col-sm-4">Designation</dt>
-                        <dd class="col-sm-8">{{ $agent->pri_designation }}</dd>
-                        <dt class="col-sm-4">Mobile Phone No</dt>
-                        <dd class="col-sm-8">{{ $agent->pri_mobile_no }}</dd>
-                        <dt class="col-sm-4">E-mail Address</dt>
-                        <dd class="col-sm-8">{{ $agent->pri_email }}</dd>
-                    </dl>
-                </dd>
-                <dt class="col-sm-3">Authorized Person Name</dt>
-                <dd class="col-sm-9">
-                    <dl class="row">
-                        <dd class="col-sm-12">{{ $agent->sec_person_name }}</dd>
-                        <dt class="col-sm-4">Designation</dt>
-                        <dd class="col-sm-8">{{ $agent->sec_designation }}</dd>
-                        <dt class="col-sm-4">Mobile Phone No</dt>
-                        <dd class="col-sm-8">{{ $agent->sec_mobile_no }}</dd>
-                        <dt class="col-sm-4">E-mail Address</dt>
-                        <dd class="col-sm-8">{{ $agent->sec_email }}</dd>
-                    </dl>
-                </dd>
-                <dt class="col-sm-3">Whatsup Number</dt>
-                <dd class="col-sm-9">{{ $agent->whatsup_no }}</dd>
-            </dl>
-            {{--{{ link_to_route('agent.profile.edit', 'Edit', NULL, ['class' => 'btn btn-sm btn-primary']) }}--}}
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="form-control-plaintext">
+                        <strong>First Name : </strong>
+                        {{ $profile->first_name }}
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="form-control-plaintext">
+                        <strong>Last Name : </strong>
+                        {{ $profile->last_name }}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="form-control-plaintext text-capitalize">
+                        <strong>Type of Agent : </strong>
+                        {{ $profile->relAgent->type_of_agent }}
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="form-control-plaintext">
+                        <strong>Country Name : </strong>
+                        {{ $profile->relAgent->country_name }}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="form-control-plaintext">
+                        <strong>E-mail Address : </strong>
+                        {{ $profile->email }}
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="">
+                <p class="form-control-plaintext">
+                    <strong>Present address/Office Address : </strong>
+                    {{ $profile->relAgent->present_address }}
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="form-control-plaintext">
+                        <strong>Mobile Phone No : </strong>
+                        {{ $profile->relAgent->present_mobile_no }}
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="form-control-plaintext">
+                        <strong>Fax Number : </strong>
+                        {{ $profile->relAgent->present_fax_no }}
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="">
+                <p class="form-control-plaintext">
+                    <strong>Permanent Address/Registered Office : </strong>
+                    {{ $profile->relAgent->permanent_address }}
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="form-control-plaintext">
+                        <strong>Lan Phone Number : </strong>
+                        {{ $profile->relAgent->permanent_lan_phone_no }}
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p class="form-control-plaintext">
+                        <strong>Mobile Phone No : </strong>
+                        {{ $profile->relAgent->permanent_mobile_no }}
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p class="form-control-plaintext">
+                        <strong>Fax Number : </strong>
+                        {{ $profile->relAgent->permanent_fax_no }}
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <p class="text-center">Photograph (Image)</p>
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="form-control-plaintext">
+                                <strong>Authorized Person Name : </strong>
+                                {{ $profile->relAgent->primary_person_name }}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="form-control-plaintext">
+                                <strong>Designation : </strong>
+                                {{ $profile->relAgent->primary_person_designation }}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="form-control-plaintext">
+                                <strong>Mobile Phone No : </strong>
+                                {{ $profile->relAgent->primary_person_mobile_no }}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="form-control-plaintext">
+                                <strong>E-mail Address : </strong>
+                                {{ $profile->relAgent->primary_person_email }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <p class="text-center">Photograph (Image)</p>
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="form-control-plaintext">
+                                <strong>Authorized Person Name : </strong>
+                                {{ $profile->relAgent->secondary_person_name }}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="form-control-plaintext">
+                                <strong>Designation : </strong>
+                                {{ $profile->relAgent->secondary_person_designation }}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="form-control-plaintext">
+                                <strong>Mobile Phone No : </strong>
+                                {{ $profile->relAgent->secondary_person_mobile_no }}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="form-control-plaintext">
+                                <strong>E-mail Address : </strong>
+                                {{ $profile->relAgent->secondary_person_email }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="">
+                <p><strong>Trade License (Image) : </strong></p>
+            </div>
+            <div class="">
+                <p><strong>Tin/Tax Certificate (Image) : </strong></p>
+            </div>
+            <hr>
+            <p class="form-control-plaintext">
+                <strong>Whatsup Number : </strong>
+                {{ $profile->relAgent->whatsup_no }}
+            </p>
         </div>
     </div>
 @endsection

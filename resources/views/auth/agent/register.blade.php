@@ -11,6 +11,17 @@
 
     <section class="diu-contact-us diu-section-bg">
         <div class="container diu-left-bottom">
+            {{ Form::open(['route' => 'register', 'class' => '']) }}
+            @if (session()->has('message'))
+                @component('alert')
+                    @if (session()->has('message.success'))
+                        <strong>Thank You!</strong>!
+                    @endif
+                    @if (session()->has('message.error'))
+                        <strong>Failed!</strong>!
+                    @endif
+                @endcomponent
+            @endif
             {{ Form::open(['route' => 'register.agent', 'class' => '']) }}
             <p class="mb-3">{{ Form::label('name_of_agent', 'Name of Agent') }}</p>
             <div class="form-row">

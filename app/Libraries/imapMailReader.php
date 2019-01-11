@@ -6,10 +6,15 @@ class imapMailReader
 {
     public $conn;
 
-    private $server = 'mail.diu-bd.net';
+    /*private $server = 'mail.diu-bd.net';
     private $user   = 'mesbaul.it@diu-bd.net';
     private $pass   = 'dIU!@#941)(';
-    private $port   = 143;
+    private $port   = 143;*/
+
+    private $server = 'mail.google.com';
+    private $user   = 'rony.max24@gmail.com';
+    private $pass   = 'error@#$';
+    private $port   = 465;
 
     function __construct() {
         $this->connect();
@@ -30,7 +35,15 @@ class imapMailReader
 
     public function inbox()
     {
-        $d = imap_body($this->conn, 1);
-        dd($d);
+        //auth()->user()->email;
+        //$d = imap_headerinfo($this->conn, 152);
+        $d = imap_headers($this->conn);
+       // $d = imap_fetch_overview($this->conn,"1:{$this->num_msg}",0);
+        return $d;
+    }
+
+    public function mail_box_info()
+    {
+        return imap_mailboxmsginfo($this->conn);
     }
 }

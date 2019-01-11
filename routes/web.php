@@ -30,8 +30,9 @@ Route::GET('faculty/{id}', 'FrontEndContoller@faculty')->name('faculty.show');
 
 
 Route::GET('/profile', 'ProfileController@show')->name('profile.show');
-Route::GET('/profile_edit', 'ProfileController@agent_profile_edit')->name('agent.profile.edit');
-Route::PUT('/profile_edit', 'ProfileController@agent_profile_update')->name('agent.profile.update');
+Route::GET('/profile/edit', 'ProfileController@edit')->name('profile.edit');
+Route::PUT('/profile/edit', 'ProfileController@agent_profile_update')->name('agent.profile.update');
+Route::PUT('/profile/edit', 'ProfileController@student_profile_update')->name('student.profile.update');
 
 Route::resource('agent', 'AgentController');
 Route::resource('student', 'StudentsController');
@@ -40,5 +41,5 @@ Route::resource('/dashboard', 'DashboardController')->only([
 ]);
 
 
-/*Route::GET('/inbox', 'MailTicket@inbox')->name('inbox');*/
+Route::GET('/inbox', 'MailTicket@inbox')->name('inbox');
 

@@ -32,7 +32,7 @@ class FrontEndContoller extends Controller
                     ]
                 ]);
             $expiresAt = now()->addMinutes(100);
-            $decode_values = json_decode(file_get_contents('https://rms.diu.ac/api/get_present_foreign_student/1/5000', false, $scc));
+            $decode_values = json_decode(file_get_contents(''.env('RMS_URL').'/api/get_present_foreign_student/1/5000', false, $scc));
             Cache::put('present_students', $decode_values, $expiresAt);
         }
         $cache_values = Cache::get('present_students');
@@ -53,7 +53,7 @@ class FrontEndContoller extends Controller
                     ]
                 ]);
             $expiresAt = now()->addMinutes(100);
-            $decode_values = json_decode(file_get_contents('https://rms.diu.ac/api/get_past_foreign_student/1/5000', false, $scc));
+            $decode_values = json_decode(file_get_contents(''.env('RMS_URL').'/api/get_past_foreign_student/1/5000', false, $scc));
             Cache::put('passed_students', $decode_values, $expiresAt);
         }
         $cache_values = Cache::get('passed_students');

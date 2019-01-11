@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="db-title">
-            <h5>Dhaka International University</h5>
+            <h5 class="mb-0">Dhaka International University</h5>
             <p class="mb-0">International Student</p>
         </div>
         <div class="db-tools db-flex db-dropdown">
@@ -94,7 +94,7 @@
                             <a href="{{ route('student.index') }}" class="">Foreign Student</a>
                         </li>
                         <li>
-                            <a href="" class="">Support Tickets</a>
+                            <a href="{{ route('inbox') }}" class="">Support Tickets</a>
                         </li>
                     </ul>
                 </div>
