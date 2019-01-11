@@ -38,7 +38,7 @@ class ProfileController extends Controller
         elseif (auth()->user()->role == 'agent')
         {
             $data['profile'] = User::with('relAgent')->find(auth()->user()->id);
-            return view('admin.profile.agent.show', $data);
+            return view('admin.profile.agent.edit', $data);
         }
         return view('admin.dashboard');
     }
@@ -49,56 +49,55 @@ class ProfileController extends Controller
         $request->validate(
             [
                 'type_of_agent' => 'required',
-                'name_of_agent' => 'required|max:40',
-                'country_name' => 'required|max:40',
-                'email' => 'required|email',
-                'pra_address' => 'required',
-                'pra_mobile_no' => 'required',
-                'pra_fax_no' => 'required',
-                'per_address' => 'required',
-                'per_lan_phone_no' => 'required',
-                'per_mobile_no' => 'required',
-                'per_fax_no' => 'required',
-                'pri_person_name' => 'required|max:40',
-                'pri_designation' => 'required|max:20',
-                'pri_mobile_no' => 'required',
-                'pri_email' => 'required|email',
-                'sec_person_name' => 'required|max:40',
-                'sec_designation' => 'required|max:20',
-                'sec_mobile_no' => 'required',
-                'sec_email' => 'required|email',
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'country_name' => 'required',
+                'present_address' => 'required',
+                'present_mobile_no' => 'required',
+                'present_fax_no' => 'required',
+                'permanent_address' => 'required',
+                'permanent_lan_phone_no' => 'required',
+                'permanent_mobile_no' => 'required',
+                'permanent_fax_no' => 'required',
+                'primary_person_name' => 'required',
+                'primary_person_designation' => 'required',
+                'primary_person_mobile_no' => 'required',
+                'primary_person_email' => 'required|email',
+                'secondary_person_name' => 'required',
+                'secondary_person_designation' => 'required',
+                'secondary_person_mobile_no' => 'required',
+                'secondary_person_email' => 'required|email',
                 'whatsup_no' => 'required',
             ]
         );
 
-        $user = User::with('relAgent')->findOrFail(session('user.id'));
-        $user->email = $request->email;
-        $user->name = $request->name_of_agent;
-        $user->relAgent->type_of_agent = $request->type_of_agent;
-        $user->relAgent->country_name = $request->country_name;
-        $user->relAgent->pra_address = $request->pra_address;
-        $user->relAgent->pra_mobile_no = $request->pra_mobile_no;
-        $user->relAgent->pra_fax_no = $request->pra_fax_no;
-        $user->relAgent->per_address = $request->per_address;
-        $user->relAgent->per_lan_phone_no = $request->per_lan_phone_no;
-        $user->relAgent->per_mobile_no = $request->per_mobile_no;
-        $user->relAgent->per_fax_no = $request->per_fax_no;
-        $user->relAgent->pri_person_name = $request->pri_person_name;
-        $user->relAgent->pri_photograph = NULL;
-        $user->relAgent->pri_designation = $request->pri_designation;
-        $user->relAgent->pri_mobile_no = $request->pri_mobile_no;
-        $user->relAgent->pri_email = $request->pri_email;
-        $user->relAgent->sec_person_name = $request->sec_person_name;
-        $user->relAgent->sec_photograph = NULL;
-        $user->relAgent->sec_designation = $request->sec_designation;
-        $user->relAgent->sec_mobile_no = $request->sec_mobile_no;
-        $user->relAgent->sec_email = $request->sec_email;
-        $user->relAgent->trade_license = NULL;
-        $user->relAgent->tin_certificate = NULL;
-        $user->relAgent->whatsup_no = $request->whatsup_no;
-        $user->relAgent->status = $request->status;
+        $agent = User::with('relAgent')->findOrFail(auth()->user()->id);
+        $agent->first_name = $request->first_name;
+        $agent->last_name = $request->last_name;
+        $agent->relAgent->type_of_agent = $request->type_of_agent;
+        $agent->relAgent->country_name = $request->country_name;
+        $agent->relAgent->present_address = $request->present_address;
+        $agent->relAgent->present_mobile_no = $request->present_mobile_no;
+        $agent->relAgent->present_fax_no = $request->present_fax_no;
+        $agent->relAgent->permanent_address = $request->permanent_address;
+        $agent->relAgent->permanent_lan_phone_no = $request->permanent_lan_phone_no;
+        $agent->relAgent->permanent_mobile_no = $request->permanent_mobile_no;
+        $agent->relAgent->permanent_fax_no = $request->permanent_fax_no;
+        $agent->relAgent->primary_person_name = $request->primary_person_name;
+        $agent->relAgent->primary_person_photo = NULL;
+        $agent->relAgent->primary_person_designation = $request->primary_person_designation;
+        $agent->relAgent->primary_person_mobile_no = $request->primary_person_mobile_no;
+        $agent->relAgent->primary_person_email = $request->primary_person_email;
+        $agent->relAgent->secondary_person_name = $request->secondary_person_name;
+        $agent->relAgent->secondary_person_photo = NULL;
+        $agent->relAgent->secondary_person_designation = $request->secondary_person_designation;
+        $agent->relAgent->secondary_person_mobile_no = $request->secondary_person_mobile_no;
+        $agent->relAgent->secondary_person_email = $request->secondary_person_email;
+        $agent->relAgent->trade_license = NULL;
+        $agent->relAgent->tin_certificate = NULL;
+        $agent->relAgent->whatsup_no = $request->whatsup_no;
 
-        if ( $user->save() && $user->relAgent->save() )
+        if ( $agent->save() && $agent->relAgent->save() )
         {
             $request->session()->flash('message', ['success' => 'Profile Update successful!']);
         }
@@ -106,7 +105,7 @@ class ProfileController extends Controller
         {
             $request->session()->flash('message', ['error' => 'Update Failed!']);
         }
-        return redirect()->route('agent.profile.show');
+        return redirect()->route('profile.show');
     }
 
     public function student_profile_update(Request $request)
@@ -158,7 +157,7 @@ class ProfileController extends Controller
                 'o_name_of_exam' => 'required',
                 'o_group' => 'required',
                 'o_roll_no' => 'required',
-                'o_year_of_passing' => 'required|numerical',
+                'o_year_of_passing' => 'required|numeric',
                 'o_letter_grade' => 'required',
                 'o_cgpa' => 'required',
                 'o_board' => 'required',

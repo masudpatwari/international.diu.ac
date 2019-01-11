@@ -69,9 +69,9 @@ class StudentsController extends Controller
         }
     }
 
-    public function show()
+    public function show($id)
     {
-        $data['country'] = CountriesArray::country()->pluck('name', 'name');
-        return view('admin.profile.student', $data);
+        $data['profile'] = User::with('relStudent')->find($id);
+        return view('admin.foreign_student.show', $data);
     }
 }

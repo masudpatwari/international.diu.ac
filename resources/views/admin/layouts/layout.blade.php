@@ -91,7 +91,7 @@
                             <a href="{{ route('agent.index') }}" class="">Agent</a>
                         </li>
                         <li>
-                            <a href="{{ route('student.index') }}" class="">Foreign Student</a>
+                            <a href="{{ route('students.index') }}" class="">Foreign Student</a>
                         </li>
                         <li>
                             <a href="{{ route('inbox') }}" class="">Support Tickets</a>

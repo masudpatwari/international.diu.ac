@@ -13,13 +13,14 @@
     <tbody>
         @foreach($students as $student)
         <tr>
-            <td>{{ $student->relUser->first_name.' '.$student->relUser->last_name }}</td>
+            <td>
+                <p>{{ $student->relUser->first_name.' '.$student->relUser->last_name }}</p>
+                <p>{{ $student->relUser->email }}</p>
+            </td>
             <td class="text-capitalize">{{ $student->present_nationality }}</td>
             <td>{{ $student->interested_subject }}</td>
             <td>
-                <a href="">Edit</a>
-                ||
-                <a href="">Details</a>
+                <a href="{{ route('students.show', $student->id) }}">Details</a>
             </td>
         </tr>
         @endforeach

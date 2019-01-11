@@ -2,7 +2,7 @@
 @section('content')
     <div class="card mx-auto" style="max-width: 768px">
         <div class="card-body">
-            {{ Form::open(['route' => ['student.profile.update'], 'method' => 'PUT']) }}
+            {{ Form::open(['route' => 'student.profile.update', 'method' => 'PUT']) }}
             <div class="form-row">
                 <div class="form-group col-md-6">
                     {{ Form::label('first_name', 'First Name') }}
@@ -121,14 +121,14 @@
                 </div>
                 <div class="form-group col-md-4">
                     {{ Form::label('present_nationality', 'Present Nationality (Country)') }}
-                    {{ Form::select('present_nationality', $country, $profile->relStudent->present_nationality, ['placeholder' => 'Present Nationality (Country)', 'class' => 'form-control custom-select', 'required']) }}
+                    {{ Form::select('present_nationality', (!empty($country)) ? $country : [], $profile->relStudent->present_nationality, ['placeholder' => 'Present Nationality (Country)', 'class' => 'form-control custom-select', 'required']) }}
                     @if ($errors->has('present_nationality'))
                         <span class="form-text text-danger">{{ $errors->first('present_nationality') }}</span>
                     @endif
                 </div>
                 <div class="form-group col-md-4">
                     {{ Form::label('country_of_birth', 'Country of Birth') }}
-                    {{ Form::select('country_of_birth', $country, $profile->relStudent->country_of_birth, ['placeholder' => 'Country of Birth', 'class' => 'form-control custom-select', 'required']) }}
+                    {{ Form::select('country_of_birth', (!empty($country)) ? $country : [], $profile->relStudent->country_of_birth, ['placeholder' => 'Country of Birth', 'class' => 'form-control custom-select', 'required']) }}
                     @if ($errors->has('country_of_birth'))
                         <span class="form-text text-danger">{{ $errors->first('country_of_birth') }}</span>
                     @endif
@@ -245,7 +245,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     {{ Form::label('father_nationality', 'Nationality') }}
-                    {{ Form::select('father_nationality', $country, $profile->relStudent->father_nationality, ['placeholder' => 'Nationality', 'class' => 'form-control custom-select', 'required']) }}
+                    {{ Form::select('father_nationality', (!empty($country)) ? $country : [], $profile->relStudent->father_nationality, ['placeholder' => 'Nationality', 'class' => 'form-control custom-select', 'required']) }}
                     @if ($errors->has('father_nationality'))
                         <span class="form-text text-danger">{{ $errors->first('father_nationality') }}</span>
                     @endif
@@ -268,7 +268,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     {{ Form::label('mother_nationality', 'Nationality') }}
-                    {{ Form::select('mother_nationality', $country, $profile->relStudent->mother_nationality, ['placeholder' => 'Nationality', 'class' => 'form-control custom-select', 'required']) }}
+                    {{ Form::select('mother_nationality', (!empty($country)) ? $country : [], $profile->relStudent->mother_nationality, ['placeholder' => 'Nationality', 'class' => 'form-control custom-select', 'required']) }}
                     @if ($errors->has('mother_nationality'))
                         <span class="form-text text-danger">{{ $errors->first('mother_nationality') }}</span>
                     @endif
@@ -291,7 +291,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     {{ Form::label('spouse_nationality', 'Nationality') }}
-                    {{ Form::select('spouse_nationality', $country, $profile->relStudent->spouse_nationality, ['placeholder' => 'Nationality', 'class' => 'form-control custom-select', 'required']) }}
+                    {{ Form::select('spouse_nationality', (!empty($country)) ? $country : [], $profile->relStudent->spouse_nationality, ['placeholder' => 'Nationality', 'class' => 'form-control custom-select', 'required']) }}
                     @if ($errors->has('spouse_nationality'))
                         <span class="form-text text-danger">{{ $errors->first('spouse_nationality') }}</span>
                     @endif
@@ -314,7 +314,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     {{ Form::label('guardian_nationality', 'Nationality') }}
-                    {{ Form::select('guardian_nationality', $country, $profile->relStudent->guardian_nationality, ['placeholder' => 'Nationality', 'class' => 'form-control custom-select', 'required']) }}
+                    {{ Form::select('guardian_nationality', (!empty($country)) ? $country : [], $profile->relStudent->guardian_nationality, ['placeholder' => 'Nationality', 'class' => 'form-control custom-select', 'required']) }}
                     @if ($errors->has('guardian_nationality'))
                         <span class="form-text text-danger">{{ $errors->first('guardian_nationality') }}</span>
                     @endif

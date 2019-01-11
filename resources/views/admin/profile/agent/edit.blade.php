@@ -2,125 +2,191 @@
 @section('content')
     <div class="card mx-auto" style="max-width: 768px">
         <div class="card-body">
-            {{ Form::open(['route' => ['agent.profile.update'], 'method' => 'PUT', 'files' => true, 'id' => 'agentRegister']) }}
-            <div class="form-group">
-                {{ Form::label('name_of_agent', 'Name of Agent') }}
-                {{ Form::text('name_of_agent', $agent->relUser->name, ['class' => 'form-control', 'required' => ''])  }}
-            </div>
+            {{ Form::open(['route' => 'agent.profile.update', 'method' => 'PUT', 'files' => true]) }}
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    {{ Form::select('type_of_agent', ['company' => 'Company', 'individual' => 'Individual'], $agent->type_of_agent, ['placeholder' => 'Type of Agent', 'class' => 'form-control custom-select', 'required' => '']) }}
+                <div class="diu-fg form-group col-md-6">
+                    {{ Form::label('first_name', 'First Name') }}
+                    {{ Form::text('first_name', $profile->first_name, ['class' => ['form-control', $errors->has('first_name') ? ' is-invalid' : ''], 'required'])  }}
+                    @if ($errors->has('first_name'))
+                        <span class="form-text text-danger">{{ $errors->first('first_name') }}</span>
+                    @endif
                 </div>
-                <div class="form-group col-md-6">
-                    {{ Form::select('country_name', $country, $agent->country_name, ['placeholder' => 'Country Name', 'class' => 'form-control custom-select', 'required' => '']) }}
-                </div>
-            </div>
-            <div class="form-group">
-                {{ Form::label('email', 'E-mail Address') }}
-                {{ Form::email('email', $agent->relUser->email, ['class' => 'form-control', 'required' => ''])  }}
-            </div>
-            <div class="form-group">
-                {{ Form::label('pra_address', 'Present address/Office Address') }}
-                {{ Form::textarea('pra_address', $agent->pra_address, ['class' => 'form-control', 'rows' => ''])  }}
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    {{ Form::label('pra_mobile_no', 'Mobile Phone No') }}
-                    {{ Form::text('pra_mobile_no', $agent->pra_mobile_no, ['class' => 'form-control', 'required' => ''])  }}
-                </div>
-                <div class="form-group col-md-6">
-                    {{ Form::label('pra_fax_no', 'Fax Number') }}
-                    {{ Form::text('pra_fax_no', $agent->pra_fax_no, ['class' => 'form-control'])  }}
-                </div>
-            </div>
-
-            <div class="form-group">
-                {{ Form::label('per_address', 'Permanent Address/Registered Office') }}
-                {{ Form::textarea('per_address', $agent->per_address, ['class' => 'form-control', 'rows' => ''])  }}
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    {{ Form::label('per_lan_phone_no', 'Lan Phone Number') }}
-                    {{ Form::text('per_lan_phone_no', $agent->per_lan_phone_no, ['class' => 'form-control'])  }}
-                </div>
-                <div class="form-group col-md-4">
-                    {{ Form::label('per_mobile_no', 'Mobile Phone No') }}
-                    {{ Form::text('per_mobile_no', $agent->per_mobile_no, ['class' => 'form-control', 'required' => ''])  }}
-                </div>
-                <div class="form-group col-md-4">
-                    {{ Form::label('per_fax_no', 'Fax Number') }}
-                    {{ Form::text('per_fax_no', $agent->per_fax_no, ['class' => 'form-control'])  }}
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    {{ Form::label('pri_person_name', 'Authorized Person Name') }}
-                    {{ Form::text('pri_person_name', $agent->pri_person_name, ['class' => 'form-control'])  }}
-                </div>
-                <div class="form-group col-md-6">
-                    {{ Form::label('pri_designation', 'Designation') }}
-                    {{ Form::text('pri_designation', $agent->pri_designation, ['class' => 'form-control'])  }}
+                <div class="diu-fg form-group col-md-6">
+                    {{ Form::label('last_name', 'Last Name') }}
+                    {{ Form::text('last_name', $profile->last_name, ['class' => ['form-control', $errors->has('last_name') ? ' is-invalid' : ''], 'required'])  }}
+                    @if ($errors->has('last_name'))
+                        <span class="form-text text-danger">{{ $errors->first('last_name') }}</span>
+                    @endif
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-4">
-                    {{ Form::label('pri_mobile_no', 'Mobile Phone No') }}
-                    {{ Form::text('pri_mobile_no', $agent->pri_mobile_no, ['class' => 'form-control'])  }}
+                <div class="diu-fg form-group col-md-6">
+                    {{ Form::select('type_of_agent', ['company' => 'Company', 'individual' => 'Individual'], $profile->relAgent->type_of_agent, ['placeholder' => 'Type of Agent', 'class' => 'form-control custom-select', 'required' => '']) }}
+                    @if ($errors->has('type_of_agent'))
+                        <span class="form-text text-danger">{{ $errors->first('type_of_agent') }}</span>
+                    @endif
                 </div>
-                <div class="form-group col-md-4">
-                    {{ Form::label('pri_email', 'E-mail Address') }}
-                    {{ Form::email('pri_email', $agent->pri_email, ['class' => 'form-control'])  }}
-                </div>
-                <div class="form-group col-md-4">
-                    {{ Form::label('pri_photo', 'Photograph (Image)') }}
-                    {{ Form::file('pri_photo', NULL, ['class' => ''])  }}
+                <div class="diu-fg form-group col-md-6">
+                    {{ Form::select('country_name', (!empty($country)) ? $country : [], $profile->relAgent->country_name, ['placeholder' => 'Country Name', 'class' => 'form-control custom-select', 'required' => '']) }}
+                    @if ($errors->has('country_name'))
+                        <span class="form-text text-danger">{{ $errors->first('country_name') }}</span>
+                    @endif
                 </div>
             </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    {{ Form::label('sec_person_name', 'Authorized Person Name') }}
-                    {{ Form::text('sec_person_name', $agent->sec_person_name, ['class' => 'form-control'])  }}
-                </div>
-                <div class="form-group col-md-6">
-                    {{ Form::label('sec_designation', 'Designation') }}
-                    {{ Form::text('sec_designation', $agent->sec_designation, ['class' => 'form-control'])  }}
-                </div>
+            <div class="diu-fg form-group">
+                {{ Form::label('present_address', 'Present address/Office Address') }}
+                {{ Form::textarea('present_address', $profile->relAgent->present_address, ['class' => 'form-control', 'rows' => ''])  }}
+                @if ($errors->has('present_address'))
+                    <span class="form-text text-danger">{{ $errors->first('present_address') }}</span>
+                @endif
             </div>
             <div class="form-row">
-                <div class="form-group col-md-4">
-                    {{ Form::label('sec_mobile_no', 'Mobile Phone No') }}
-                    {{ Form::text('sec_mobile_no', $agent->sec_mobile_no, ['class' => 'form-control'])  }}
+                <div class="diu-fg form-group col-md-6">
+                    {{ Form::label('present_mobile_no', 'Mobile Phone No') }}
+                    {{ Form::text('present_mobile_no', $profile->relAgent->present_mobile_no, ['class' => 'form-control', 'required' => ''])  }}
+                    @if ($errors->has('present_mobile_no'))
+                        <span class="form-text text-danger">{{ $errors->first('present_mobile_no') }}</span>
+                    @endif
                 </div>
-                <div class="form-group col-md-4">
-                    {{ Form::label('sec_email', 'E-mail Address') }}
-                    {{ Form::email('sec_email', $agent->sec_email, ['class' => 'form-control'])  }}
-                </div>
-                <div class="form-group col-md-4">
-                    {{ Form::label('sec_photo', 'Photograph (Image)') }}
-                    {{ Form::file('sec_photo', NULL, ['class' => ''])  }}
+                <div class="diu-fg form-group col-md-6">
+                    {{ Form::label('present_fax_no', 'Fax Number') }}
+                    {{ Form::text('present_fax_no', $profile->relAgent->present_fax_no, ['class' => 'form-control'])  }}
+                    @if ($errors->has('present_fax_no'))
+                        <span class="form-text text-danger">{{ $errors->first('present_fax_no') }}</span>
+                    @endif
                 </div>
             </div>
-            <div class="form-group focused">
+            <div class="diu-fg form-group">
+                {{ Form::label('permanent_address', 'Permanent Address/Registered Office') }}
+                {{ Form::textarea('permanent_address', $profile->relAgent->permanent_address, ['class' => 'form-control', 'rows' => ''])  }}
+                @if ($errors->has('permanent_address'))
+                    <span class="form-text text-danger">{{ $errors->first('permanent_address') }}</span>
+                @endif
+            </div>
+            <div class="form-row">
+                <div class="diu-fg form-group col-md-4">
+                    {{ Form::label('permanent_lan_phone_no', 'Lan Phone Number') }}
+                    {{ Form::text('permanent_lan_phone_no', $profile->relAgent->permanent_lan_phone_no, ['class' => 'form-control'])  }}
+                    @if ($errors->has('per_lan_phone_no'))
+                        <span class="form-text text-danger">{{ $errors->first('permanent_lan_phone_no') }}</span>
+                    @endif
+                </div>
+                <div class="diu-fg form-group col-md-4">
+                    {{ Form::label('permanent_mobile_no', 'Mobile Phone No') }}
+                    {{ Form::text('permanent_mobile_no', $profile->relAgent->permanent_mobile_no, ['class' => 'form-control', 'required' => ''])  }}
+                    @if ($errors->has('permanent_mobile_no'))
+                        <span class="form-text text-danger">{{ $errors->first('permanent_mobile_no') }}</span>
+                    @endif
+                </div>
+                <div class="diu-fg form-group col-md-4">
+                    {{ Form::label('permanent_fax_no', 'Fax Number') }}
+                    {{ Form::text('permanent_fax_no', $profile->relAgent->permanent_fax_no, ['class' => 'form-control'])  }}
+                    @if ($errors->has('permanent_fax_no'))
+                        <span class="form-text text-danger">{{ $errors->first('permanent_fax_no') }}</span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="diu-fg form-group col-md-6">
+                    {{ Form::label('primary_person_name', 'Authorized Person Name') }}
+                    {{ Form::text('primary_person_name', $profile->relAgent->primary_person_name, ['class' => 'form-control'])  }}
+                    @if ($errors->has('primary_person_name'))
+                        <span class="form-text text-danger">{{ $errors->first('primary_person_name') }}</span>
+                    @endif
+                </div>
+                <div class="diu-fg form-group col-md-6">
+                    {{ Form::label('primary_person_designation', 'Designation') }}
+                    {{ Form::text('primary_person_designation', $profile->relAgent->primary_person_designation, ['class' => 'form-control'])  }}
+                    @if ($errors->has('primary_person_designation'))
+                        <span class="form-text text-danger">{{ $errors->first('primary_person_designation') }}</span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="diu-fg form-group col-md-4">
+                    {{ Form::label('primary_person_mobile_no', 'Mobile Phone No') }}
+                    {{ Form::text('primary_person_mobile_no', $profile->relAgent->primary_person_mobile_no, ['class' => 'form-control'])  }}
+                    @if ($errors->has('primary_person_mobile_no'))
+                        <span class="form-text text-danger">{{ $errors->first('primary_person_mobile_no') }}</span>
+                    @endif
+                </div>
+                <div class="diu-fg form-group col-md-4">
+                    {{ Form::label('primary_person_email', 'E-mail Address') }}
+                    {{ Form::email('primary_person_email', $profile->relAgent->primary_person_email, ['class' => 'form-control'])  }}
+                    @if ($errors->has('primary_person_email'))
+                        <span class="form-text text-danger">{{ $errors->first('primary_person_email') }}</span>
+                    @endif
+                </div>
+                <div class="diu-fg form-group diu-fg-file col-md-4">
+                    {{ Form::label('primary_person_photo', 'Photograph (Image)') }}
+                    {{ Form::file('primary_person_photo', $profile->relAgent->primary_person_photo, ['class' => ''])  }}
+                    @if ($errors->has('primary_person_photo'))
+                        <span class="form-text text-danger">{{ $errors->first('primary_person_photo') }}</span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="diu-fg form-group col-md-6">
+                    {{ Form::label('secondary_person_name', 'Authorized Person Name') }}
+                    {{ Form::text('secondary_person_name', $profile->relAgent->secondary_person_name, ['class' => 'form-control'])  }}
+                    @if ($errors->has('secondary_person_name'))
+                        <span class="form-text text-danger">{{ $errors->first('secondary_person_name') }}</span>
+                    @endif
+                </div>
+                <div class="diu-fg form-group col-md-6">
+                    {{ Form::label('secondary_person_designation', 'Designation') }}
+                    {{ Form::text('secondary_person_designation', $profile->relAgent->secondary_person_designation, ['class' => 'form-control'])  }}
+                    @if ($errors->has('secondary_person_designation'))
+                        <span class="form-text text-danger">{{ $errors->first('secondary_person_designation') }}</span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="diu-fg form-group col-md-4">
+                    {{ Form::label('secondary_person_mobile_no', 'Mobile Phone No') }}
+                    {{ Form::text('secondary_person_mobile_no', $profile->relAgent->secondary_person_mobile_no, ['class' => 'form-control'])  }}
+                    @if ($errors->has('secondary_person_mobile_no'))
+                        <span class="form-text text-danger">{{ $errors->first('secondary_person_mobile_no') }}</span>
+                    @endif
+                </div>
+                <div class="diu-fg form-group col-md-4">
+                    {{ Form::label('secondary_person_email', 'E-mail Address') }}
+                    {{ Form::email('secondary_person_email', $profile->relAgent->secondary_person_email, ['class' => 'form-control'])  }}
+                    @if ($errors->has('secondary_person_email'))
+                        <span class="form-text text-danger">{{ $errors->first('secondary_person_email') }}</span>
+                    @endif
+                </div>
+                <div class="diu-fg form-group diu-fg-file col-md-4">
+                    {{ Form::label('secondary_person_photo', 'Photograph (Image)') }}
+                    {{ Form::file('secondary_person_photo', $profile->relAgent->secondary_person_photo, ['class' => ''])  }}
+                    @if ($errors->has('secondary_person_photo'))
+                        <span class="form-text text-danger">{{ $errors->first('secondary_person_photo') }}</span>
+                    @endif
+                </div>
+            </div>
+            <div class="diu-fg form-group diu-fg-file">
                 {{ Form::label('trade_license', 'Trade License (Image)') }}
-                {{ Form::file('trade_license', NULL, ['class' => ''])  }}
+                {{ Form::file('trade_license', $profile->relAgent->trade_license, ['class' => ''])  }}
+                @if ($errors->has('trade_license'))
+                    <span class="form-text text-danger">{{ $errors->first('trade_license') }}</span>
+                @endif
             </div>
-            <div class="form-group focused">
+            <div class="diu-fg form-group diu-fg-file">
                 {{ Form::label('tin_certificate', 'Tin/Tax Certificate (Image)') }}
-                {{ Form::file('tin_certificate', NULL, ['class' => ''])  }}
+                {{ Form::file('tin_certificate', $profile->relAgent->tin_certificate, ['class' => ''])  }}
+                @if ($errors->has('tin_certificate'))
+                    <span class="form-text text-danger">{{ $errors->first('tin_certificate') }}</span>
+                @endif
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    {{ Form::label('whatsup_no', 'Whatsup Number') }}
-                    {{ Form::text('whatsup_no', $agent->whatsup_no, ['class' => 'form-control'])  }}
-                </div>
-                <div class="form-group col-md-6">
-                    {{ Form::label('status', 'Status') }}
-                    {{ Form::select('status', ['active' => 'Active', 'inactive' => 'Inactive'], $agent->status, ['placeholder' => 'Select Status', 'class' => 'form-control custom-select']) }}
-                </div>
+            <div class="diu-fg form-group">
+                {{ Form::label('whatsup_no', 'Whatsup Number') }}
+                {{ Form::text('whatsup_no', $profile->relAgent->whatsup_no, ['class' => 'form-control'])  }}
+                @if ($errors->has('whatsup_no'))
+                    <span class="form-text text-danger">{{ $errors->first('whatsup_no') }}</span>
+                @endif
             </div>
-            {{ Form::button('<i class="ti-arrow-right"></i> Update', ['type'=>'submit', 'class' => 'btn btn-sm btn-success']) }}
+            {{ Form::button('Register', ['type'=>'submit', 'class' => 'btn btn-sm btn-primary']) }}
+            {{ link_to_route('login', 'Back to login', NULL, ['class' => 'diu-login-btn ml-3']) }}
             {{ Form::close() }}
         </div>
     </div>

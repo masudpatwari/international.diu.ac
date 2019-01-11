@@ -31,11 +31,11 @@ Route::GET('faculty/{id}', 'FrontEndContoller@faculty')->name('faculty.show');
 
 Route::GET('/profile', 'ProfileController@show')->name('profile.show');
 Route::GET('/profile/edit', 'ProfileController@edit')->name('profile.edit');
-Route::PUT('/profile/edit', 'ProfileController@agent_profile_update')->name('agent.profile.update');
-Route::PUT('/profile/edit', 'ProfileController@student_profile_update')->name('student.profile.update');
+Route::PUT('/profile/edit/agent', 'ProfileController@agent_profile_update')->name('agent.profile.update');
+Route::PUT('/profile/edit/student', 'ProfileController@student_profile_update')->name('student.profile.update');
 
 Route::resource('agent', 'AgentController');
-Route::resource('student', 'StudentsController');
+Route::resource('students', 'StudentsController');
 Route::resource('/dashboard', 'DashboardController')->only([
     'index'
 ]);

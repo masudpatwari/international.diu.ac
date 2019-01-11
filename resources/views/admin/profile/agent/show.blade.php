@@ -1,7 +1,16 @@
 @extends('admin.layouts.layout')
 @section('content')
-    <div class="card mx-auto" style="max-width: 768px">
+<div class="mx-auto" style="max-width: 768px">
+    <div class="pt-4 pb-4 clearfix">
+        <h4 class="d-inline">Profile of {{ $profile->first_name ." ". $profile->last_name }}</h4>
+        <a class="btn btn-warning float-right" href="{{ route('profile.edit') }}">Edit Profile</a>
+    </div>
+    <div class="card">
         <div class="card-body">
+            <p>
+                <strong>Agent ID : </strong>
+                {{ sprintf('FA%04u', $profile->id) }}
+            </p>
             <div class="row">
                 <div class="col-md-6">
                     <p class="form-control-plaintext">
@@ -168,4 +177,5 @@
             </p>
         </div>
     </div>
+</div>
 @endsection
