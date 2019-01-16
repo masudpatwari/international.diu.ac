@@ -10,8 +10,9 @@ class MailTicket extends Controller
     public function inbox()
     {
         $email = new imapMailReader();
-        return $email->inbox();
-        return $email->num_msg();
-        return view('mail.inbox');
+        //dd($email->getMessage(336));
+        $data['messages'] = $email->getMessage(338);
+       // return $data['messages'] = $email->inbox();
+        return view('admin.mail.inbox', $data);
     }
 }

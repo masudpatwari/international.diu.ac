@@ -12,7 +12,7 @@ class StudentsController extends Controller
 {
     public function index()
     {
-        $data['students'] = ForeignStudent::with('relUser')->get();
+        $data['profiles'] = ForeignStudent::with('relUser')->get();
         return view('admin.foreign_student.index', $data);
     }
 
@@ -34,44 +34,12 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(
-            [
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'interested_sub' => 'required|numeric',
-                'pra_nationality' => 'required|numeric',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:6|max:20',
-            ]
-        );
-
-        $user = new User();
-        $user->name = $request->first_name .' '. $request->last_name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        $student = new ForeignStudent();
-        $student->user_id = $user->id;
-        $student->interested_subject = $request->interested_sub;
-        $student->pra_nationality = $request->pra_nationality;
-        $student->save();
-
-        if ( !empty($user->id) && !empty($student->id) )
-        {
-            return response()->json(['message'=> ['success' => 'Record Saved!']]);
-        }
-        else
-        {
-            $user->destroy($user->id);
-            $student->destroy($student->id);
-            return response()->json(['message'=> ['error' => 'Record not Save!']]);
-        }
+        //
     }
 
     public function show($id)
     {
-        $data['profile'] = User::with('relStudent')->find($id);
+        $data['profile'] = ForeignStudent::with('relUser')->find($id);
         return view('admin.foreign_student.show', $data);
     }
 }

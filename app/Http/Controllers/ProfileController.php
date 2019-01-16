@@ -20,7 +20,7 @@ class ProfileController extends Controller
          }
          elseif (auth()->user()->role == 'agent')
          {
-             $data['profile'] = User::with('relAgent')->find(auth()->user()->id);
+             $data['profile'] = Agent::with('relUser')->where('user_id', auth()->user()->id)->first();
              return view('admin.profile.agent.show', $data);
          }
          return view('admin.dashboard');
@@ -37,7 +37,7 @@ class ProfileController extends Controller
         }
         elseif (auth()->user()->role == 'agent')
         {
-            $data['profile'] = User::with('relAgent')->find(auth()->user()->id);
+            $data['profile'] = Agent::with('relUser')->where('user_id', auth()->user()->id)->first();
             return view('admin.profile.agent.edit', $data);
         }
         return view('admin.dashboard');
@@ -84,18 +84,53 @@ class ProfileController extends Controller
         $agent->relAgent->permanent_mobile_no = $request->permanent_mobile_no;
         $agent->relAgent->permanent_fax_no = $request->permanent_fax_no;
         $agent->relAgent->primary_person_name = $request->primary_person_name;
-        $agent->relAgent->primary_person_photo = NULL;
+        if($request->hasFile('primary_person_photo'))
+        {
+            $image = $request->file('primary_person_photo');
+            $filename = 'primary_person_'.sprintf("%05d", $agent->id) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/', $filename);
+            $agent->relAgent->primary_person_photo = $filename;
+        }
         $agent->relAgent->primary_person_designation = $request->primary_person_designation;
         $agent->relAgent->primary_person_mobile_no = $request->primary_person_mobile_no;
         $agent->relAgent->primary_person_email = $request->primary_person_email;
         $agent->relAgent->secondary_person_name = $request->secondary_person_name;
-        $agent->relAgent->secondary_person_photo = NULL;
+        if($request->hasFile('secondary_person_photo'))
+        {
+            $image = $request->file('secondary_person_photo');
+            $filename = 'secondary_person_'.sprintf("%05d", $agent->id) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/', $filename);
+            $agent->relAgent->secondary_person_photo = $filename;
+        }
         $agent->relAgent->secondary_person_designation = $request->secondary_person_designation;
         $agent->relAgent->secondary_person_mobile_no = $request->secondary_person_mobile_no;
         $agent->relAgent->secondary_person_email = $request->secondary_person_email;
-        $agent->relAgent->trade_license = NULL;
-        $agent->relAgent->tin_certificate = NULL;
+        if($request->hasFile('trade_license'))
+        {
+            $image = $request->file('trade_license');
+            $filename = 'trade_license_'.sprintf("%05d", $agent->id) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/', $filename);
+            $agent->relAgent->trade_license = $filename;
+        }
+        if($request->hasFile('tin_certificate'))
+        {
+            $image = $request->file('tin_certificate');
+            $filename = 'tin_certificate_'.sprintf("%05d", $agent->id) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/', $filename);
+            $agent->relAgent->tin_certificate = $filename;
+        }
         $agent->relAgent->whatsup_no = $request->whatsup_no;
+        if($request->hasFile('profile_photo'))
+        {
+            $image = $request->file('profile_photo');
+            $filename = 'profile_photo_'.sprintf("%05d", $agent->id) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/', $filename);
+            $agent->profile_photo = $filename;
+        }
+
+
+
+
 
         if ( $agent->save() && $agent->relAgent->save() )
         {
@@ -217,6 +252,13 @@ class ProfileController extends Controller
         $user->relStudent->o_board = $request->o_board;
         $user->relStudent->o_link_of_certificate = $request->o_link_of_certificate;
         $user->relStudent->o_registration_no = $request->o_registration_no;
+        if($request->hasFile('profile_photo'))
+        {
+            $image = $request->file('profile_photo');
+            $filename = 'profile_photo_'.sprintf("%05d", $user->id) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/', $filename);
+            $user->profile_photo = $filename;
+        }
 
 
         if ( $user->save() && $user->relStudent->save() )

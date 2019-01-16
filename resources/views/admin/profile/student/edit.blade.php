@@ -2,7 +2,7 @@
 @section('content')
     <div class="card mx-auto" style="max-width: 768px">
         <div class="card-body">
-            {{ Form::open(['route' => 'student.profile.update', 'method' => 'PUT']) }}
+            {{ Form::open(['route' => 'student.profile.update', 'method' => 'PUT', 'files' => true]) }}
             <div class="form-row">
                 <div class="form-group col-md-6">
                     {{ Form::label('first_name', 'First Name') }}
@@ -388,6 +388,13 @@
                 {{ Form::text('o_registration_no', $profile->relStudent->o_registration_no, ['class' => 'form-control', 'required'])  }}
                 @if ($errors->has('o_registration_no'))
                     <span class="form-text text-danger">{{ $errors->first('o_registration_no') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('profile_photo', 'Profile Photo') }}
+                {{ Form::file('profile_photo', NULL, ['class' => ''])  }}
+                @if ($errors->has('profile_photo'))
+                    <span class="form-text text-danger">{{ $errors->first('profile_photo') }}</span>
                 @endif
             </div>
             {{ Form::button('<i class="ti-arrow-right"></i> Update', ['type'=>'submit', 'class' => 'btn btn-sm btn-success']) }}

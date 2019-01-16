@@ -45,7 +45,7 @@
             <div class="db-tools-icon db-account">
                 <a class="" href="javaScript:;" data-toggle="db-dropdown">
                     <div class="db-account-pic">
-                        <img src="{{ asset('images/profile-photo.jpg') }}" alt="">
+                        <img src="{{ asset('uploads/'.auth()->user()->profile_photo.'') }}" alt="">
                     </div>
                 </a>
                 <div class="db-dropdown-menu">
@@ -53,14 +53,16 @@
                         <div class="db-card-body">
                             <div class="db-profile">
                                 <a class="db-profile-pic" href="{{ route('profile.show') }}">
-                                    <img src="{{ asset('images/profile-photo.jpg') }}" alt="">
+                                    <img src="{{ asset('uploads/'.auth()->user()->profile_photo.'') }}" alt="">
                                 </a>
                                 <div class="db-account-info">
-                                    <p>
-                                        <strong>{{ auth()->user()->first_name.' '.auth()->user()->last_name }}</strong>
-                                    </p>
-                                    <p>{{ auth()->user()->email }}</p>
-                                    <a class="btn btn-sm btn-warning">Change Password</a>
+                                    <a href="{{ route('profile.show') }}">
+                                        <p>
+                                            <strong>{{ auth()->user()->first_name.' '.auth()->user()->last_name }}</strong>
+                                        </p>
+                                        <p>{{ auth()->user()->email }}</p>
+                                    </a>
+                                    <a class="btn btn-sm btn-warning db-change-password">Change Password</a>
                                 </div>
                             </div>
                         </div>

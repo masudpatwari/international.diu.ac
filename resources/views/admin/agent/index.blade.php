@@ -11,19 +11,20 @@
             <th>Action</th>
         </tr>
     </thead>
-    @if(!empty($agents))
+    @if(!empty($profiles))
     <tbody>
-        @foreach($agents as $agent)
+        @foreach($profiles as $profile)
         <tr>
-            <td>{{ sprintf('FA%04u', $agent->id) }}</td>
-            <td>{{ $agent->relUser->name }}</td>
-            <td class="text-capitalize">{{ $agent->type_of_agent }}</td>
-            <td>{{ $agent->country_name }}</td>
-            <td class="text-capitalize">{{ $agent->status }}</td>
+            <td>{{ sprintf('FA%04u', $profile->relUser->id) }}</td>
             <td>
-                <a href="{{ route('agent.edit', ['id' => $agent->user_id]) }}">Edit</a>
-                ||
-                <a href="{{ route('agent.show', ['id' => $agent->user_id]) }}">Details</a>
+                <p>{{ $profile->relUser->first_name.' '.$profile->relUser->last_name }}</p>
+                <p>{{ $profile->relUser->email }}</p>
+            </td>
+            <td class="text-capitalize">{{ $profile->type_of_agent }}</td>
+            <td>{{ $profile->country_name }}</td>
+            <td class="text-capitalize">{{ $profile->status }}</td>
+            <td>
+                <a href="{{ route('agent.show', ['id' => $profile->relUser->id]) }}">Details</a>
             </td>
         </tr>
         @endforeach

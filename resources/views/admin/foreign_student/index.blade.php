@@ -9,18 +9,18 @@
             <th>Action</th>
         </tr>
     </thead>
-    @if(!empty($students))
+    @if(!empty($profiles))
     <tbody>
-        @foreach($students as $student)
+        @foreach($profiles as $profile)
         <tr>
             <td>
-                <p>{{ $student->relUser->first_name.' '.$student->relUser->last_name }}</p>
-                <p>{{ $student->relUser->email }}</p>
+                <p>{{ $profile->relUser->first_name.' '.$profile->relUser->last_name }}</p>
+                <p>{{ $profile->relUser->email }}</p>
             </td>
-            <td class="text-capitalize">{{ $student->present_nationality }}</td>
-            <td>{{ $student->interested_subject }}</td>
+            <td class="text-capitalize">{{ $profile->present_nationality }}</td>
+            <td>{{ $profile->interested_subject }}</td>
             <td>
-                <a href="{{ route('students.show', $student->id) }}">Details</a>
+                <a href="{{ route('students.show', $profile->relUser->id) }}">Details</a>
             </td>
         </tr>
         @endforeach

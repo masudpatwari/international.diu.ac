@@ -9,7 +9,7 @@ use App\Libraries\CountriesArray;
 use App\Libraries\ApiCourseFee;
 use Illuminate\Support\Facades\Cache;
 
-class FrontEndContoller extends Controller
+class FrontEndController extends Controller
 {
 
     public function index()

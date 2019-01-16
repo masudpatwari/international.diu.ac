@@ -1,70 +1,211 @@
 @extends('admin.layouts.layout')
 @section('content')
-    <div class="card mx-auto" style="max-width: 768px">
-        <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-3">Agent No</dt>
-                <dd class="col-sm-9">{{ sprintf('FA%04u', $agent->id) }}</dd>
-                <dt class="col-sm-3">Name of Agent</dt>
-                <dd class="col-sm-9">{{ $agent->relUser->name }}</dd>
-                <dt class="col-sm-3">Type of Agent</dt>
-                <dd class="col-sm-9">
-                    <p class="text-capitalize">{{ $agent->type_of_agent }}</p>
-                </dd>
-                <dt class="col-sm-3">Country Name</dt>
-                <dd class="col-sm-9">{{ $agent->country_name }}</dd>
-                <dt class="col-sm-3">E-mail Address</dt>
-                <dd class="col-sm-9">{{ $agent->relUser->email }}</dd>
-                <dt class="col-sm-3">Present address/Office Address</dt>
-                <dd class="col-sm-9">
-                    <dl class="row">
-                        <dd class="col-sm-12">{{ $agent->pra_address }}</dd>
-                        <dt class="col-sm-4">Mobile Phone No</dt>
-                        <dd class="col-sm-8">{{ $agent->pra_mobile_no }}</dd>
-                        <dt class="col-sm-4">Fax Number</dt>
-                        <dd class="col-sm-8">{{ $agent->pra_fax_no }}</dd>
-                    </dl>
-                </dd>
-                <dt class="col-sm-3">Permanent Address/Registered Office</dt>
-                <dd class="col-sm-9">
-                    <dl class="row">
-                        <dd class="col-sm-12">{{ $agent->per_address }}</dd>
-                        <dt class="col-sm-4">Lan Phone Number</dt>
-                        <dd class="col-sm-8">{{ $agent->per_lan_phone_no }}</dd>
-                        <dt class="col-sm-4">Mobile Phone No</dt>
-                        <dd class="col-sm-8">{{ $agent->per_mobile_no }}</dd>
-                        <dt class="col-sm-4">Fax Number</dt>
-                        <dd class="col-sm-8">{{ $agent->per_fax_no }}</dd>
-                    </dl>
-                </dd>
-                <dt class="col-sm-3">Authorized Person Name</dt>
-                <dd class="col-sm-9">
-                    <dl class="row">
-                        <dd class="col-sm-12">{{ $agent->pri_person_name }}</dd>
-                        <dt class="col-sm-4">Designation</dt>
-                        <dd class="col-sm-8">{{ $agent->pri_designation }}</dd>
-                        <dt class="col-sm-4">Mobile Phone No</dt>
-                        <dd class="col-sm-8">{{ $agent->pri_mobile_no }}</dd>
-                        <dt class="col-sm-4">E-mail Address</dt>
-                        <dd class="col-sm-8">{{ $agent->pri_email }}</dd>
-                    </dl>
-                </dd>
-                <dt class="col-sm-3">Authorized Person Name</dt>
-                <dd class="col-sm-9">
-                    <dl class="row">
-                        <dd class="col-sm-12">{{ $agent->sec_person_name }}</dd>
-                        <dt class="col-sm-4">Designation</dt>
-                        <dd class="col-sm-8">{{ $agent->sec_designation }}</dd>
-                        <dt class="col-sm-4">Mobile Phone No</dt>
-                        <dd class="col-sm-8">{{ $agent->sec_mobile_no }}</dd>
-                        <dt class="col-sm-4">E-mail Address</dt>
-                        <dd class="col-sm-8">{{ $agent->sec_email }}</dd>
-                    </dl>
-                </dd>
-                <dt class="col-sm-3">Whatsup Number</dt>
-                <dd class="col-sm-9">{{ $agent->whatsup_no }}</dd>
-            </dl>
-            {{ link_to_route('agent.edit', 'Edit', $agent->user_id, ['class' => 'btn btn-sm btn-primary']) }}
+    <div class="mx-auto" style="max-width: 768px">
+        <div class="pt-4 pb-4 clearfix">
+            <h4 class="d-inline">Agent {{ $profile->relUser->first_name ." ". $profile->relUser->last_name }}</h4>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <p>
+                    <strong>Agent ID : </strong>
+                    {{ sprintf('FA%04u', $profile->relUser->id) }}
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>First Name : </strong>
+                            {{ $profile->first_name }}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>Last Name : </strong>
+                            {{ $profile->last_name }}
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext text-capitalize">
+                            <strong>Type of Agent : </strong>
+                            {{ $profile->type_of_agent }}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>Country Name : </strong>
+                            {{ $profile->country_name }}
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>E-mail Address : </strong>
+                            {{ $profile->email }}
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="">
+                    <p class="form-control-plaintext">
+                        <strong>Present address/Office Address : </strong>
+                        {{ $profile->present_address }}
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>Mobile Phone No : </strong>
+                            {{ $profile->present_mobile_no }}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>Fax Number : </strong>
+                            {{ $profile->present_fax_no }}
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="">
+                    <p class="form-control-plaintext">
+                        <strong>Permanent Address/Registered Office : </strong>
+                        {{ $profile->permanent_address }}
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="form-control-plaintext">
+                            <strong>Lan Phone Number : </strong>
+                            {{ $profile->permanent_lan_phone_no }}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="form-control-plaintext">
+                            <strong>Mobile Phone No : </strong>
+                            {{ $profile->permanent_mobile_no }}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="form-control-plaintext">
+                            <strong>Fax Number : </strong>
+                            {{ $profile->permanent_fax_no }}
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p class="text-center">
+                            @if(!empty($profile->primary_person_photo))
+                                <img src="{{ asset('uploads/'.$profile->primary_person_photo.'') }}">
+                            @else
+                                Photograph (Image)
+                            @endif
+                        </p>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="form-control-plaintext">
+                                    <strong>Authorized Person Name : </strong>
+                                    {{ $profile->primary_person_name }}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="form-control-plaintext">
+                                    <strong>Designation : </strong>
+                                    {{ $profile->primary_person_designation }}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="form-control-plaintext">
+                                    <strong>Mobile Phone No : </strong>
+                                    {{ $profile->primary_person_mobile_no }}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="form-control-plaintext">
+                                    <strong>E-mail Address : </strong>
+                                    {{ $profile->primary_person_email }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-2">
+                        <p class="text-center">
+                            @if(!empty($profile->secondary_person_photo))
+                                <img src="{{ asset('uploads/'.$profile->secondary_person_photo.'') }}">
+                            @else
+                                Photograph (Image)
+                            @endif
+                        </p>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="form-control-plaintext">
+                                    <strong>Authorized Person Name : </strong>
+                                    {{ $profile->secondary_person_name }}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="form-control-plaintext">
+                                    <strong>Designation : </strong>
+                                    {{ $profile->secondary_person_designation }}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="form-control-plaintext">
+                                    <strong>Mobile Phone No : </strong>
+                                    {{ $profile->secondary_person_mobile_no }}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="form-control-plaintext">
+                                    <strong>E-mail Address : </strong>
+                                    {{ $profile->secondary_person_email }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="">
+                    <p class="clearfix">
+                        <strong>Trade License (Image) : </strong>
+                        @if(!empty($profile->trade_license ))
+                            <span class="float-right">
+                            <a href="{{ asset('uploads/'.$profile->trade_license.'') }}" target="_blank">View&nbsp;</a>
+                            <a href="{{ asset('uploads/'.$profile->trade_license.'') }}" download>&nbsp;Download</a>
+                        </span>
+                        @else
+                            Empty
+                        @endif
+                    </p>
+                    <hr>
+                    <p class="clearfix">
+                        <strong>Tin/Tax Certificate (Image) : </strong>
+                        @if(!empty($profile->tin_certificate ))
+                            <span class="float-right">
+                                <a href="{{ asset('uploads/'.$profile->tin_certificate.'') }}" target="_blank">View&nbsp;</a>
+                                <a href="{{ asset('uploads/'.$profile->tin_certificate.'') }}" download>&nbsp;Download</a>
+                            </span>
+                        @else
+                            Empty
+                        @endif
+                    </p>
+                </div>
+                <hr>
+                <p class="form-control-plaintext">
+                    <strong>Whatsup Number : </strong>
+                    {{ $profile->whatsup_no }}
+                </p>
+            </div>
         </div>
     </div>
 @endsection
