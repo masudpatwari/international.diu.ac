@@ -20,7 +20,7 @@ class ProfileController extends Controller
          }
          elseif (auth()->user()->role == 'agent')
          {
-             $data['profile'] = Agent::with('relUser')->where('user_id', auth()->user()->id)->first();
+             $data['profile'] = User::with('relAgent')->find(auth()->user()->id);
              return view('admin.profile.agent.show', $data);
          }
          return view('admin.dashboard');
@@ -37,7 +37,7 @@ class ProfileController extends Controller
         }
         elseif (auth()->user()->role == 'agent')
         {
-            $data['profile'] = Agent::with('relUser')->where('user_id', auth()->user()->id)->first();
+            $data['profile'] = User::with('relAgent')->find(auth()->user()->id);
             return view('admin.profile.agent.edit', $data);
         }
         return view('admin.dashboard');
@@ -127,10 +127,6 @@ class ProfileController extends Controller
             $image->move('uploads/', $filename);
             $agent->profile_photo = $filename;
         }
-
-
-
-
 
         if ( $agent->save() && $agent->relAgent->save() )
         {

@@ -50,27 +50,59 @@ class imapMailReader
         }
         else
         {
-            foreach ($s->parts as $part_no => $p)
+            foreach ($s->parts as $pn => $p)
             {
                 $body['type'][] = $p->subtype;
                 if ($p->type == 0)
                 {
                     if ($p->subtype == 'PLAIN')
                     {
-                        $body['plan'][] = $this->partEncoding($messageId, 1, $p->encoding);
+                        //$body['plan'][] = $this->partEncoding($messageId, 1, $p->encoding);
+                        $body['plan'][] = $this->getParts($messageId, $p, $pn+1);
                     }
                     else
                     {
-                        $body['html'][] = $this->partEncoding($messageId, 2, $p->encoding);
+                        //$body['html'][] = $this->partEncoding($messageId, 2, $p->encoding);
+                        $body['html'][] = $this->getParts($messageId, $p, $pn+1);
                     }
                 }
 
+               // dd($p->parts[0]->parts[0]);
+
                 if ($p->type == 1)
                 {
-                    $body['html'][] = $this->partEncoding($messageId, 1.1, 4);
-                    //$body['img'][] = $this->partEncoding($messageId, $part_no+1, 5);
+                    //$body['plan'][] = $this->getParts($messageId, $p, $pn+1);
+                    if(!empty($p->parts))
+                    {
+                        foreach ($p->parts as $k_part_no => $k)
+                        {
+                            //dd($k);
+
+                            if(!empty($k->parts))
+                            {
+                                $body['plan'][] = $this->getParts($messageId, $k, "1.".($pn+1)."");
+                            }
+                            else
+                            {
+                                $body['img'][] = $this->getParts($messageId, $k, "1.".($pn+1)."");
+                            }
+
+                            /*
+                            if ($k->subtype == 'PLAIN')
+                            {
+                                $body['plan'][] = $this->partEncoding($messageId, 1, $p->encoding);
+                            }*/
+
+                            if(!empty($k->parts))
+                            {
+                               // $body['img2'][] = $this->getParts($messageId, $k->parts[0], 1.1);;
+                            }
+                        }
+                    }
+                    /*$body['html'][] = $this->partEncoding($messageId, 1.1, 4);
+                    $body['img'][] = $this->partEncoding($messageId, $part_no+1, 5);
                     $body['img1'][] = $this->getParts($messageId, $p, 1.2);
-                    $body['img2'][] = $this->getParts($messageId, $p, 1.3);
+                    $body['img2'][] = $this->getParts($messageId, $p, 1.3);*/
                 }
 
                 if ($p->type > 2)
@@ -88,7 +120,6 @@ class imapMailReader
 
     public function getParts($messageId, $p, $part_no)
     {
-
         if($part_no) {
             $data = imap_fetchbody($this->conn, $messageId, $part_no);
         }
@@ -96,19 +127,16 @@ class imapMailReader
             $data = imap_body($this->conn, $messageId);
         }
 
-        if ($p->encoding == 4)
-        {
-            $data = quoted_printable_decode($data);
-        }
-        elseif ($p->encoding == 3)
+        if ($p->encoding == 3)
         {
             $data = base64_decode($data);
         }
+        elseif ($p->encoding == 4)
+        {
+            $data = quoted_printable_decode($data);
+        }
 
-        return $data;
-
-
-        /*if (!empty($p->parameters))
+        if (!empty($p->parameters))
         {
             foreach ($p->parameters as $x){
                 $params[strtolower($x->attribute)] = $x->value;
@@ -119,7 +147,18 @@ class imapMailReader
             foreach ($p->dparameters as $x){
                 $params[strtolower($x->attribute)] = $x->value;
             }
-        }*/
+        }
+
+        if (!empty($params['filename']) )
+        {
+            $filename = (!empty($params['filename'])) ? $params['filename'] : $params['name'];
+            $data = $filename;
+        }
+
+        return $data;
+
+
+        /**/
 
 
         /*if (!empty($params['filename']) )
@@ -155,6 +194,7 @@ class imapMailReader
 
     public function partEncoding($messageId, $partNumber, $encoding)
     {
+        //return $partNumber;
         //$data = imap_fetchbody($this->conn, $messageId, $partNumber);
 
         if($partNumber) {

@@ -129,10 +129,10 @@
                     <h3>BDT<br><small>(Actual)</small></h3>
                 </th>
                 <th class="active">
-                    <h3>USD<br><small>(Approximate)</small></h3>
+                    <h3>{{ $usd['currencyCode'] }}<br><small>(Approximate)</small></h3>
                 </th>
                 <th>
-                    <h3>SOS<br><small>(Approximate)</small></h3>
+                    <h3>{{ $other['currencyCode'] }}<br><small>(Approximate)</small></h3>
                 </th>
                 <th></th>
             </tr>
@@ -140,8 +140,8 @@
             <tr>
                 <td class="text-left">{{ $course['name'] }} ({{ $course['duration'] }})</td>
                 <td>{{ number_format($course['total_fee'], 2) }}</td>
-                <td>{{ number_format(($course['total_fee'] * 0.0119449), 2) }}</td>
-                <td>{{ number_format(($course['total_fee'] * 6.91816), 2) }}</td>
+                <td>{{ number_format(($course['total_fee'] * $usd['currency']), 2) }}</td>
+                <td>{{ number_format(($course['total_fee'] * $other['currency']), 2) }}</td>
                 <td>
                     <a href="javaScript:;" class="diu-apply-btn">Apply Now</a>
                 </td>

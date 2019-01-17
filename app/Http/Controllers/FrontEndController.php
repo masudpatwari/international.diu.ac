@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 
+use App\CourseFee;
 use Illuminate\Http\Request;
 use App\Libraries\ApiReader;
-use App\Libraries\CountriesArray;
-use App\Libraries\ApiCourseFee;
+use App\Libraries\ConvertCurrency;
+use App\Libraries\ImmediateCountry;
 use Illuminate\Support\Facades\Cache;
 
 class FrontEndController extends Controller
@@ -14,9 +15,11 @@ class FrontEndController extends Controller
 
     public function index()
     {
+        $data['usd'] = ConvertCurrency::currency_rate('USD');
+        $code = ImmediateCountry::country();
+        $data['other'] = ConvertCurrency::currency_rate($code['currencyCode']);
         $data['key_resource_person'] = ApiReader::resource_person();
-        $data['country'] = CountriesArray::country()->pluck('name', 'name');
-        $data['courses'] = ApiCourseFee::course_fee();
+        $data['courses'] = CourseFee::all();
         return view('index', $data);
     }
 
@@ -89,7 +92,7 @@ class FrontEndController extends Controller
     public function faculty($faculty)
     {
         $data['faculty_info'] = ApiReader::faculty_info($faculty);
-        $data['courses'] = ApiCourseFee::faculty_course_fee($faculty);
+        $data['courses'] = CourseFee::where('faculty', $faculty)->get();
         return view('faculty', $data);
     }
 

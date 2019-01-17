@@ -39,7 +39,7 @@ class StudentsController extends Controller
 
     public function show($id)
     {
-        $data['profile'] = ForeignStudent::with('relUser')->find($id);
+        $data['profile'] = User::with('relStudent')->find($id);
         return view('admin.foreign_student.show', $data);
     }
 }

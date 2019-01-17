@@ -2,313 +2,324 @@
 @section('content')
     <div class="mx-auto" style="max-width: 768px">
         <div class="pt-4 pb-4 clearfix">
-            <h4 class="d-inline">Profile of {{ $profile->relUser->first_name ." ". $profile->relUser->last_name }}</h4>
+            <h4 class="d-inline">Profile of {{ $profile->first_name ." ". $profile->last_name }}</h4>
         </div>
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>First Name : </strong>
-                            {{ $profile->relUser->first_name }}
+                            {{ $profile->first_name }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>Last Name : </strong>
-                            {{ $profile->relUser->last_name }}
+                            {{ $profile->last_name }}
                         </p>
                     </div>
                 </div>
-                <p>
+                <hr>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Permanent Address') }} : </strong>
-                    {{ $profile->permanent_address }}
+                    {{ $profile->relStudent->permanent_address }}
                 </p>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Permanent Telephone/Lan Phone') }} : </strong>
-                            {{ $profile->permanent_telephone }}
+                            {{ $profile->relStudent->permanent_telephone }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Permanent Mobile (With Country Code)') }} : </strong>
-                            {{ $profile->permanent_mobile }}
+                            {{ $profile->relStudent->permanent_mobile }}
                         </p>
                     </div>
                 </div>
-                <p>
+                <hr>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Present Address') }} : </strong>
-                    {{ $profile->present_address }}
+                    {{ $profile->relStudent->present_address }}
                 </p>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Present Telephone/Lan Phone') }} : </strong>
-                            {{ $profile->present_telephone }}
+                            {{ $profile->relStudent->present_telephone }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Present Mobile (With Country Code)') }} : </strong>
-                            {{ $profile->present_mobile }}
+                            {{ $profile->relStudent->present_mobile }}
                         </p>
                     </div>
                 </div>
-                <p>
+                <hr>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Address in Bangladesh with Reference Name') }} : </strong>
-                    {{ $profile->address_in_bd }}
+                    {{ $profile->relStudent->address_in_bd }}
                 </p>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('AB Telephone/Lan Phone') }} : </strong>
-                            {{ $profile->bd_telephone }}
+                            {{ $profile->relStudent->bd_telephone }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('AB Mobile (With Country Code)') }} : </strong>
-                            {{ $profile->bd_mobile }}
+                            {{ $profile->relStudent->bd_mobile }}
                         </p>
                     </div>
                 </div>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Date of Birth') }} : </strong>
-                            {{ $profile->dob }}
+                            {{ $profile->relStudent->dob }}
                         </p>
                     </div>
                     <div class="col-md-4">
-                        <p>
+                        <p class="form-control-plaintext text-capitalize">
                             <strong>{{ __('Sex') }} : </strong>
-                            {{ $profile->sex }}
+                            {{ $profile->relStudent->sex }}
                         </p>
                     </div>
                     <div class="col-md-4">
-                        <p>
+                        <p class="form-control-plaintext text-capitalize">
                             <strong>{{ __('Marital Status') }} : </strong>
-                            {{ $profile->marital_status }}
+                            {{ $profile->relStudent->marital_status }}
                         </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Place of Birth') }} : </strong>
-                            {{ $profile->place_of_birth }}
+                            {{ $profile->relStudent->place_of_birth }}
                         </p>
                     </div>
                     <div class="col-md-4">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>Present Nationality : </strong>
-                            {{ $profile->present_nationality }}
+                            {{ $profile->relStudent->present_nationality }}
                         </p>
                     </div>
                     <div class="col-md-4">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Country of Birth') }} : </strong>
                             NA
                         </p>
                     </div>
                 </div>
-                <p>
+                <p class="form-control-plaintext">
                     <strong>Interested Subject : </strong>
-                    {{ $profile->interested_subject }}
+                    {{ $profile->relStudent->interested_subject }}
                 </p>
+                <hr>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Passport Number') }} : </strong>
-                            {{ $profile->passport_no }}
+                            {{ $profile->relStudent->passport_no }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Type of Passport') }} : </strong>
-                            {{ $profile->type_of_passport }}
+                            {{ $profile->relStudent->type_of_passport }}
                         </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Date of Issue') }} : </strong>
-                            {{ $profile->date_of_issue }}
+                            {{ $profile->relStudent->date_of_issue }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Date of Expire') }} : </strong>
-                            {{ $profile->date_of_expire }}
+                            {{ $profile->relStudent->date_of_expire }}
                         </p>
                     </div>
                 </div>
-                <p>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Date of Last Visit to Bangladesh') }} : </strong>
-                    {{ $profile->date_of_last_visit_bd }}
+                    {{ $profile->relStudent->date_of_last_visit_bd }}
                 </p>
+                <hr>
                 <div class="row">
                     <div class="col-md-4">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Last Visa No') }} : </strong>
-                            {{ $profile->last_visa_no }}
+                            {{ $profile->relStudent->last_visa_no }}
                         </p>
                     </div>
                     <div class="col-md-4">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Visa Category') }} : </strong>
-                            {{ $profile->visa_category }}
+                            {{ $profile->relStudent->visa_category }}
                         </p>
                     </div>
                     <div class="col-md-4">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Place of Issue') }} : </strong>
-                            {{ $profile->visa_place_of_issue }}
+                            {{ $profile->relStudent->visa_place_of_issue }}
                         </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Date of Issue') }} : </strong>
-                            {{ $profile->visa_date_of_issue }}
+                            {{ $profile->relStudent->visa_date_of_issue }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Date of Expiry') }} : </strong>
-                            {{ $profile->visa_date_of_expire }}
+                            {{ $profile->relStudent->visa_date_of_expire }}
                         </p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Date of Arrival in Bangladesh') }} : </strong>
-                            {{ $profile->date_of_arrival_bd }}
+                            {{ $profile->relStudent->date_of_arrival_bd }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Flight No') }} : </strong>
-                            {{ $profile->flight_no }}
+                            {{ $profile->relStudent->flight_no }}
                         </p>
                     </div>
                 </div>
-                <p>
+                <hr>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Father\'s Name') }} : </strong>
-                    {{ $profile->father_name }}
+                    {{ $profile->relStudent->father_name }}
                 </p>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Nationality') }} : </strong>
-                            {{ $profile->father_nationality }}
+                            {{ $profile->relStudent->father_nationality }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Mobile No') }} : </strong>
-                            {{ $profile->father_mobile }}
+                            {{ $profile->relStudent->father_mobile }}
                         </p>
                     </div>
                 </div>
-                <p>
+                <hr>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Mother\'s Name') }} : </strong>
-                    {{ $profile->mother_name }}
+                    {{ $profile->relStudent->mother_name }}
                 </p>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Nationality') }} : </strong>
-                            {{ $profile->mother_nationality }}
+                            {{ $profile->relStudent->mother_nationality }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Mobile No') }} : </strong>
-                            {{ $profile->mother_mobile }}
+                            {{ $profile->relStudent->mother_mobile }}
                         </p>
                     </div>
                 </div>
-                <p>
+                <hr>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Spouse\'s Name') }} : </strong>
-                    {{ $profile->spouse_name }}
+                    {{ $profile->relStudent->spouse_name }}
                 </p>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Nationality') }} : </strong>
-                            {{ $profile->spouse_nationality }}
+                            {{ $profile->relStudent->spouse_nationality }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Mobile No') }} : </strong>
-                            {{ $profile->spouse_mobile }}
+                            {{ $profile->relStudent->spouse_mobile }}
                         </p>
                     </div>
                 </div>
-                <p>
+                <hr>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Guardian\'s Name') }} : </strong>
-                    {{ $profile->guardian_name }}
+                    {{ $profile->relStudent->guardian_name }}
                 </p>
                 <div class="row">
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Nationality') }} : </strong>
-                            {{ $profile->guardian_nationality }}
+                            {{ $profile->relStudent->guardian_nationality }}
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <p>
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Mobile No') }} : </strong>
-                            {{ $profile->guardian_mobile }}
+                            {{ $profile->relStudent->guardian_mobile }}
                         </p>
                     </div>
                 </div>
-                <p>
+                <hr>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Email Address') }} : </strong>
                     {{ $profile->email }}
                 </p>
-                <p>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Name of The Examinations') }} : </strong>
-                    {{ $profile->o_name_of_exam }}
+                    {{ $profile->relStudent->o_name_of_exam }}
                 </p>
-                <p>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Group') }} : </strong>
-                    {{ $profile->o_group}}
+                    {{ $profile->relStudent->o_group}}
                 </p>
-                <p>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Roll No') }} : </strong>
-                    {{ $profile->o_roll_no }}
+                    {{ $profile->relStudent->o_roll_no }}
                 </p>
-                <p>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Year of Passing') }} : </strong>
-                    {{ $profile->o_year_of_passing }}
+                    {{ $profile->relStudent->o_year_of_passing }}
                 </p>
-                <p>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Letter Grade/Total Marks') }} : </strong>
-                    {{ $profile->o_letter_grade }}
+                    {{ $profile->relStudent->o_letter_grade }}
                 </p>
-                <p>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Division/Class/CGPA/%') }} : </strong>
-                    {{ $profile->o_cgpa }}
+                    {{ $profile->relStudent->o_cgpa }}
                 </p>
-                <p>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Board/University') }} : </strong>
-                    {{ $profile->o_board }}
+                    {{ $profile->relStudent->o_board }}
                 </p>
-                <p>
+                <p class="form-control-plaintext">
                     <strong>{{ __('Verification Link of Certificate') }} : </strong>
-                    {{ $profile->o_link_of_certificate }}
+                    {{ $profile->relStudent->o_link_of_certificate }}
                 </p>
-                <p class="mb-0">
+                <p class="mb-0 form-control-plaintext">
                     <strong>{{ __('Registration Number') }} : </strong>
-                    {{ $profile->o_registration_no }}
+                    {{ $profile->relStudent->o_registration_no }}
                 </p>
             </div>
         </div>

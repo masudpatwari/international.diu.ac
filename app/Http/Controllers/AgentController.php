@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Agent;
-use App\Libraries\CountriesArray;
 
 class AgentController extends Controller
 {
@@ -34,7 +32,7 @@ class AgentController extends Controller
 
     public function show($id)
     {
-        $data['profile'] = Agent::with('relUser')->where('user_id', $id)->first();
+        $data['profile'] = User::with('relAgent')->find($id);
         return view('admin.agent.show', $data);
     }
 }

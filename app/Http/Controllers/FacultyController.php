@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Libraries\ApiReader;
-use App\Libraries\ApiCourseFee;
 
 class FacultyController extends Controller
 {
