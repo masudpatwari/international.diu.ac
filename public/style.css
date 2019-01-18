@@ -52,6 +52,12 @@ p{
 ul{
 	margin-bottom: 0
 }
+
+object{
+	width: 100%;
+	height: 209px;
+}
+
 .diu-display-table{
 	display: table;
 	height: 100%;

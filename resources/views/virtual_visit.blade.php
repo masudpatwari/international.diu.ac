@@ -8,192 +8,51 @@
         </div>
     </div>
 </div>
+@if(!empty($articles))
 <section class="diu-virtual">
+@foreach($articles as $key => $article)
+    @if(($key%2) == 0)
     <div class="diu-article">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                	<div class="card border-0">
-                        <img class="" src="{{ asset('images/Library.jpg') }}" alt="">
-                        <div class="card-img-overlay">
-    		                <div class="diu-display-table">
-    		                    <div class="diu-display-table-cell">
-    		                        <a href="" class="diu-popup-youtube">
-    									<span class="diu-popup-youtube-btn">
-    										<i class="fa fa-play"></i>
-    									</span>
-    								</a>
-    		                    </div>
-    		                </div>
+            <div class="diu-article-p diu-left-bottom">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card border-0">
+                            <object data="{{ $article['link'] }}"></object>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-8">
-                	<article>
-                		<h3 class="mb-2">Class rooms</h3>
-                		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                		consequat.</p>
-                	</article>
+                    <div class="col-md-8">
+                        <article>
+                            <h3 class="mb-2">{{ $article['title'] }}</h3>
+                            <p>{{ $article['description'] }}</p>
+                        </article>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    @else
     <div class="diu-article diu-section-bg">
         <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <article class="diu-left-bottom text-right">
-                        <h3 class="mb-2">Labs / Labretoris</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.</p>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0">
-                        <img class="" src="{{ asset('images/Research-cells.jpg') }}" alt="">
-                        <div class="card-img-overlay">
-                            <div class="diu-display-table">
-                                <div class="diu-display-table-cell">
-                                    <a href="" class="diu-popup-youtube">
-                                        <span class="diu-popup-youtube-btn">
-                                            <i class="fa fa-play"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
+            <div class="diu-article-p diu-left-bottom">
+                <div class="row">
+                    <div class="col-md-8">
+                        <article class="text-right">
+                            <h3 class="mb-2">{{ $article['title'] }}</h3>
+                            <p>{{ $article['description'] }}</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0">
+                            <object data="{{ $article['link'] }}"></object>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="diu-article">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card border-0">
-                        <img class="" src="{{ asset('images/Research-cells.jpg') }}" alt="">
-                        <div class="card-img-overlay">
-                            <div class="diu-display-table">
-                                <div class="diu-display-table-cell">
-                                    <a href="" class="diu-popup-youtube">
-                                        <span class="diu-popup-youtube-btn">
-                                            <i class="fa fa-play"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <article>
-                        <h3 class="mb-2">Library</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.</p>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="diu-article diu-section-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <article class="diu-left-bottom text-right">
-                        <h3 class="mb-2">Caferetira & cantine</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.</p>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0">
-                        <img class="" src="{{ asset('images/Research-cells.jpg') }}" alt="">
-                        <div class="card-img-overlay">
-                            <div class="diu-display-table">
-                                <div class="diu-display-table-cell">
-                                    <a href="" class="diu-popup-youtube">
-                                        <span class="diu-popup-youtube-btn">
-                                            <i class="fa fa-play"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="diu-article">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card border-0">
-                        <img class="" src="{{ asset('images/Research-cells.jpg') }}" alt="">
-                        <div class="card-img-overlay">
-                            <div class="diu-display-table">
-                                <div class="diu-display-table-cell">
-                                    <a href="" class="diu-popup-youtube">
-                                        <span class="diu-popup-youtube-btn">
-                                            <i class="fa fa-play"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <article>
-                        <h3 class="mb-2">Hostels</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.</p>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="diu-article diu-section-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <article class="diu-left-bottom text-right">
-                        <h3 class="mb-2">Transprot</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.</p>
-                    </article>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0">
-                        <img class="" src="{{ asset('images/Research-cells.jpg') }}" alt="">
-                        <div class="card-img-overlay">
-                            <div class="diu-display-table">
-                                <div class="diu-display-table-cell">
-                                    <a href="" class="diu-popup-youtube">
-                                        <span class="diu-popup-youtube-btn">
-                                            <i class="fa fa-play"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endif
+@endforeach
 </section>
+@endif
 @endsection

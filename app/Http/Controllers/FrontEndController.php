@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\CourseFee;
+use App\VirtualVisit;
 use Illuminate\Http\Request;
 use App\Libraries\ApiReader;
 use App\Libraries\ConvertCurrency;
@@ -76,7 +77,8 @@ class FrontEndController extends Controller
 
     public function virtual_visit()
     {
-        return view('virtual_visit');
+        $data['articles'] = VirtualVisit::articles();
+        return view('virtual_visit', $data);
     }
 
     public function why_diu()
