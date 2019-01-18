@@ -7,13 +7,8 @@ class ImmediateCountry
 
     public static function country()
     {
-        $ch = curl_init ();
-        curl_setopt ($ch, CURLOPT_URL, "http://ipecho.net/plain");
-        curl_setopt ($ch, CURLOPT_HEADER, 0);
-        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
-        $ip = curl_exec ($ch);
+        $ip = $_SERVER['REMOTE_ADDR'];
         $dataArray = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$ip));
-        curl_close ($ch);
         return [
             'request' => $dataArray->geoplugin_request,
             'countryName' => $dataArray->geoplugin_countryName,

@@ -55,7 +55,7 @@
                         <a href="" class="diu-btn">View</a>
                     </td>
                     <td class="text-right">
-                        <a href="javaScript:;" class="diu-btn diu-apply-btn">Apply Now</a>
+                        <a href="{{ route('register') }}" class="diu-btn diu-apply-btn">Apply Now</a>
                     </td>
                 </tr>
                 @endforeach

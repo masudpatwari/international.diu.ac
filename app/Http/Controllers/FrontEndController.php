@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\CourseFee;
 use App\VirtualVisit;
+use App\WhyDiu;
 use Illuminate\Http\Request;
 use App\Libraries\ApiReader;
 use App\Libraries\ConvertCurrency;
@@ -83,7 +84,8 @@ class FrontEndController extends Controller
 
     public function why_diu()
     {
-        return view('why_diu');
+        $data['articles'] = WhyDiu::articles();
+        return view('why_diu', $data);
     }
 
     public function contact_us()

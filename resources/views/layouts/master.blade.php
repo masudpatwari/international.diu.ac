@@ -12,12 +12,13 @@
     <link rel="stylesheet" href="{{ asset('vendors/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/fontawesome/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('/vendors/OwlCarousel/dist/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/vendors/modal-video/css/modal-video.min.css') }}">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="stylesheet" href="{{ asset('responsive.css') }}">
     <script src="{{ asset('vendors/jquery/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('vendors/jquery/popper.min.js') }}"></script>
     <script src="{{ asset('vendors/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('vendors/pagination/pagination.js') }}"></script>
+    <script src="{{ asset('vendors/modal-video/js/jquery-modal-video.js') }}"></script>
 </head>
 <body>
 <header class="navbar navbar-dark bg-dark">

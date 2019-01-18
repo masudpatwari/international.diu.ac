@@ -19,7 +19,7 @@
                     @endphp
                     <div class="col-md-4">
                         <div class="card mb-4 border-0">
-                            <div class="diu-people">
+                            <div class="diu-people border-light">
                                 <div class="diu-people-img @if(empty($image)) empty @endif">
                                     <div class="people-img">
                                         <img class="" src="{{ $image }}" alt="">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CourseFee;
 use App\Libraries\ApiReader;
 
 class FacultyController extends Controller
@@ -47,7 +48,7 @@ class FacultyController extends Controller
     public function show($faculty)
     {
         $data['faculty_info'] = ApiReader::faculty_info($faculty);
-        $data['courses'] = ApiCourseFee::faculty_course_fee($faculty);
+        $data['courses'] = CourseFee::where('faculty', $faculty)->get();
         return view('faculty', $data);
     }
 

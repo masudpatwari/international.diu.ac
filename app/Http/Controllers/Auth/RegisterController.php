@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Libraries\ApiCourseFee;
+use App\CourseFee;
 
 class RegisterController extends Controller
 {
@@ -107,7 +107,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $data['courses'] = ApiCourseFee::course_fee()->pluck('name', 'name');
+        $data['courses'] = CourseFee::all()->pluck('name', 'name');
         $data['country'] = CountriesArray::country()->pluck('name', 'name');
         return view('auth.register', $data);
     }

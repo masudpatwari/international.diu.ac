@@ -53,9 +53,15 @@ ul{
 	margin-bottom: 0
 }
 
-object{
-	width: 100%;
-	height: 209px;
+img.diu-thumbs{
+    width: 100%;
+    min-height: 209px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+
+.border-light{
+    border: 1px solid #FFFFFF;
 }
 
 .diu-display-table{
@@ -176,8 +182,8 @@ object{
 	margin-top: 22px;
 }
 
-.form-control.custom-select{
-	padding: 0rem 2rem 0 0.75rem;
+select.form-control.custom-select{
+	padding: 0 2rem 0 0.75rem;
 	border-radius: 0;
 }
 
@@ -335,6 +341,11 @@ section{
 }
 
 article p{
+    font-size: 18px;
+    line-height: 24px;
+}
+
+article ul li{
     font-size: 18px;
     line-height: 24px;
 }
@@ -554,8 +565,8 @@ article p{
 	padding: 0.8rem 0;
 }
 
-.diu-article{
-    margin-bottom: 50px;
+.diu-article .diu-article-p{
+    padding: 50px 0;
 }
 .diu-article article{
 	padding: 15px 0;
@@ -565,7 +576,6 @@ article p{
     display: flex;
 	overflow: hidden;
 	height: 150px;
-	border: 1px solid #fff;
 }
 .diu-people .diu-people-img{
     display: table;
@@ -668,6 +678,15 @@ article p{
     color: #F9CC57;
     border-color: #fff;
 }
+
+
+
+
+.diu-why-diu article .diu-article-head{
+    margin-bottom: 10px;
+}
+
+
 section.diu-google-map{
 	height: 500px;
 	padding: 0;

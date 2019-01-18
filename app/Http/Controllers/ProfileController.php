@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Agent;
+use App\CourseFee;
 use App\Libraries\CountriesArray;
-use App\Libraries\ApiCourseFee;
 
 
 class ProfileController extends Controller
@@ -29,7 +28,7 @@ class ProfileController extends Controller
     public function edit()
     {
         $data['country'] = CountriesArray::country()->pluck('name', 'name');
-        $data['courses'] = ApiCourseFee::course_fee()->pluck('name', 'name');
+        $data['courses'] = CourseFee::all()->pluck('name', 'name');
         if (auth()->user()->role == 'student')
         {
             $data['profile'] = User::with('relStudent')->find(auth()->user()->id);

@@ -13,6 +13,15 @@ body{
     overflow-x: hidden;
     overflow-y: hidden;
 }
+
+p{
+    margin-bottom: 0;
+}
+
+img{
+    max-width: 100%;
+}
+
 header.db-header{
     position: relative;
     background-color: transparent;
@@ -269,10 +278,15 @@ aside.db-aside .db-navigation li.db-dropdown.open > a::before {
 .db-account-info {
     position: relative;
 }
-.db-account-info a{
+.db-account-info a.db-change-password{
     position: absolute;
     bottom: 0;
 }
 .db-profile p{
     margin-bottom: 2px;
+}
+
+select.form-control.custom-select{
+    padding: 0 2rem 0 0.75rem;
+    border-radius: 0;
 }

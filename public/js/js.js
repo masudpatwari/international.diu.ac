@@ -4,6 +4,8 @@ $(document).ready(function(){
 		time: 1000
 	});
 
+    $(".js-modal-btn").modalVideo();
+
 	/*$(".dropdown").hover(
         function() {
             $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
