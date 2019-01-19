@@ -318,25 +318,19 @@
                                         </div>
                                         <article class="text-justify clearfix">
                                             <p class="mb-4">
-                                                The University is Promising and already on the way of developing all
-                                                laboratory such as Materials Lab, Structural Mechanics Lab, Hydraulics lab,
-                                                Geo technical Engineering Lab, Environmental Engineering Lab, Transportation
-                                                Engineering Lab and two highly facilitated Computer Lab which are consist of
-                                                widely used software’s and modeling tools. Out of that, The University has a
-                                                well facilitated Physics and Chemistry Lab, which have all the modern
-                                                facilities to help student with practical knowledge of respective subjects.
-                                            </p>
-
-                                            <p>
                                                 Dhaka International University (DIU) has established a strong reputation for
                                                 nurturing innovation and academic excellence across many disciplines. We
                                                 believe that a student cannot learn the subject-matter of a course without
                                                 having any hands-on experience in the laboratory. Keeping this in mind, from
-                                                the very beginning, the Department of Computer Science and Engineering is
-                                                trying its level best to establish different laboratories like
+                                                the very beginning, DIU is trying its level best to establish different laboratories like:
                                             </p>
-
-                                            <ul class="mb-4">
+                                            <ul>
+                                                <li>Materials Lab</li>
+                                                <li>Structural Mechanics Lab</li>
+                                                <li>Hydraulics lab</li>
+                                                <li>Geo technical Engineering Lab</li>
+                                                <li>Environmental Engineering Lab</li>
+                                                <li>Transportation Engineering Lab</li>
                                                 <li>Software Laboratory</li>
                                                 <li>Hardware Laboratory</li>
                                                 <li>Networking & Telecommunication Laboratory</li>
@@ -349,18 +343,6 @@
                                                 <li>Data Communication Laboratory</li>
                                                 <li>Computer Networks Laboratory</li>
                                                 <li>Programming Laboratory</li>
-                                            </ul>
-
-                                            <p>
-                                                Dhaka International University (DIU) has established a strong reputation for
-                                                nurturing innovation and academic excellence across many disciplines. We believe
-                                                that a student cannot learn the subject-matter of a course without having any
-                                                hands-on experience in the laboratory. Keeping this in mind, from the very
-                                                beginning, the Department of Electrical, Electronics and Telecommunication
-                                                Engineering is trying its level best to establish different laboratories like-
-                                            </p>
-
-                                            <ul>
                                                 <li>Electrical Circuits I Laboratory</li>
                                                 <li>Electrical Circuits II Laboratory</li>
                                                 <li>Analog Electronics Laboratory</li>

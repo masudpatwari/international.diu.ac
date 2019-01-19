@@ -12,7 +12,7 @@ class VirtualVisit extends Model
             [
                 'id' => 1,
                 'title' => 'Class rooms',
-                'description' => '',
+                'description' => 'All class rooms of DIU are spacious, well-decorated and equipped with multimedia projector.',
                 'video_id' => '5u3QGLl3YLU',
             ],
             [
@@ -24,64 +24,7 @@ class VirtualVisit extends Model
             [
                 'id' => 3,
                 'title' => 'Labs / Laboratories',
-                'description' => '<p class="mb-4">
-                                                The University is Promising and already on the way of developing all
-                                                laboratory such as Materials Lab, Structural Mechanics Lab, Hydraulics lab,
-                                                Geo technical Engineering Lab, Environmental Engineering Lab, Transportation
-                                                Engineering Lab and two highly facilitated Computer Lab which are consist of
-                                                widely used software’s and modeling tools. Out of that, The University has a
-                                                well facilitated Physics and Chemistry Lab, which have all the modern
-                                                facilities to help student with practical knowledge of respective subjects.
-                                            </p>
-                                            <p class="mb-3">
-                                                Dhaka International University (DIU) has established a strong reputation for
-                                                nurturing innovation and academic excellence across many disciplines. We
-                                                believe that a student cannot learn the subject-matter of a course without
-                                                having any hands-on experience in the laboratory. Keeping this in mind, from
-                                                the very beginning, the Department of Computer Science and Engineering is
-                                                trying its level best to establish different laboratories like
-                                            </p>
-                                            <ul class="mb-4">
-                                                <li>Software Laboratory</li>
-                                                <li>Hardware Laboratory</li>
-                                                <li>Networking &amp; Telecommunication Laboratory</li>
-                                                <li>Physics Laboratory</li>
-                                                <li>Chemistry Laboratory</li>
-                                                <li>Electrical Circuits Laboratory</li>
-                                                <li>Analog Electronics Laboratory</li>
-                                                <li>Digital Electronics Laboratory</li>
-                                                <li>Microprocessor and Interfacing Laboratory</li>
-                                                <li>Data Communication Laboratory</li>
-                                                <li>Computer Networks Laboratory</li>
-                                                <li>Programming Laboratory</li>
-                                            </ul>
-                                            <p class="mb-3">
-                                                Dhaka International University (DIU) has established a strong reputation for
-                                                nurturing innovation and academic excellence across many disciplines. We believe
-                                                that a student cannot learn the subject-matter of a course without having any
-                                                hands-on experience in the laboratory. Keeping this in mind, from the very
-                                                beginning, the Department of Electrical, Electronics and Telecommunication
-                                                Engineering is trying its level best to establish different laboratories like-
-                                            </p>
-                                            <ul>
-                                                <li>Electrical Circuits I Laboratory</li>
-                                                <li>Electrical Circuits II Laboratory</li>
-                                                <li>Analog Electronics Laboratory</li>
-                                                <li>Digital  Electronics Laboratory</li>
-                                                <li>Power Electronics Laboratory</li>
-                                                <li>Telecommunication Laboratory</li>
-                                                <li>Microwave Engineering Laboratory</li>
-                                                <li>Control System Laboratory</li>
-                                                <li>DSP Laboratory</li>
-                                                <li>VLSI Laboratory</li>
-                                                <li>Microprocessor Laboratory</li>
-                                                <li>Electrical Machines I Laboratory</li>
-                                                <li>Electrical Machines II Laboratory</li>
-                                                <li>Power System Laboratory</li>
-                                                <li>Switch gear &amp; Protection Laboratory</li>
-                                                <li>Project Laboratory</li>
-                                                <li>Simulation Laboratory</li>
-                                            </ul>',
+                'description' => 'DIU has 8 Pharmacy labs, 10 Computer labs, 12 EETE labs & 10 Civil labs. All labs are designed by the experts from Dhaka University (DU) and Bangladesh University of Engineering and Technology (BUET), and equipped with modern appliances.',
                 'video_id' => 'KX5dmCzdjbU',
             ],
             [
