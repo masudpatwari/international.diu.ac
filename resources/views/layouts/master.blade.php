@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('/vendors/OwlCarousel/dist/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/vendors/modal-video/css/modal-video.min.css') }}">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
-    <link rel="stylesheet" href="{{ asset('responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('vendors/jquery/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('vendors/jquery/popper.min.js') }}"></script>
     <script src="{{ asset('vendors/bootstrap/js/bootstrap.min.js') }}"></script>

@@ -7,6 +7,7 @@ use App\CourseFee;
 use App\VirtualVisit;
 use App\WhyDiu;
 use Illuminate\Http\Request;
+use App\Libraries\CountriesArray;
 use App\Libraries\ApiReader;
 use App\Libraries\ConvertCurrency;
 use App\Libraries\ImmediateCountry;
@@ -90,7 +91,9 @@ class FrontEndController extends Controller
 
     public function contact_us()
     {
-        return view('contact_us');
+        $data['courses'] = CourseFee::all()->pluck('name', 'name');
+        $data['country'] = CountriesArray::country()->pluck('name', 'name');
+        return view('contact_us', $data);
     }
 
     public function faculty($faculty)

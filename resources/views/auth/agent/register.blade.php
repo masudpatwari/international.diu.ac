@@ -14,12 +14,6 @@
             {{ Form::open(['route' => 'register', 'class' => '']) }}
             @if (session()->has('message'))
                 @component('alert')
-                    @if (session()->has('message.success'))
-                        <strong>Thank You!</strong>!
-                    @endif
-                    @if (session()->has('message.error'))
-                        <strong>Failed!</strong>!
-                    @endif
                 @endcomponent
             @endif
             {{ Form::open(['route' => 'register.agent', 'class' => '']) }}
