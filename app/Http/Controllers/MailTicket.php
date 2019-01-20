@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ticket;
 use App\TicketAnswer;
-use App\TicketAttachment;
+use App\TicketAnswerAttachment;
 use Illuminate\Http\Request;
 use App\imapMail\imapMailReader;
 
@@ -29,7 +29,8 @@ class MailTicket extends Controller
         $ticket->email = $request->email;
         $ticket->present_nationality = $request->present_nationality;
         $ticket->interested_subject = $request->interested_subject;
-        $ticket->details = $request->details;
+        $ticket->body = $request->body;
+
         $ticket->save();
 
         if (!empty($ticket->id))
@@ -51,11 +52,10 @@ class MailTicket extends Controller
 
     public function make_ticket_answer(Request $request, $id)
     {
-        $ticket = new TicketAnswer();
-        $ticket->ticket_id = $id;
-        $ticket->ticket_answer = $request->body;
-
-        $ticket->save();
+        $answer = new TicketAnswer();
+        $answer->ticket_id = $id;
+        $answer->ticket_answer = $request->body;
+        $answer->save();
 
         if($request->hasFile('attachment'))
         {
@@ -65,17 +65,21 @@ class MailTicket extends Controller
             {
                 $filename = ''.md5($attachment->getClientOriginalName()).'.' . $attachment->getClientOriginalExtension();
                 $files[] = [
-                    'ticket_answer_id' => $ticket->id,
-                    'attachment_file' => $filename,
+                    'answer_id' => $answer->id,
+                    'original' => $attachment->getClientOriginalName(),
+                    'filename' => $filename,
+                    'type' => $attachment->getClientOriginalExtension(),
                 ];
-                $attachment->move('uploads/', $filename);
+                if (in_array($attachment->getClientOriginalExtension(), ['jpg', 'jpeg', 'gif', 'png']))
+                {
+                    resizeImage($attachment);
+                }
+                $attachment->move(env('UPLOAD_PATH'), $filename);
             }
-            TicketAttachment::insert($files);
+            TicketAnswerAttachment::insert($files);
         }
 
-
-
-        if (!empty($ticket->id))
+        if (!empty($answer->id))
         {
             return redirect()->back()->with('message', ['success' => 'Mail send successful!']);
         }

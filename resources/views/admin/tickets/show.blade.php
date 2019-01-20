@@ -10,7 +10,7 @@
                 <div class="db-ticket-message">
                     <p>
                         <small>{{ $ticket->first_name." ".$ticket->last_name }}</small>
-                        <small class="float-right">{{ date('d M', strtotime($ticket->created_at)) }} at {{ date('h:m a', strtotime($ticket->created_at)) }}</small>
+                        <small class="float-right">{{ date('d M', strtotime($ticket->created_at)) }} at {{ date('h:i A', strtotime($ticket->created_at)) }}</small>
                     </p>
                     <p>{!! $ticket->body !!}</p>
                 </div>
@@ -19,7 +19,7 @@
                         <div class="db-ticket-replay">
                             <p>
                                 <small>Dhaka International University</small>
-                                <small class="float-right">{{ date('d M', strtotime($ticket->created_at)) }} at {{ date('h:m a', strtotime($ticket->created_at)) }}</small>
+                                <small class="float-right">{{ date('d M', strtotime($answer->created_at)) }} at {{ date('h:i A', strtotime($answer->created_at)) }}</small>
                             </p>
                             <p>{!! $answer->ticket_answer !!}</p>
                         </div>

@@ -53,10 +53,10 @@
             @endif
         </div>
         <div class="diu-fg form-group">
-            {{ Form::label('details', 'Details (min 200 char)') }}
-            {{ Form::textarea('details', NULL, ['class' => 'form-control', 'required'])  }}
-            @if ($errors->has('details'))
-                <span class="form-text text-danger">{{ $errors->first('details') }}</span>
+            {{ Form::label('body', 'Details (min 200 char)') }}
+            {{ Form::textarea('body', NULL, ['class' => 'form-control', 'required'])  }}
+            @if ($errors->has('body'))
+                <span class="form-text text-danger">{{ $errors->first('body') }}</span>
             @endif
         </div>
         {{ Form::button('<i class="ti-arrow-right"></i> Submit', ['type'=>'submit', 'class' => 'btn btn-sm btn-primary']) }}
