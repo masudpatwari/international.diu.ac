@@ -1,30 +1,54 @@
 @extends('admin.layouts.layout')
 @section('content')
-    @if(!empty($ticket))
-        <div class="card mb-2 border-0">
-            <div class="card-header">
+    <div class="db-ticket-room">
+        @if(!empty($ticket))
+            <div class="db-ticket-header">
                 <h5 class="mb-0"><p>{{ $ticket->first_name." ".$ticket->last_name }}</p></h5>
                 <p>{{ $ticket->email }}</p>
             </div>
-            <div class="card-body border-bottom">
-                <p>{!! $ticket->body !!}</p>
+            <div class="db-ticket-chat">
+                <div class="db-ticket-message">
+                    <p>
+                        <small>{{ $ticket->first_name." ".$ticket->last_name }}</small>
+                        <small class="float-right">{{ date('d M', strtotime($ticket->created_at)) }} at {{ date('h:m a', strtotime($ticket->created_at)) }}</small>
+                    </p>
+                    <p>{!! $ticket->body !!}</p>
+                </div>
+                @if(!empty($ticket->relTicketAnswer))
+                    @foreach($ticket->relTicketAnswer as $answer)
+                        <div class="db-ticket-replay">
+                            <p>
+                                <small>Dhaka International University</small>
+                                <small class="float-right">{{ date('d M', strtotime($ticket->created_at)) }} at {{ date('h:m a', strtotime($ticket->created_at)) }}</small>
+                            </p>
+                            <p>{!! $answer->ticket_answer !!}</p>
+                        </div>
+                    @endforeach
+                @endif
             </div>
-            @if(!empty($ticket->relTicketAnswer))
-                @foreach($ticket->relTicketAnswer as $answer)
-                    <div class="card-body border-bottom">
-                        <p>{!! $answer->ticket_answer !!}</p>
-                    </div>
-                @endforeach
-            @endif
-        </div>
-        {{ Form::open(['route' => ['ticket.answer', $ticket->id], 'class' => '']) }}
-        <div class="diu-fg form-group">
-            {{ Form::textarea('body', NULL, ['class' => 'form-control', 'required'])  }}
-            @if ($errors->has('body'))
-                <span class="form-text text-danger">{{ $errors->first('body') }}</span>
-            @endif
-        </div>
-        {{ Form::button('<i class="ti-arrow-right"></i> Submit', ['type'=>'submit', 'class' => 'btn btn-sm btn-primary']) }}
-        {{ Form::close() }}
-    @endif
+            <div class="db-ticket-form">
+                {{ Form::open(['route' => ['ticket.answer', $ticket->id], 'files' => true]) }}
+                <div class="diu-fg form-group">
+                    {{ Form::textarea('body', NULL, ['class' => 'form-control', 'required', 'rows' => 2])  }}
+                    @if ($errors->has('body'))
+                        <span class="form-text text-danger">{{ $errors->first('body') }}</span>
+                    @endif
+                </div>
+                {{ Form::button('<i class="material-icons">send</i>', ['type'=>'submit', 'class' => 'btn btn-sm btn-primary']) }}
+                {!! Html::decode(Form::label('attachment[]', '<i class="material-icons">attach_file</i>', ['class' => 'mb-0 btn btn-sm btn-warning'])) !!}
+                {{ Form::file('attachment[]', ['class' => ['d-none'], 'multiple'])  }}
+                {{ Form::close() }}
+            </div>
+        @endif
+    </div>
+    <div class="db-tickets">
+        @if(!empty($tickets))
+            @foreach($tickets as $x)
+                <a href="{{ route('ticket.show', $x->id) }}" class="{{ ($x->id == $ticket->id) ? 'active' : '' }} mb-1 p-2 d-block text-dark">
+                    <h5 class="mb-0"><p>{{ $x->first_name." ".$x->last_name }}</p></h5>
+                    <p>{{ $x->email }}</p>
+                </a>
+            @endforeach
+        @endif
+    </div>
 @endsection

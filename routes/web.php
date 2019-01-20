@@ -25,9 +25,7 @@ Route::GET('why_diu', 'FrontEndController@why_diu')->name('why_diu');
 Route::GET('contact_us', 'FrontEndController@contact_us')->name('contact_us');
 Route::GET('faculty/{id}', 'FrontEndController@faculty')->name('faculty.show');
 
-Route::POST('/ticket', 'MailTicket@make_ticket')->name('ticket.create');
-Route::GET('/ticket/{id}', 'MailTicket@show')->name('ticket.show');
-Route::POST('/ticket/{id}/answer', 'MailTicket@make_ticket_answer')->name('ticket.answer');
+
 
 Route::group(['middleware' => ['Logged_in']], function () {
     Route::GET('/profile', 'ProfileController@show')->name('profile.show');
@@ -41,6 +39,9 @@ Route::group(['middleware' => ['Logged_in']], function () {
         'index'
     ]);
 
-    Route::GET('/inbox', 'MailTicket@inbox')->name('inbox');
+    Route::GET('/ticket', 'MailTicket@index')->name('ticket.index');
+    Route::GET('/ticket/{id}', 'MailTicket@show')->name('ticket.show');
+    Route::POST('/ticket', 'MailTicket@make_ticket')->name('ticket.create');
+    Route::POST('/ticket/{id}/answer', 'MailTicket@make_ticket_answer')->name('ticket.answer');
 });
 

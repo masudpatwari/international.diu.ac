@@ -96,7 +96,7 @@
                             <a href="{{ route('students.index') }}" class="">Foreign Student</a>
                         </li>
                         <li>
-                            <a href="{{ route('inbox') }}" class="">Support Tickets</a>
+                            <a href="{{ route('ticket.index') }}" class="">Support Tickets</a>
                         </li>
                     </ul>
                 </div>

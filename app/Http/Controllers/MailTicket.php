@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Ticket;
 use App\TicketAnswer;
+use App\TicketAttachment;
 use Illuminate\Http\Request;
 use App\imapMail\imapMailReader;
 
 class MailTicket extends Controller
 {
-    public function inbox()
+    public function index()
     {
         /*$email = new imapMailReader();
         dd($email->getMessage(338));
@@ -43,6 +44,7 @@ class MailTicket extends Controller
 
     public function show($id)
     {
+        $data['tickets'] = Ticket::all();
         $data['ticket'] = Ticket::with('relTicketAnswer')->find($id);
         return view('admin.tickets.show', $data);
     }
@@ -52,7 +54,26 @@ class MailTicket extends Controller
         $ticket = new TicketAnswer();
         $ticket->ticket_id = $id;
         $ticket->ticket_answer = $request->body;
+
         $ticket->save();
+
+        if($request->hasFile('attachment'))
+        {
+            $attachments = $request->file('attachment');
+            $files = [];
+            foreach ($attachments as $attachment)
+            {
+                $filename = ''.md5($attachment->getClientOriginalName()).'.' . $attachment->getClientOriginalExtension();
+                $files[] = [
+                    'ticket_answer_id' => $ticket->id,
+                    'attachment_file' => $filename,
+                ];
+                $attachment->move('uploads/', $filename);
+            }
+            TicketAttachment::insert($files);
+        }
+
+
 
         if (!empty($ticket->id))
         {
