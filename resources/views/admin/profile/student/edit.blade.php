@@ -112,6 +112,22 @@
                 </div>
             </div>
             <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ Form::label('blood_group', 'Blood Group') }}
+                    {{ Form::select('blood_group', $blood_group, $profile->relStudent->blood_group, ['placeholder' => 'Blood Group', 'class' => 'form-control custom-select', 'required']) }}
+                    @if ($errors->has('blood_group'))
+                        <span class="form-text text-danger">{{ $errors->first('blood_group') }}</span>
+                    @endif
+                </div>
+                <div class="form-group col-md-6">
+                    {{ Form::label('religion', 'Religion') }}
+                    {{ Form::select('religion', $religion, $profile->relStudent->religion, ['placeholder' => 'Religion', 'class' => 'form-control custom-select', 'required']) }}
+                    @if ($errors->has('religion'))
+                        <span class="form-text text-danger">{{ $errors->first('religion') }}</span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-row">
                 <div class="form-group col-md-4">
                     {{ Form::label('place_of_birth', 'Place of Birth') }}
                     {{ Form::text('place_of_birth', $profile->relStudent->place_of_birth, ['class' => 'form-control', 'required'])  }}
@@ -326,6 +342,36 @@
                         <span class="form-text text-danger">{{ $errors->first('guardian_mobile') }}</span>
                     @endif
                 </div>
+            </div>
+            <div class="form-group">
+                {{ Form::label('emergency_name', 'Emergency Person Name') }}
+                {{ Form::text('emergency_name', $profile->relStudent->emergency_name, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('emergency_name'))
+                    <span class="form-text text-danger">{{ $errors->first('emergency_name') }}</span>
+                @endif
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ Form::label('emergency_nationality', 'Nationality') }}
+                    {{ Form::select('emergency_nationality', (!empty($country)) ? $country : [], $profile->relStudent->emergency_nationality, ['placeholder' => 'Nationality', 'class' => 'form-control custom-select', 'required']) }}
+                    @if ($errors->has('emergency_nationality'))
+                        <span class="form-text text-danger">{{ $errors->first('emergency_nationality') }}</span>
+                    @endif
+                </div>
+                <div class="form-group col-md-6">
+                    {{ Form::label('emergency_mobile', 'Mobile No') }}
+                    {{ Form::text('emergency_mobile', $profile->relStudent->emergency_mobile, ['class' => 'form-control', 'required'])  }}
+                    @if ($errors->has('emergency_mobile'))
+                        <span class="form-text text-danger">{{ $errors->first('emergency_mobile') }}</span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group">
+                {{ Form::label('fg_monthly_income', 'Father/Guardian Monthly Income') }}
+                {{ Form::text('fg_monthly_income', $profile->relStudent->fg_monthly_income, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('fg_monthly_income'))
+                    <span class="form-text text-danger">{{ $errors->first('fg_monthly_income') }}</span>
+                @endif
             </div>
             <div class="form-group">
                 {{ Form::label('o_name_of_exam', 'Name of The Examinations') }}

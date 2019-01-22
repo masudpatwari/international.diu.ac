@@ -26,6 +26,7 @@ Route::GET('contact_us', 'FrontEndController@contact_us')->name('contact_us');
 Route::GET('faculty/{id}', 'FrontEndController@faculty')->name('faculty.show');
 
 
+Route::POST('/ticket', 'MailTicket@make_ticket')->name('ticket.create');
 
 Route::group(['middleware' => ['Logged_in']], function () {
     Route::GET('/profile', 'ProfileController@show')->name('profile.show');
@@ -38,10 +39,13 @@ Route::group(['middleware' => ['Logged_in']], function () {
     Route::resource('/dashboard', 'DashboardController')->only([
         'index'
     ]);
+    Route::POST('/students.src', 'StudentsController@src_by_reg')->name('students.src_by_reg');
+    Route::GET('/move_to/{id}/step_one', 'StudentsController@move_to_step_one')->name('students.move_to_step_one');
+    Route::GET('/move_to/{id}/{batch_id}/step_two', 'StudentsController@move_to_step_two')->name('students.move_to_step_two');
+    Route::POST('/move_to/{id}/{batch_id}/confirm', 'StudentsController@move_to_confirm')->name('students.move_to_confirm');
 
     Route::GET('/ticket', 'MailTicket@index')->name('ticket.index');
     Route::GET('/ticket/{id}', 'MailTicket@show')->name('ticket.show');
-    Route::POST('/ticket', 'MailTicket@make_ticket')->name('ticket.create');
     Route::POST('/ticket/{id}/answer', 'MailTicket@make_ticket_answer')->name('ticket.answer');
 });
 

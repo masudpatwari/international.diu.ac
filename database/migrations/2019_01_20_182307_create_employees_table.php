@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTicketAnswersTable extends Migration
+class CreateEmployeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateTicketAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('ticket_answers', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('ticket_id');
-            $table->foreign('ticket_id')->references('id')->on('tickets');
-            $table->text('ticket_answer');
-            $table->string('type', 50);
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('designation');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateTicketAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ticket_answers');
+        Schema::dropIfExists('employees');
     }
 }

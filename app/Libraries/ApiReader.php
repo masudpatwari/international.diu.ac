@@ -179,4 +179,52 @@ class ApiReader
         }
     }
 
+    public static function admission_on_going_batch($id = NULL)
+    {
+        $scc = stream_context_create(
+        [
+            'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false
+            ]
+        ]);
+        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/admission_on_going_batch', false, $scc));
+
+        return (!empty($id)) ? collect($decode_values)->where('id', $id)->first() : $decode_values;
+    }
+
+    public static function religion()
+    {
+        $scc = stream_context_create(
+            [
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false
+                ]
+            ]);
+        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/religion', false, $scc));
+
+        return collect($decode_values);
+    }
+
+    public static function admission($array)
+    {
+        return $array;
+    }
+
+    public static function src_by_reg($reg_no)
+    {
+        $scc = stream_context_create(
+            [
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false
+                ]
+            ]);
+        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/src_by_reg/'.$reg_no.'', false, $scc));
+
+        return collect($decode_values);
+
+    }
+
 }

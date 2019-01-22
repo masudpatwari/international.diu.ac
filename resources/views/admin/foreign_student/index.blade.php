@@ -1,5 +1,17 @@
 @extends('admin.layouts.layout')
 @section('content')
+
+{{ Form::open(['route' => 'students.src_by_reg']) }}
+<div class="input-group mb-3">
+    {{ Form::text('reg_no', NULL, ['class' => 'form-control', 'required', 'placeholder' => 'Registration no']) }}
+    <div class="input-group-append">
+        {{ Form::button('Search', ['type'=>'submit', 'class' => 'btn btn-sm btn-outline-secondary']) }}
+    </div>
+    @if ($errors->has('reg_no'))
+        <span class="form-text text-danger">{{ $errors->first('reg_no') }}</span>
+    @endif
+</div>
+{{ Form::close() }}
 <table class="table table-light table-sm table-bordered">
     <thead>
         <tr>

@@ -21,6 +21,7 @@ class CreateTicketsTable extends Migration
             $table->string('present_nationality');
             $table->string('interested_subject');
             $table->text('body');
+            $table->string('status', 50);
             $table->timestamps();
         });
     }

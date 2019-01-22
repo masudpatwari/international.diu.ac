@@ -7,6 +7,7 @@ use App\TicketAnswer;
 use App\TicketAnswerAttachment;
 use Illuminate\Http\Request;
 use App\imapMail\imapMailReader;
+use Illuminate\Support\Facades\DB;
 
 class MailTicket extends Controller
 {
@@ -17,21 +18,38 @@ class MailTicket extends Controller
         $data['messages'] = $email->getMessage(338);
         //return $data['messages'] = $email->inbox();*/
 
-        $data['tickets'] = Ticket::all();
+        $data['tickets'] = Ticket::orderBy('status', 'ASC')->paginate(15);
         return view('admin.tickets.index', $data);
     }
 
     public function make_ticket(Request $request)
     {
-        $ticket = new Ticket();
-        $ticket->first_name = $request->first_name;
-        $ticket->last_name = $request->last_name;
-        $ticket->email = $request->email;
-        $ticket->present_nationality = $request->present_nationality;
-        $ticket->interested_subject = $request->interested_subject;
-        $ticket->body = $request->body;
+        $exists = Ticket::where('email', $request->email)->first();
+        if (empty($exists))
+        {
 
-        $ticket->save();
+            $ticket = new Ticket();
+            $ticket->first_name = $request->first_name;
+            $ticket->last_name = $request->last_name;
+            $ticket->email = $request->email;
+            $ticket->present_nationality = $request->present_nationality;
+            $ticket->interested_subject = $request->interested_subject;
+            $ticket->body = $request->body;
+            $ticket->status = 1;
+            $ticket->save();
+        }
+        else
+        {
+            $ticket = new TicketAnswer();
+            $ticket->ticket_id = $exists->id;
+            $ticket->ticket_answer = $request->body;
+            $ticket->type = 'client';
+            $ticket->save();
+
+            $ticket_ans = Ticket::find($exists->id);
+            $ticket_ans->status = 2;
+            $ticket_ans->save();
+        }
 
         if (!empty($ticket->id))
         {
@@ -52,10 +70,25 @@ class MailTicket extends Controller
 
     public function make_ticket_answer(Request $request, $id)
     {
+        $signature = '<p>&nbsp;</p>
+        <p>Thanking you</p>
+        <p>&nbsp;</p>
+        <p>Yours faithfully</p>
+        <p>&nbsp;</p>
+        <p>'.auth()->user()->first_name.' '.auth()->user()->last_name.'</p>
+        <p>Designation</p>
+        <p>Dhaka International University</p>
+        ';
+
         $answer = new TicketAnswer();
         $answer->ticket_id = $id;
-        $answer->ticket_answer = $request->body;
+        $answer->ticket_answer = $request->body.$signature;
+        $answer->type = (!empty(auth()->user()->id)) ? 'author' : 'client';
         $answer->save();
+
+        $ticket = Ticket::find($id);
+        $ticket->status = 3;
+        $ticket->save();
 
         if($request->hasFile('attachment'))
         {

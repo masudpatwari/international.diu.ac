@@ -29,6 +29,8 @@ class CreateForeignStudentTable extends Migration
             $table->date('dob')->nullable();
             $table->string('sex', 10)->nullable();
             $table->string('marital_status', 10)->nullable();
+            $table->string('blood_group', 10)->nullable();
+            $table->integer('religion', 10)->nullable();
             $table->string('place_of_birth')->nullable();
             $table->string('present_nationality');
             $table->string('country_of_birth')->nullable();
@@ -57,6 +59,10 @@ class CreateForeignStudentTable extends Migration
             $table->string('guardian_name', 50)->nullable();
             $table->string('guardian_nationality')->nullable();
             $table->string('guardian_mobile', 20)->nullable();
+            $table->string('emergency_name', 50)->nullable();
+            $table->string('emergency_nationality')->nullable();
+            $table->string('emergency_mobile', 20)->nullable();
+            $table->integer('fg_monthly_income')->nullable();
             $table->string('o_name_of_exam', 50)->nullable();
             $table->string('o_group', 20)->nullable();
             $table->string('o_roll_no', 20)->nullable();

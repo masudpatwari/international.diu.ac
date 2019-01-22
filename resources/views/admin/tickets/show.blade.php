@@ -3,8 +3,16 @@
     <div class="db-ticket-room">
         @if(!empty($ticket))
             <div class="db-ticket-header">
-                <h5 class="mb-0"><p>{{ $ticket->first_name." ".$ticket->last_name }}</p></h5>
-                <p>{{ $ticket->email }}</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5 class="mb-0"><p>{{ $ticket->first_name." ".$ticket->last_name }}</p></h5>
+                        <p>{{ $ticket->email }}</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Interested Subject : {{ $ticket->interested_subject }}</p>
+                        <p>From (Country) : {{ $ticket->present_nationality }}</p>
+                    </div>
+                </div>
             </div>
             <div class="db-ticket-chat">
                 <div class="db-ticket-message">
@@ -18,7 +26,7 @@
                     @foreach($ticket->relTicketAnswer as $answer)
                         <div class="db-ticket-replay">
                             <p>
-                                <small>Dhaka International University</small>
+                                <small>{{ ($answer->type == 'author') ? 'Dhaka International University' : $ticket->first_name." ".$ticket->last_name }}</small>
                                 <small class="float-right">{{ date('d M', strtotime($answer->created_at)) }} at {{ date('h:i A', strtotime($answer->created_at)) }}</small>
                             </p>
                             <p>{!! $answer->ticket_answer !!}</p>

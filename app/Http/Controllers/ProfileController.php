@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\CourseFee;
 use App\Libraries\CountriesArray;
+use App\Libraries\ApiReader;
 
 
 class ProfileController extends Controller
@@ -27,6 +28,8 @@ class ProfileController extends Controller
 
     public function edit()
     {
+        $data['blood_group'] = bloodGroup()->pluck('name', 'name');
+        $data['religion'] = ApiReader::religion()->pluck('name', 'id');
         $data['country'] = CountriesArray::country()->pluck('name', 'name');
         $data['courses'] = CourseFee::all()->pluck('name', 'name');
         if (auth()->user()->role == 'student')
@@ -156,6 +159,8 @@ class ProfileController extends Controller
                 'dob' => 'required|date',
                 'sex' => 'required',
                 'marital_status' => 'required',
+                'blood_group' => 'required',
+                'religion' => 'required',
                 'place_of_birth' => 'required',
                 'present_nationality' => 'required',
                 'country_of_birth' => 'required',
@@ -211,6 +216,8 @@ class ProfileController extends Controller
         $user->relStudent->dob = $request->dob;
         $user->relStudent->sex = $request->sex;
         $user->relStudent->marital_status = $request->marital_status;
+        $user->relStudent->blood_group = $request->blood_group;
+        $user->relStudent->religion = $request->religion;
         $user->relStudent->place_of_birth = $request->place_of_birth;
         $user->relStudent->present_nationality = $request->present_nationality;
         $user->relStudent->country_of_birth = $request->country_of_birth;
@@ -220,6 +227,7 @@ class ProfileController extends Controller
         $user->relStudent->date_of_issue = $request->date_of_issue;
         $user->relStudent->date_of_expire = $request->date_of_expire;
         $user->relStudent->date_of_last_visit_bd = $request->date_of_last_visit_bd;
+        $user->relStudent->last_visa_no = $request->last_visa_no;
         $user->relStudent->visa_category = $request->visa_category;
         $user->relStudent->visa_place_of_issue = $request->visa_place_of_issue;
         $user->relStudent->visa_date_of_issue = $request->visa_date_of_issue;
@@ -238,6 +246,10 @@ class ProfileController extends Controller
         $user->relStudent->guardian_name = $request->guardian_name;
         $user->relStudent->guardian_nationality = $request->guardian_nationality;
         $user->relStudent->guardian_mobile = $request->guardian_mobile;
+        $user->relStudent->emergency_name = $request->emergency_name;
+        $user->relStudent->emergency_nationality = $request->emergency_nationality;
+        $user->relStudent->emergency_mobile = $request->emergency_mobile;
+        $user->relStudent->fg_monthly_income = $request->fg_monthly_income;
         $user->relStudent->o_name_of_exam = $request->o_name_of_exam;
         $user->relStudent->o_group = $request->o_group;
         $user->relStudent->o_roll_no = $request->o_roll_no;

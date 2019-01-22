@@ -102,6 +102,20 @@
                 <div class="row">
                     <div class="col-md-4">
                         <p class="form-control-plaintext">
+                            <strong>{{ __('Blood Group') }} : </strong>
+                            {{ $profile->relStudent->blood_group }}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="form-control-plaintext text-capitalize">
+                            <strong>{{ __('Religion') }} : </strong>
+                            {{ $profile->relStudent->religion }}
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="form-control-plaintext">
                             <strong>{{ __('Place of Birth') }} : </strong>
                             {{ $profile->relStudent->place_of_birth }}
                         </p>
@@ -281,6 +295,30 @@
                         </p>
                     </div>
                 </div>
+                <hr>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Emergency Person Name') }} : </strong>
+                    {{ $profile->relStudent->emergency_name }}
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>{{ __('Nationality') }} : </strong>
+                            {{ $profile->relStudent->emergency_nationality }}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>{{ __('Mobile No') }} : </strong>
+                            {{ $profile->relStudent->emergency_mobile }}
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Father/Guardian Monthly Income') }} : </strong>
+                    {{ $profile->relStudent->fg_monthly_income }}
+                </p>
                 <hr>
                 <p class="form-control-plaintext">
                     <strong>{{ __('Email Address') }} : </strong>

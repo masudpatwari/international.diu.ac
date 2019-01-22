@@ -41,7 +41,8 @@
             "database/factories"
         ],
         "files": [
-            "app/Libraries/ImageResizeTool.php"
+            "app/Libraries/ImageResizeTool.php",
+            "app/Libraries/Settings.php"
         ]
     },
     "autoload-dev": {
