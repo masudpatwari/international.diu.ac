@@ -6,22 +6,25 @@ use Illuminate\Support\Collection;
 
 class ApiReader
 {
+
+    public static function ssl()
+    {
+        return stream_context_create(
+            [
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ],
+            ]);
+    }
     public static function resource_person()
     {
-        $scc = stream_context_create(
-        [
-            'ssl' => [
-                'verify_peer' => false,
-                'verify_peer_name' => false
-            ]
-        ]);
-
         $collection = [];
         $departments_array  = [
             'cse','eete','law','eng','pha','soc','bba','civil'
         ];
         foreach ($departments_array as $department) {
-            $decode_values = json_decode(file_get_contents( ''.env('API_URL').'/'.$department.'', false, $scc));
+            $decode_values = json_decode(file_get_contents( ''.env('API_URL').'/'.$department.'', false, self::ssl()));
             foreach ($decode_values as $values) {
                 $collection[] = collect($values)->toArray();
             }
@@ -190,7 +193,7 @@ class ApiReader
         ]);
         $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/admission_on_going_batch', false, $scc));
 
-        return (!empty($id)) ? collect($decode_values)->where('id', $id)->first() : $decode_values;
+        return $decode_values;
     }
 
     public static function religion()
@@ -207,24 +210,16 @@ class ApiReader
         return collect($decode_values);
     }
 
-    public static function admission($array)
-    {
-        return $array;
-    }
-
     public static function src_by_reg($reg_no)
     {
-        $scc = stream_context_create(
-            [
-                'ssl' => [
-                    'verify_peer' => false,
-                    'verify_peer_name' => false
-                ]
-            ]);
-        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/src_by_reg/'.$reg_no.'', false, $scc));
-
+        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/src_by_reg/'.$reg_no.'', false, self::ssl()));
         return collect($decode_values);
+    }
 
+    public static function student_by_id($id)
+    {
+        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/student_by_id/'.$id.'', false, self::ssl()));
+        return collect($decode_values);
     }
 
 }

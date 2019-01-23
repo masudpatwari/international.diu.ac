@@ -2,7 +2,7 @@
 @section('content')
     <div class="mx-auto" style="max-width: 768px">
         <div class="pt-4 pb-4 clearfix">
-            <h4 class="d-inline">{{ $profile->first_name ." ". $profile->last_name }} move to</h4>
+            <h4 class="d-inline">{{ $profile['first_name'] ." ". $profile['last_name'] }} move to</h4>
         </div>
         <div class="card">
             @if(!empty($batch))
@@ -23,7 +23,7 @@
                     </tr>
                 </table>
                 <div class="card-body">
-                {{ Form::open(['route' => ['students.move_to_confirm', $profile->id, $batch->id]]) }}
+                {{ Form::open(['id' => 'move_to_confirm_form']) }}
                 <div class="form-group">
                     {{ Form::label('adm_frm_no', 'Admission Form No') }}
                     {{ Form::text('adm_frm_no', NULL, ['class' => 'form-control', 'required'])  }}
@@ -31,7 +31,7 @@
                         <span class="form-text text-danger">{{ $errors->first('adm_frm_no') }}</span>
                     @endif
                 </div>
-                {{ Form::button('<i class="ti-arrow-right"></i> Confirm', ['type'=>'submit', 'class' => 'btn btn-sm btn-success']) }}
+                {{ Form::button('<i class="ti-arrow-right"></i> Confirm', ['class' => 'btn btn-sm btn-success']) }}
                 {{ Form::close() }}
                 </div>
             @else
@@ -39,4 +39,9 @@
             @endif
         </div>
     </div>
+    @if(!empty($admission))
+        <script type="text/javascript">
+            var admission = {!! json_encode($admission) !!}
+        </script>
+    @endif
 @endsection

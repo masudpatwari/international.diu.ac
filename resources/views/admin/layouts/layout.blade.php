@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="{{ asset('ice-cream/assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link rel="stylesheet" href="{{ asset('ice-cream/assets/css/icecream.css') }}">
+
+    <script type="text/javascript">
+        var rms_url = "{{  env('RMS_URL') }}";
+    </script>
+    <script src="{{ asset('ice-cream/assets/bootstrap/js/jquery-3.3.1.min.js') }}"></script>
+    <!-- jquery latest version -->
+    <script src="{{ asset('ice-cream/assets/bootstrap/js/popper.min.js') }}"></script>
+    <script src="{{ asset('ice-cream/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="{{ asset('ice-cream/assets/js/icecream.js') }}"></script>
 </head>
 
 <body>
@@ -93,6 +103,9 @@
                             <a href="{{ route('agent.index') }}" class="">Agent</a>
                         </li>
                         <li>
+                            <a href="{{ route('erp.index') }}" class="">ERP Student</a>
+                        </li>
+                        <li>
                             <a href="{{ route('students.index') }}" class="">Foreign Student</a>
                         </li>
                         <li>
@@ -114,12 +127,6 @@
         </article>
     </div>
 </section>
-<!-- jquery latest version -->
-<script src="{{ asset('ice-cream/assets/bootstrap/js/jquery-3.3.1.min.js') }}"></script>
-<script src="{{ asset('ice-cream/assets/bootstrap/js/popper.min.js') }}"></script>
-<script src="{{ asset('ice-cream/assets/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="{{ asset('ice-cream/assets/js/icecream.js') }}"></script>
 @if (session()->has('message'))
     @component('admin.components.alert')
         @if (session()->has('message.success'))

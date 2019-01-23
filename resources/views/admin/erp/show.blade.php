@@ -67,7 +67,6 @@
                 </div>
                 <p class="form-control-plaintext">
                     <strong>Interested Subject : </strong>
-
                 </p>
                 <hr>
                 <div class="row">
@@ -275,7 +274,8 @@
                 </p>
             </div>
             <div class="card-footer">
-                <a class="btn btn-sm btn-warning" href="{{ route('students.index') }}">Back</a>
+                <a class="btn btn-sm btn-warning" href="{{ route('erp.store', [$profile['id']]) }}">Save</a>
+                <a class="btn btn-sm btn-danger" href="{{ route('erp.index') }}">Back</a>
             </div>
         </div>
     </div>
