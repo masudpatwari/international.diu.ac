@@ -15,21 +15,12 @@
                 @component('alert')
                 @endcomponent
             @endif
-            <div class="form-row">
-                <div class="diu-fg form-group col-md-6">
-                    {{ Form::label('first_name', 'First Name') }}
-                    {{ Form::text('first_name', NULL, ['class' => ['form-control', $errors->has('first_name') ? ' is-invalid' : ''], 'required'])  }}
-                    @if ($errors->has('first_name'))
-                        <span class="form-text text-danger">{{ $errors->first('first_name') }}</span>
-                    @endif
-                </div>
-                <div class="diu-fg form-group col-md-6">
-                    {{ Form::label('last_name', 'Last Name') }}
-                    {{ Form::text('last_name', NULL, ['class' => ['form-control', $errors->has('last_name') ? ' is-invalid' : ''], 'required'])  }}
-                    @if ($errors->has('last_name'))
-                        <span class="form-text text-danger">{{ $errors->first('last_name') }}</span>
-                    @endif
-                </div>
+            <div class="diu-fg form-group">
+                {{ Form::label('name', 'Name') }}
+                {{ Form::text('name', NULL, ['class' => ['form-control', $errors->has('name') ? ' is-invalid' : ''], 'required'])  }}
+                @if ($errors->has('name'))
+                    <span class="form-text text-danger">{{ $errors->first('name') }}</span>
+                @endif
             </div>
             <div class="form-row">
                 <div class="diu-fg form-group col-md-6">

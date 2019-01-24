@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateForeignStudentTable extends Migration
+class CreateForeignStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateForeignStudentTable extends Migration
      */
     public function up()
     {
-        Schema::create('foreign_student', function (Blueprint $table) {
+        Schema::create('foreign_students', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
@@ -30,7 +30,7 @@ class CreateForeignStudentTable extends Migration
             $table->string('sex', 10)->nullable();
             $table->string('marital_status', 10)->nullable();
             $table->string('blood_group', 10)->nullable();
-            $table->integer('religion', 10)->nullable();
+            $table->integer('religion')->nullable();
             $table->string('place_of_birth')->nullable();
             $table->string('present_nationality');
             $table->string('country_of_birth')->nullable();
@@ -71,7 +71,6 @@ class CreateForeignStudentTable extends Migration
             $table->string('o_cgpa', 20)->nullable();
             $table->string('o_board', 20)->nullable();
             $table->text('o_link_of_certificate')->nullable();
-            $table->string('o_registration_no', 20)->nullable();
             $table->string('t_name_of_exam', 50)->nullable();
             $table->string('t_group', 20)->nullable();
             $table->string('t_roll_no', 20)->nullable();
@@ -80,8 +79,24 @@ class CreateForeignStudentTable extends Migration
             $table->string('t_cgpa', 20)->nullable();
             $table->string('t_board', 20)->nullable();
             $table->text('t_link_of_certificate')->nullable();
-            $table->string('t_registration_no', 20)->nullable();
-            $table->string('student_id', 20)->nullable();
+            $table->string('th_name_of_exam', 50)->nullable();
+            $table->string('th_group', 20)->nullable();
+            $table->string('th_roll_no', 20)->nullable();
+            $table->year('th_year_of_passing')->nullable();
+            $table->string('th_letter_grade', 20)->nullable();
+            $table->string('th_cgpa', 20)->nullable();
+            $table->string('th_board', 20)->nullable();
+            $table->text('th_link_of_certificate')->nullable();
+            $table->string('fo_name_of_exam', 50)->nullable();
+            $table->string('fo_group', 20)->nullable();
+            $table->string('fo_roll_no', 20)->nullable();
+            $table->year('fo_year_of_passing')->nullable();
+            $table->string('fo_letter_grade', 20)->nullable();
+            $table->string('fo_cgpa', 20)->nullable();
+            $table->string('fo_board', 20)->nullable();
+            $table->text('fo_link_of_certificate')->nullable();
+            $table->string('student_id')->nullable();
+            $table->string('registration_no')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
@@ -94,6 +109,6 @@ class CreateForeignStudentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foreign_student');
+        Schema::dropIfExists('foreign_students');
     }
 }

@@ -2,7 +2,7 @@
 @section('content')
     <div class="mx-auto" style="max-width: 768px">
         <div class="pt-4 pb-4 clearfix">
-            <h4 class="d-inline">{{ $profile['first_name'] ." ". $profile['last_name'] }} move to</h4>
+            <h4 class="d-inline">{{ $profile['name'] }} move to</h4>
         </div>
         <div class="card">
             @if(!empty($batch))

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAgentTable extends Migration
+class CreateAgentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAgentTable extends Migration
      */
     public function up()
     {
-        Schema::create('agent', function (Blueprint $table) {
+        Schema::create('agents', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
@@ -51,6 +51,6 @@ class CreateAgentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agent');
+        Schema::dropIfExists('agents');
     }
 }

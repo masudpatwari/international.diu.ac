@@ -14,7 +14,7 @@
         @foreach($profiles as $profile)
         <tr>
             <td>
-                <p>{{ $profile->relUser->first_name.' '.$profile->relUser->last_name }}</p>
+                <p>{{ $profile->relUser->name }}</p>
                 <p>{{ $profile->relUser->email }}</p>
             </td>
             <td class="text-capitalize">{{ $profile->present_nationality }}</td>

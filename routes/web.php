@@ -14,7 +14,7 @@
 Route::GET('/', 'FrontEndController@index')->name('/');
 Auth::routes();
 Route::GET('/register/agent', 'Auth\RegisterController@showAgentRegistrationForm')->name('register.agent');
-Route::POST('/register/agent', 'Auth\RegisterController@registerAgent');
+Route::POST('/register/agent', 'Auth\RegisterController@registerAgent')->name('register.agent');
 
 Route::GET('present_students/{page}', 'FrontEndController@present_students')->name('student.present');
 Route::GET('passed_students/{page}', 'FrontEndController@passed_students')->name('student.passed');

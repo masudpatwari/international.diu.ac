@@ -79,8 +79,7 @@ class RegisterController extends Controller
     {
         $request->validate(
             [
-                'first_name' => 'required|string',
-                'last_name' => 'required|string',
+                'name' => 'required|string',
                 'interested_subject' => 'required',
                 'present_nationality' => 'required',
                 'email' => 'required|email|unique:users',
@@ -89,10 +88,9 @@ class RegisterController extends Controller
         );
 
         $user = new User();
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
+        $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->password = bcrypt($request->password);
         $user->role = 'student';
         $user->save();
 
@@ -123,8 +121,7 @@ class RegisterController extends Controller
         $request->validate(
             [
                 'type_of_agent' => 'required',
-                'first_name' => 'required|max:40',
-                'last_name' => 'required|max:40',
+                'name' => 'required|max:100',
                 'country_name' => 'required|max:40',
                 'email' => 'required|email',
                 'password' => 'required|min:6|max:20',
@@ -136,12 +133,10 @@ class RegisterController extends Controller
                 'permanent_mobile_no' => 'required',
                 'permanent_fax_no' => 'required',
                 'primary_person_name' => 'required|max:40',
-                'primary_person_photo' => 'required|max:20',
                 'primary_person_designation' => 'required|max:20',
                 'primary_person_mobile_no' => 'required',
                 'primary_person_email' => 'required|email',
                 'secondary_person_name' => 'required|max:40',
-                'secondary_person_photo' => 'required|max:20',
                 'secondary_person_designation' => 'required|max:20',
                 'secondary_person_mobile_no' => 'required',
                 'secondary_person_email' => 'required|email',
@@ -150,10 +145,9 @@ class RegisterController extends Controller
         );
 
         $user = new User();
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
+        $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->password = bcrypt($request->password);
         $user->role = 'agent';
         $user->save();
 
@@ -169,17 +163,41 @@ class RegisterController extends Controller
         $agent->permanent_mobile_no = $request->permanent_mobile_no;
         $agent->permanent_fax_no = $request->permanent_fax_no;
         $agent->primary_person_name = $request->primary_person_name;
-        $agent->primary_person_photo = NULL;
+        if($request->hasFile('primary_person_photo'))
+        {
+            $image = $request->file('primary_person_photo');
+            $filename = 'primary_person_'.sprintf("%05d", $agent->id) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/', $filename);
+            $agent->primary_person_photo = $filename;
+        }
         $agent->primary_person_designation = $request->primary_person_designation;
         $agent->primary_person_mobile_no = $request->primary_person_mobile_no;
         $agent->primary_person_email = $request->primary_person_email;
         $agent->secondary_person_name = $request->secondary_person_name;
-        $agent->secondary_person_photo = NULL;
+        if($request->hasFile('secondary_person_photo'))
+        {
+            $image = $request->file('secondary_person_photo');
+            $filename = 'secondary_person_'.sprintf("%05d", $agent->id) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/', $filename);
+            $agent->secondary_person_photo = $filename;
+        }
         $agent->secondary_person_designation = $request->secondary_person_designation;
         $agent->secondary_person_mobile_no = $request->secondary_person_mobile_no;
         $agent->secondary_person_email = $request->secondary_person_email;
-        $agent->trade_license = NULL;
-        $agent->tin_certificate = NULL;
+        if($request->hasFile('trade_license'))
+        {
+            $image = $request->file('trade_license');
+            $filename = 'trade_license_'.sprintf("%05d", $agent->id) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/', $filename);
+            $agent->trade_license = $filename;
+        }
+        if($request->hasFile('tin_certificate'))
+        {
+            $image = $request->file('tin_certificate');
+            $filename = 'tin_certificate_'.sprintf("%05d", $agent->id) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/', $filename);
+            $agent->tin_certificate = $filename;
+        }
         $agent->whatsup_no = $request->whatsup_no;
         $agent->save();
 

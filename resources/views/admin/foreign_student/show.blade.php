@@ -2,24 +2,14 @@
 @section('content')
     <div class="mx-auto" style="max-width: 768px">
         <div class="pt-4 pb-4 clearfix">
-            <h4 class="d-inline">Profile of {{ $profile->first_name ." ". $profile->last_name }}</h4>
+            <h4 class="d-inline">Profile of {{ $profile->name }}</h4>
         </div>
         <div class="card">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p class="form-control-plaintext">
-                            <strong>First Name : </strong>
-                            {{ $profile->first_name }}
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="form-control-plaintext">
-                            <strong>Last Name : </strong>
-                            {{ $profile->last_name }}
-                        </p>
-                    </div>
-                </div>
+                <p class="form-control-plaintext">
+                    <strong>Name : </strong>
+                    {{ $profile->name }}
+                </p>
                 <hr>
                 <p class="form-control-plaintext">
                     <strong>{{ __('Permanent Address') }} : </strong>
@@ -323,6 +313,7 @@
                     <strong>{{ __('Email Address') }} : </strong>
                     {{ $profile->email }}
                 </p>
+                <hr>
                 <p class="form-control-plaintext">
                     <strong>{{ __('Name of The Examinations') }} : </strong>
                     {{ $profile->relStudent->o_name_of_exam }}
@@ -355,9 +346,104 @@
                     <strong>{{ __('Verification Link of Certificate') }} : </strong>
                     {{ $profile->relStudent->o_link_of_certificate }}
                 </p>
-                <p class="mb-0 form-control-plaintext">
-                    <strong>{{ __('Registration Number') }} : </strong>
-                    {{ $profile->relStudent->o_registration_no }}
+                <hr>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Name of The Examinations') }} : </strong>
+                    {{ $profile->relStudent->t_name_of_exam }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Group') }} : </strong>
+                    {{ $profile->relStudent->t_group}}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Roll No') }} : </strong>
+                    {{ $profile->relStudent->t_roll_no }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Year of Passing') }} : </strong>
+                    {{ $profile->relStudent->t_year_of_passing }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Letter Grade/Total Marks') }} : </strong>
+                    {{ $profile->relStudent->t_letter_grade }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Division/Class/CGPA/%') }} : </strong>
+                    {{ $profile->relStudent->t_cgpa }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Board/University') }} : </strong>
+                    {{ $profile->relStudent->t_board }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Verification Link of Certificate') }} : </strong>
+                    {{ $profile->relStudent->t_link_of_certificate }}
+                </p>
+                <hr>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Name of The Examinations') }} : </strong>
+                    {{ $profile->relStudent->th_name_of_exam }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Group') }} : </strong>
+                    {{ $profile->relStudent->th_group}}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Roll No') }} : </strong>
+                    {{ $profile->relStudent->th_roll_no }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Year of Passing') }} : </strong>
+                    {{ $profile->relStudent->th_year_of_passing }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Letter Grade/Total Marks') }} : </strong>
+                    {{ $profile->relStudent->th_letter_grade }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Division/Class/CGPA/%') }} : </strong>
+                    {{ $profile->relStudent->th_cgpa }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Board/University') }} : </strong>
+                    {{ $profile->relStudent->th_board }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Verification Link of Certificate') }} : </strong>
+                    {{ $profile->relStudent->th_link_of_certificate }}
+                </p>
+                <hr>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Name of The Examinations') }} : </strong>
+                    {{ $profile->relStudent->fo_name_of_exam }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Group') }} : </strong>
+                    {{ $profile->relStudent->fo_group}}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Roll No') }} : </strong>
+                    {{ $profile->relStudent->fo_roll_no }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Year of Passing') }} : </strong>
+                    {{ $profile->relStudent->fo_year_of_passing }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Letter Grade/Total Marks') }} : </strong>
+                    {{ $profile->relStudent->fo_letter_grade }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Division/Class/CGPA/%') }} : </strong>
+                    {{ $profile->relStudent->fo_cgpa }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Board/University') }} : </strong>
+                    {{ $profile->relStudent->fo_board }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Verification Link of Certificate') }} : </strong>
+                    {{ $profile->relStudent->fo_link_of_certificate }}
                 </p>
             </div>
             <div class="card-footer">

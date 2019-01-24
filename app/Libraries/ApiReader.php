@@ -198,15 +198,7 @@ class ApiReader
 
     public static function religion()
     {
-        $scc = stream_context_create(
-            [
-                'ssl' => [
-                    'verify_peer' => false,
-                    'verify_peer_name' => false
-                ]
-            ]);
-        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/religion', false, $scc));
-
+        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/religion', false, self::ssl()));
         return collect($decode_values);
     }
 

@@ -51,8 +51,7 @@ class ProfileController extends Controller
         $request->validate(
             [
                 'type_of_agent' => 'required',
-                'first_name' => 'required',
-                'last_name' => 'required',
+                'name' => 'required',
                 'country_name' => 'required',
                 'present_address' => 'required',
                 'present_mobile_no' => 'required',
@@ -74,8 +73,7 @@ class ProfileController extends Controller
         );
 
         $agent = User::with('relAgent')->findOrFail(auth()->user()->id);
-        $agent->first_name = $request->first_name;
-        $agent->last_name = $request->last_name;
+        $agent->name = $request->name;
         $agent->relAgent->type_of_agent = $request->type_of_agent;
         $agent->relAgent->country_name = $request->country_name;
         $agent->relAgent->present_address = $request->present_address;
@@ -145,8 +143,7 @@ class ProfileController extends Controller
     {
         $request->validate(
             [
-                'first_name' => 'required',
-                'last_name' => 'required',
+                'name' => 'required',
                 'permanent_address' => 'required',
                 'permanent_telephone' => 'required',
                 'permanent_mobile' => 'required',
@@ -200,13 +197,35 @@ class ProfileController extends Controller
                 'o_cgpa' => 'required',
                 'o_board' => 'required',
                 'o_link_of_certificate' => 'required',
-                'o_registration_no' => 'required',
+                't_name_of_exam' => 'required',
+                't_group' => 'required',
+                't_roll_no' => 'required',
+                't_year_of_passing' => 'required|numeric',
+                't_letter_grade' => 'required',
+                't_cgpa' => 'required',
+                't_board' => 'required',
+                't_link_of_certificate' => 'required',
+                'th_name_of_exam' => 'required',
+                'th_group' => 'required',
+                'th_roll_no' => 'required',
+                'th_year_of_passing' => 'required|numeric',
+                'th_letter_grade' => 'required',
+                'th_cgpa' => 'required',
+                'th_board' => 'required',
+                'th_link_of_certificate' => 'required',
+                'fo_name_of_exam' => 'required',
+                'fo_group' => 'required',
+                'fo_roll_no' => 'required',
+                'fo_year_of_passing' => 'required|numeric',
+                'fo_letter_grade' => 'required',
+                'fo_cgpa' => 'required',
+                'fo_board' => 'required',
+                'fo_link_of_certificate' => 'required',
             ]
         );
 
         $user = User::with('relStudent')->find(auth()->user()->id);
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
+        $user->name = $request->name;
         $user->relStudent->permanent_address = $request->permanent_address;
         $user->relStudent->permanent_telephone = $request->permanent_telephone;
         $user->relStudent->permanent_mobile = $request->permanent_mobile;
@@ -261,7 +280,30 @@ class ProfileController extends Controller
         $user->relStudent->o_cgpa = $request->o_cgpa;
         $user->relStudent->o_board = $request->o_board;
         $user->relStudent->o_link_of_certificate = $request->o_link_of_certificate;
-        $user->relStudent->o_registration_no = $request->o_registration_no;
+        $user->relStudent->t_name_of_exam = $request->t_name_of_exam;
+        $user->relStudent->t_group = $request->t_group;
+        $user->relStudent->t_roll_no = $request->t_roll_no;
+        $user->relStudent->t_year_of_passing = $request->t_year_of_passing;
+        $user->relStudent->t_letter_grade = $request->t_letter_grade;
+        $user->relStudent->t_cgpa = $request->t_cgpa;
+        $user->relStudent->t_board = $request->t_board;
+        $user->relStudent->t_link_of_certificate = $request->t_link_of_certificate;
+        $user->relStudent->th_name_of_exam = $request->th_name_of_exam;
+        $user->relStudent->th_group = $request->th_group;
+        $user->relStudent->th_roll_no = $request->th_roll_no;
+        $user->relStudent->th_year_of_passing = $request->th_year_of_passing;
+        $user->relStudent->th_letter_grade = $request->th_letter_grade;
+        $user->relStudent->th_cgpa = $request->th_cgpa;
+        $user->relStudent->th_board = $request->th_board;
+        $user->relStudent->th_link_of_certificate = $request->th_link_of_certificate;
+        $user->relStudent->fo_name_of_exam = $request->fo_name_of_exam;
+        $user->relStudent->fo_group = $request->fo_group;
+        $user->relStudent->fo_roll_no = $request->fo_roll_no;
+        $user->relStudent->fo_year_of_passing = $request->fo_year_of_passing;
+        $user->relStudent->fo_letter_grade = $request->fo_letter_grade;
+        $user->relStudent->fo_cgpa = $request->fo_cgpa;
+        $user->relStudent->fo_board = $request->fo_board;
+        $user->relStudent->fo_link_of_certificate = $request->fo_link_of_certificate;
         if($request->hasFile('profile_photo'))
         {
             $image = $request->file('profile_photo');

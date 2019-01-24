@@ -67,7 +67,9 @@ class StudentsController extends Controller
             $admission_batch = $collection->where('id', $batch_id)->first();
 
             $data['admission'] = [
-                'NAME' => $profile['first_name']." ".$profile['last_name'],
+                'NAME' => $profile['name'],
+                'ROLL_NO' => 1,
+                'REG_CODE' => 1,
                 'PASSWORD' => 'diu123',
                 'DEPARTMENT_ID' => $admission_batch->dept_id,
                 'BATCH_ID' => $admission_batch->id,
@@ -107,6 +109,27 @@ class StudentsController extends Controller
                 'E_LTR_GRD_TMARK1' => $profile['rel_student']['o_letter_grade'],
                 'E_DIV_CLS_CGPA1' => $profile['rel_student']['o_cgpa'],
                 'E_BOARD_UNIVERSITY1' => $profile['rel_student']['o_board'],
+                'E_EXAM_NAME2' => $profile['rel_student']['t_name_of_exam'],
+                'E_GROUP2' => $profile['rel_student']['t_group'],
+                'E_ROLL_NO_2' => $profile['rel_student']['t_roll_no'],
+                'E_PASSING_YEAR2' => $profile['rel_student']['t_year_of_passing'],
+                'E_LTR_GRD_TMARK2' => $profile['rel_student']['t_letter_grade'],
+                'E_DIV_CLS_CGPA2' => $profile['rel_student']['t_cgpa'],
+                'E_BOARD_UNIVERSITY2' => $profile['rel_student']['t_board'],
+                'E_EXAM_NAME3' => $profile['rel_student']['th_name_of_exam'],
+                'E_GROUP3' => $profile['rel_student']['th_group'],
+                'E_ROLL_NO_3' => $profile['rel_student']['th_roll_no'],
+                'E_PASSING_YEAR3' => $profile['rel_student']['th_year_of_passing'],
+                'E_LTR_GRD_TMARK3' => $profile['rel_student']['th_letter_grade'],
+                'E_DIV_CLS_CGPA3' => $profile['rel_student']['th_cgpa'],
+                'E_BOARD_UNIVERSITY3' => $profile['rel_student']['th_board'],
+                'E_EXAM_NAME4' => $profile['rel_student']['fo_name_of_exam'],
+                'E_GROUP4' => $profile['rel_student']['fo_group'],
+                'E_ROLL_NO_4' => $profile['rel_student']['fo_roll_no'],
+                'E_PASSING_YEAR4' => $profile['rel_student']['fo_year_of_passing'],
+                'E_LTR_GRD_TMARK4' => $profile['rel_student']['fo_letter_grade'],
+                'E_DIV_CLS_CGPA4' => $profile['rel_student']['fo_cgpa'],
+                'E_BOARD_UNIVERSITY4' => $profile['rel_student']['fo_board'],
             ];
             return view('admin.foreign_student.step_two', $data);
         }

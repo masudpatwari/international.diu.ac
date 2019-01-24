@@ -3,21 +3,12 @@
     <div class="card mx-auto" style="max-width: 768px">
         <div class="card-body">
             {{ Form::open(['route' => 'student.profile.update', 'method' => 'PUT', 'files' => true]) }}
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    {{ Form::label('first_name', 'First Name') }}
-                    {{ Form::text('first_name', $profile->first_name, ['class' => 'form-control', 'required'])  }}
-                    @if ($errors->has('first_name'))
-                        <span class="form-text text-danger">{{ $errors->first('first_name') }}</span>
-                    @endif
-                </div>
-                <div class="form-group col-md-6">
-                    {{ Form::label('last_name', 'Last Name') }}
-                    {{ Form::text('last_name', $profile->last_name, ['class' => 'form-control', 'required'])  }}
-                    @if ($errors->has('last_name'))
-                        <span class="form-text text-danger">{{ $errors->first('last_name') }}</span>
-                    @endif
-                </div>
+            <div class="form-group">
+                {{ Form::label('name', 'Name') }}
+                {{ Form::text('name', $profile->name, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('name'))
+                    <span class="form-text text-danger">{{ $errors->first('name') }}</span>
+                @endif
             </div>
             <div class="form-group">
                 {{ Form::label('permanent_address', 'Permanent Address') }}
@@ -373,6 +364,7 @@
                     <span class="form-text text-danger">{{ $errors->first('fg_monthly_income') }}</span>
                 @endif
             </div>
+            <hr>
             <div class="form-group">
                 {{ Form::label('o_name_of_exam', 'Name of The Examinations') }}
                 {{ Form::text('o_name_of_exam', $profile->relStudent->o_name_of_exam, ['class' => 'form-control', 'required'])  }}
@@ -429,13 +421,181 @@
                     <span class="form-text text-danger">{{ $errors->first('o_link_of_certificate') }}</span>
                 @endif
             </div>
+            <hr>
             <div class="form-group">
-                {{ Form::label('o_registration_no', 'Registration Number') }}
-                {{ Form::text('o_registration_no', $profile->relStudent->o_registration_no, ['class' => 'form-control', 'required'])  }}
-                @if ($errors->has('o_registration_no'))
-                    <span class="form-text text-danger">{{ $errors->first('o_registration_no') }}</span>
+                {{ Form::label('t_name_of_exam', 'Name of The Examinations') }}
+                {{ Form::text('t_name_of_exam', $profile->relStudent->t_name_of_exam, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('t_name_of_exam'))
+                    <span class="form-text text-danger">{{ $errors->first('t_name_of_exam') }}</span>
                 @endif
             </div>
+            <div class="form-group">
+                {{ Form::label('t_group', 'Group') }}
+                {{ Form::text('t_group', $profile->relStudent->t_group, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('t_group'))
+                    <span class="form-text text-danger">{{ $errors->first('t_group') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('t_roll_no', 'Roll No') }}
+                {{ Form::text('t_roll_no', $profile->relStudent->t_roll_no, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('t_roll_no'))
+                    <span class="form-text text-danger">{{ $errors->first('t_roll_no') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('t_year_of_passing', 'Year of Passing') }}
+                {{ Form::text('t_year_of_passing', $profile->relStudent->t_year_of_passing, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('t_year_of_passing'))
+                    <span class="form-text text-danger">{{ $errors->first('t_year_of_passing') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('t_letter_grade', 'Letter Grade/Total Marks') }}
+                {{ Form::text('t_letter_grade', $profile->relStudent->t_letter_grade, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('t_letter_grade'))
+                    <span class="form-text text-danger">{{ $errors->first('t_letter_grade') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('t_cgpa', 'Division/Class/CGPA/%') }}
+                {{ Form::text('t_cgpa', $profile->relStudent->t_cgpa, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('t_cgpa'))
+                    <span class="form-text text-danger">{{ $errors->first('t_cgpa') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('t_board', 'Board/University') }}
+                {{ Form::text('t_board', $profile->relStudent->t_board, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('t_board'))
+                    <span class="form-text text-danger">{{ $errors->first('t_board') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('t_link_of_certificate', 'Verification Link of Certificate') }}
+                {{ Form::text('t_link_of_certificate', $profile->relStudent->t_link_of_certificate, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('t_link_of_certificate'))
+                    <span class="form-text text-danger">{{ $errors->first('t_link_of_certificate') }}</span>
+                @endif
+            </div>
+
+
+            <hr>
+            <div class="form-group">
+                {{ Form::label('th_name_of_exam', 'Name of The Examinations') }}
+                {{ Form::text('th_name_of_exam', $profile->relStudent->th_name_of_exam, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('th_name_of_exam'))
+                    <span class="form-text text-danger">{{ $errors->first('th_name_of_exam') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('th_group', 'Group') }}
+                {{ Form::text('th_group', $profile->relStudent->th_group, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('th_group'))
+                    <span class="form-text text-danger">{{ $errors->first('th_group') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('th_roll_no', 'Roll No') }}
+                {{ Form::text('th_roll_no', $profile->relStudent->th_roll_no, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('th_roll_no'))
+                    <span class="form-text text-danger">{{ $errors->first('th_roll_no') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('th_year_of_passing', 'Year of Passing') }}
+                {{ Form::text('th_year_of_passing', $profile->relStudent->th_year_of_passing, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('th_year_of_passing'))
+                    <span class="form-text text-danger">{{ $errors->first('th_year_of_passing') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('th_letter_grade', 'Letter Grade/Total Marks') }}
+                {{ Form::text('th_letter_grade', $profile->relStudent->th_letter_grade, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('th_letter_grade'))
+                    <span class="form-text text-danger">{{ $errors->first('th_letter_grade') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('th_cgpa', 'Division/Class/CGPA/%') }}
+                {{ Form::text('th_cgpa', $profile->relStudent->th_cgpa, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('th_cgpa'))
+                    <span class="form-text text-danger">{{ $errors->first('th_cgpa') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('th_board', 'Board/University') }}
+                {{ Form::text('th_board', $profile->relStudent->th_board, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('th_board'))
+                    <span class="form-text text-danger">{{ $errors->first('th_board') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('th_link_of_certificate', 'Verification Link of Certificate') }}
+                {{ Form::text('th_link_of_certificate', $profile->relStudent->th_link_of_certificate, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('th_link_of_certificate'))
+                    <span class="form-text text-danger">{{ $errors->first('th_link_of_certificate') }}</span>
+                @endif
+            </div>
+
+            <hr>
+            <div class="form-group">
+                {{ Form::label('fo_name_of_exam', 'Name of The Examinations') }}
+                {{ Form::text('fo_name_of_exam', $profile->relStudent->fo_name_of_exam, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('fo_name_of_exam'))
+                    <span class="form-text text-danger">{{ $errors->first('fo_name_of_exam') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('fo_group', 'Group') }}
+                {{ Form::text('fo_group', $profile->relStudent->fo_group, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('fo_group'))
+                    <span class="form-text text-danger">{{ $errors->first('fo_group') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('fo_roll_no', 'Roll No') }}
+                {{ Form::text('fo_roll_no', $profile->relStudent->fo_roll_no, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('fo_roll_no'))
+                    <span class="form-text text-danger">{{ $errors->first('fo_roll_no') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('fo_year_of_passing', 'Year of Passing') }}
+                {{ Form::text('fo_year_of_passing', $profile->relStudent->fo_year_of_passing, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('fo_year_of_passing'))
+                    <span class="form-text text-danger">{{ $errors->first('fo_year_of_passing') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('fo_letter_grade', 'Letter Grade/Total Marks') }}
+                {{ Form::text('fo_letter_grade', $profile->relStudent->fo_letter_grade, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('fo_letter_grade'))
+                    <span class="form-text text-danger">{{ $errors->first('fo_letter_grade') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('fo_cgpa', 'Division/Class/CGPA/%') }}
+                {{ Form::text('fo_cgpa', $profile->relStudent->fo_cgpa, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('fo_cgpa'))
+                    <span class="form-text text-danger">{{ $errors->first('fo_cgpa') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('fo_board', 'Board/University') }}
+                {{ Form::text('fo_board', $profile->relStudent->th_board, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('fo_board'))
+                    <span class="form-text text-danger">{{ $errors->first('fo_board') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('fo_link_of_certificate', 'Verification Link of Certificate') }}
+                {{ Form::text('fo_link_of_certificate', $profile->relStudent->fo_link_of_certificate, ['class' => 'form-control', 'required'])  }}
+                @if ($errors->has('fo_link_of_certificate'))
+                    <span class="form-text text-danger">{{ $errors->first('fo_link_of_certificate') }}</span>
+                @endif
+            </div>
+
             <div class="form-group">
                 {{ Form::label('profile_photo', 'Profile Photo') }}
                 {{ Form::file('profile_photo', NULL, ['class' => ''])  }}

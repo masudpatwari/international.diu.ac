@@ -11,28 +11,18 @@
 
     <section class="diu-contact-us diu-section-bg">
         <div class="container diu-left-bottom">
-            {{ Form::open(['route' => 'register', 'class' => '']) }}
+            {{ Form::open(['route' => 'register.agent', 'class' => '', 'files' => true]) }}
             @if (session()->has('message'))
                 @component('alert')
                 @endcomponent
             @endif
             {{ Form::open(['route' => 'register.agent', 'class' => '']) }}
-            <p class="mb-3">{{ Form::label('name_of_agent', 'Name of Agent') }}</p>
-            <div class="form-row">
-                <div class="diu-fg form-group col-md-6">
-                    {{ Form::label('first_name', 'First Name') }}
-                    {{ Form::text('first_name', NULL, ['class' => ['form-control', $errors->has('first_name') ? ' is-invalid' : ''], 'required'])  }}
-                    @if ($errors->has('first_name'))
-                        <span class="form-text text-danger">{{ $errors->first('first_name') }}</span>
-                    @endif
-                </div>
-                <div class="diu-fg form-group col-md-6">
-                    {{ Form::label('last_name', 'Last Name') }}
-                    {{ Form::text('last_name', NULL, ['class' => ['form-control', $errors->has('last_name') ? ' is-invalid' : ''], 'required'])  }}
-                    @if ($errors->has('last_name'))
-                        <span class="form-text text-danger">{{ $errors->first('last_name') }}</span>
-                    @endif
-                </div>
+            <div class="diu-fg form-group">
+                {{ Form::label('name', 'Name of Agent') }}
+                {{ Form::text('name', NULL, ['class' => ['form-control', $errors->has('name') ? ' is-invalid' : ''], 'required'])  }}
+                @if ($errors->has('name'))
+                    <span class="form-text text-danger">{{ $errors->first('name') }}</span>
+                @endif
             </div>
             <div class="form-row">
                 <div class="diu-fg form-group col-md-6">
@@ -98,7 +88,7 @@
                 <div class="diu-fg form-group col-md-4">
                     {{ Form::label('permanent_lan_phone_no', 'Lan Phone Number') }}
                     {{ Form::text('permanent_lan_phone_no', NULL, ['class' => 'form-control'])  }}
-                    @if ($errors->has('per_lan_phone_no'))
+                    @if ($errors->has('permanent_lan_phone_no'))
                         <span class="form-text text-danger">{{ $errors->first('permanent_lan_phone_no') }}</span>
                     @endif
                 </div>
