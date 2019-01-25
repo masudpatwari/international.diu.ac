@@ -6,22 +6,68 @@
         </div>
         <div class="card">
             <div class="card-body">
+                <p class="form-control-plaintext">
+                    <strong>Name : </strong>
+                    {{ $profile['name'] }}
+                </p>
                 <hr>
                 <p class="form-control-plaintext">
                     <strong>{{ __('Permanent Address') }} : </strong>
                     {{ $profile['parmanent_add'] }}
                 </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>{{ __('Permanent Telephone/Lan Phone') }} : </strong>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>{{ __('Permanent Mobile (With Country Code)') }} : </strong>
+                        </p>
+                    </div>
+                </div>
                 <hr>
                 <p class="form-control-plaintext">
                     <strong>{{ __('Present Address') }} : </strong>
                     {{ $profile['mailing_add'] }}
                 </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>{{ __('Present Telephone/Lan Phone') }} : </strong>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>{{ __('Present Mobile (With Country Code)') }} : </strong>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Address in Bangladesh with Reference Name') }} : </strong>
+                    {{ $profile['mailing_add'] }}
+                </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>{{ __('AB Telephone/Lan Phone') }} : </strong>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="form-control-plaintext">
+                            <strong>{{ __('AB Mobile (With Country Code)') }} : </strong>
+                            {{ $profile['phone_no'] }}
+                        </p>
+                    </div>
+                </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-4">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Date of Birth') }} : </strong>
-                            {{ date('d M Y', strtotime($profile['dob'])) }}
+                            {{ $profile['dob'] }}
                         </p>
                     </div>
                     <div class="col-md-4">
@@ -55,7 +101,6 @@
                     <div class="col-md-4">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Place of Birth') }} : </strong>
-                            {{ $profile['birth_place'] }}
                         </p>
                     </div>
                     <div class="col-md-4">
@@ -64,9 +109,15 @@
                             {{ $profile['nationality'] }}
                         </p>
                     </div>
+                    <div class="col-md-4">
+                        <p class="form-control-plaintext">
+                            <strong>{{ __('Country of Birth') }} : </strong>
+                        </p>
+                    </div>
                 </div>
                 <p class="form-control-plaintext">
                     <strong>Interested Subject : </strong>
+                    {{ $profile['department']->name  }}
                 </p>
                 <hr>
                 <div class="row">
@@ -237,6 +288,7 @@
                     <strong>{{ __('Email Address') }} : </strong>
                     {{ $profile['email'] }}
                 </p>
+                <hr>
                 <p class="form-control-plaintext">
                     <strong>{{ __('Name of The Examinations') }} : </strong>
                     {{ $profile['e_exam_name1'] }}
@@ -268,9 +320,101 @@
                 <p class="form-control-plaintext">
                     <strong>{{ __('Verification Link of Certificate') }} : </strong>
                 </p>
-                <p class="mb-0 form-control-plaintext">
-                    <strong>{{ __('Registration Number') }} : </strong>
-                    {{ $profile['reg_code'] }}
+                <hr>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Name of The Examinations') }} : </strong>
+                    {{ $profile['e_exam_name2'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Group') }} : </strong>
+                    {{ $profile['e_group2'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Roll No') }} : </strong>
+                    {{ $profile['e_roll_no_2'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Year of Passing') }} : </strong>
+                    {{ $profile['e_passing_year1'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Letter Grade/Total Marks') }} : </strong>
+                    {{ $profile['e_ltr_grd_tmark2'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Division/Class/CGPA/%') }} : </strong>
+                    {{ $profile['e_div_cls_cgpa2'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Board/University') }} : </strong>
+                    {{ $profile['e_board_university2'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Verification Link of Certificate') }} : </strong>
+                </p>
+                <hr>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Name of The Examinations') }} : </strong>
+                    {{ $profile['e_exam_name3'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Group') }} : </strong>
+                    {{ $profile['e_group3'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Roll No') }} : </strong>
+                    {{ $profile['e_roll_no_3'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Year of Passing') }} : </strong>
+                    {{ $profile['e_passing_year3'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Letter Grade/Total Marks') }} : </strong>
+                    {{ $profile['e_ltr_grd_tmark3'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Division/Class/CGPA/%') }} : </strong>
+                    {{ $profile['e_div_cls_cgpa3'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Board/University') }} : </strong>
+                    {{ $profile['e_board_university3'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Verification Link of Certificate') }} : </strong>
+                </p>
+                <hr>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Name of The Examinations') }} : </strong>
+                    {{ $profile['e_exam_name4'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Group') }} : </strong>
+                    {{ $profile['e_group4'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Roll No') }} : </strong>
+                    {{ $profile['e_roll_no_4'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Year of Passing') }} : </strong>
+                    {{ $profile['e_passing_year4'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Letter Grade/Total Marks') }} : </strong>
+                    {{ $profile['e_ltr_grd_tmark4'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Division/Class/CGPA/%') }} : </strong>
+                    {{ $profile['e_div_cls_cgpa4'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Board/University') }} : </strong>
+                    {{ $profile['e_board_university4'] }}
+                </p>
+                <p class="form-control-plaintext">
+                    <strong>{{ __('Verification Link of Certificate') }} : </strong>
                 </p>
             </div>
             <div class="card-footer">

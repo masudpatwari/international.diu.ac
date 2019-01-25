@@ -40,6 +40,12 @@ Route::group(['middleware' => ['Logged_in']], function () {
         'index'
     ]);
 
+
+    Route::GET('documents', 'DocumentsController@index')->name('documents.index');
+    Route::POST('documents', 'DocumentsController@index')->name('documents.src');
+    Route::GET('documents/{id}', 'DocumentsController@show')->name('documents.show');
+    Route::GET('documents/{id}/pdf', 'DocumentsController@pdf')->name('documents.pdf');
+
     Route::GET('erp', 'ErpController@index')->name('erp.index');
     Route::POST('erp', 'ErpController@index')->name('erp.src');
     Route::GET('erp/{id}', 'ErpController@show')->name('erp.show');

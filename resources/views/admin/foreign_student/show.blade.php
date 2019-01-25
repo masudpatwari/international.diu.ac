@@ -446,9 +446,11 @@
                     {{ $profile->relStudent->fo_link_of_certificate }}
                 </p>
             </div>
+            @if(empty($profile->relStudent->student_id))
             <div class="card-footer">
                 <a class="btn btn-sm btn-warning" href="{{ route('students.move_to_step_one', [$profile->id]) }}">Next Step</a>
             </div>
+            @endif
         </div>
     </div>
 @endsection

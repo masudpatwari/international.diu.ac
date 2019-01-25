@@ -29,8 +29,7 @@ class MailTicket extends Controller
         {
 
             $ticket = new Ticket();
-            $ticket->first_name = $request->first_name;
-            $ticket->last_name = $request->last_name;
+            $ticket->name = $request->name;
             $ticket->email = $request->email;
             $ticket->present_nationality = $request->present_nationality;
             $ticket->interested_subject = $request->interested_subject;
@@ -75,7 +74,7 @@ class MailTicket extends Controller
         <p>&nbsp;</p>
         <p>Yours faithfully</p>
         <p>&nbsp;</p>
-        <p>'.auth()->user()->first_name.' '.auth()->user()->last_name.'</p>
+        <p>'.auth()->user()->name.'</p>
         <p>Designation</p>
         <p>Dhaka International University</p>
         ';

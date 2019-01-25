@@ -1,7 +1,6 @@
 @extends('admin.layouts.layout')
 @section('content')
-
-    {{ Form::open(['route' => 'erp.src', 'id' => 'src_by_reg']) }}
+    {{ Form::open(['route' => 'documents.src', 'id' => 'src_by_reg']) }}
     <div class="input-group mb-3">
         {{ Form::text('reg_no', NULL, ['class' => 'form-control', 'required', 'placeholder' => 'Registration no']) }}
         <div class="input-group-append">
@@ -16,9 +15,8 @@
         <thead>
         <tr>
             <th>Department</th>
-            <th>Batch</th>
+            <th>Registration No</th>
             <th>Name</th>
-            <th>Roll</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -26,19 +24,14 @@
             <tbody>
             @foreach($profiles as $profile)
                 <tr>
-                    <td>{{ $profile->department->name }}</td>
-                    <td>{{ $profile->batch->batch_name }}</td>
+                    <td>{{ $profile->interested_subject }}</td>
+                    <td>{{ $profile->registration_no }}</td>
                     <td>
-                        <p>{{ $profile->name }}</p>
-                        <p>{{ $profile->email }}</p>
+                        <p>{{ $profile->relUser->name }}</p>
+                        <p>{{ $profile->relUser->email }}</p>
                     </td>
-                    <td>{{ $profile->roll_no }}</td>
                     <td>
-                        @if(in_array($profile->id, $erp_students))
-                            <p>Already exists</p>
-                        @else
-                            <a class="btn btn-sm btn-warning" href="{{ route('erp.show', $profile->id) }}">Details</a>
-                        @endif
+                        <a class="btn btn-sm btn-warning" href="{{ route('documents.show', $profile->id) }}">Download</a>
                     </td>
                 </tr>
             @endforeach

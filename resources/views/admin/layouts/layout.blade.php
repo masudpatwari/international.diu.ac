@@ -109,6 +109,9 @@
                             <a href="{{ route('students.index') }}" class="">Foreign Student</a>
                         </li>
                         <li>
+                            <a href="{{ route('documents.index') }}" class="">Documents</a>
+                        </li>
+                        <li>
                             <a href="{{ route('ticket.index') }}" class="">Support Tickets</a>
                         </li>
                     </ul>
