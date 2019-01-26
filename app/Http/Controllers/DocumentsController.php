@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ForeignStudent;
+use App\User;
 use App\Libraries\Documents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -27,6 +28,22 @@ class DocumentsController extends Controller
                 ]
             );
             $data['profiles'] = ForeignStudent::with('relUser')->where('registration_no', 'like', '%'.$request->reg_no.'%')->get();
+        }
+        if ($request->input('email')) {
+            $request->validate(
+                [
+                    'email' => 'required',
+                ],
+                [
+                    'email.required' => 'Email is required',
+                ]
+            );
+
+            $value = $request->email;
+
+            $data['profiles'] = ForeignStudent::with(['relUser' => function($query) use ($value){
+                $query->where('email', 'like', '%'.$value.'%')->first();
+            }])->get();
         }
         return view('admin.documents.index', $data);
     }
@@ -63,8 +80,9 @@ class DocumentsController extends Controller
         Cache::forget('document_data');
         $expiresAt = now()->addMinutes(1000);
         $data['documents'] = Documents::documents();
-        $data['profile'] = ForeignStudent::with('relUser')->find($id);
-        Cache::put('document_data', $data['profile'], $expiresAt);
+        $data['profile'] = ForeignStudent::with('relUser', 'relReferralBy')->find($id);
+        $data['auth'] = User::with('relAgent', 'relStudent','relEmployee')->find(auth()->user()->id);
+        Cache::put('document_data', $data, $expiresAt);
         return view('admin.documents.show', $data);
     }
 
@@ -105,9 +123,9 @@ class DocumentsController extends Controller
     public function pdf($filename)
     {
         $cache_values = Cache::get('document_data');
-        $profile['profile'] = collect($cache_values);
+        $data['pdf_data'] = collect($cache_values);
         $file_path = storage_path(env('PDF_FILE_STORAGE_PATH')).'/'.$filename.'.pdf';
-        $view = \View::make('admin.documents.formats.'.$filename.'', $profile);
+        $view = \View::make('admin.documents.formats.'.$filename.'', $data);
         $mpdf = new \Mpdf\Mpdf(['tempDir' => storage_path('temp'), 'mode' => 'utf-8', 'format' => 'A4-P', 'orientation' => 'P']);
         $mpdf->SetTitle($filename);
         $mpdf->WriteHTML(file_get_contents( storage_path(env('PDF_CSS_STORAGE_PATH')).'/'.$filename.'.css'), 1);

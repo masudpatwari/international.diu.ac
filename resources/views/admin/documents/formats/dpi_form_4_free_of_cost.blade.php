@@ -1,3 +1,6 @@
+@php
+    $profile = $pdf_data['profile'];
+@endphp
 <div style="overflow: hidden;">
     <div style="border: 1px solid #000; width: 1.5in; height: 1.5in; text-align: center; dusplay: table; float: left;">
         <div style="display: table-cell; vertical-align: middle;">
@@ -33,21 +36,24 @@
 <div style="border: 1px solid #000; margin: 0.05in 0; text-align: center;">
     <p><strong>PERSONAL DETAILS</strong></p>
 </div>
-
-
+@php
+$strings = explode(' ', $profile->relUser->name);
+$last_name = array_pop($strings);
+$first_name = implode(" ", $strings);
+@endphp
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="overflow: hidden; float: left; width: 4.2in">
         <div style="width: 1.6in; float: left;">
             01. Full Name :<br> (as in the passport)
         </div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2.5in; height: 0.23in;">{{ $profile['rel_user']['name'] }}</div>
+            <div style="border: 1px solid #000; width: 2.5in; height: 0.23in;">{{ $first_name }}</div>
             <div style="text-align: center;"><small>First/Given Name (S)</small></div>
         </div>
     </div>
     <div style="overflow: hidden; float: right; width: 2.5in;">
         <div style="">
-            <div style="border: 1px solid #000; width: 2.5in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2.5in; height: 0.23in;">{{ $last_name }}</div>
             <div style="text-align: center;"><small>Last/Surname</small></div>
         </div>
     </div>
@@ -57,7 +63,7 @@
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="width: 1.6in; float: left;">02. Permanent Address :</div>
     <div style="">
-        <div style="border-bottom: 1px solid #000; width: 5.6in; height: 0.23in;"></div>
+        <div style="border-bottom: 1px solid #000; width: 5.6in; height: 0.23in;">{{ $profile->permanent_address }}</div>
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in">
@@ -71,7 +77,7 @@
             <div style="overflow: hidden; float: left; width: 2.6in;">
                 <div style="width: 0.8in; float: left;">Contact No :</div>
                 <div style="">
-                    <div style="border-bottom: 1px solid #000; width: 1.69in; height: 0.23in;"></div>
+                    <div style="border-bottom: 1px solid #000; width: 1.69in; height: 0.23in;">{{ $profile->permanent_mobile }}</div>
                 </div>
             </div>
             <div style="overflow: hidden; float: left; width: 3in;">
@@ -88,7 +94,7 @@
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="width: 1.7in; float: left;">03. Address in Bangladesh :</div>
     <div style="">
-        <div style="border-bottom: 1px solid #000; width: 5.5in; height: 0.23in;"></div>
+        <div style="border-bottom: 1px solid #000; width: 5.5in; height: 0.23in;">{{ $profile->present_address }}</div>
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in">
@@ -102,7 +108,7 @@
             <div style="overflow: hidden; float: left; width: 2.6in;">
                 <div style="width: 0.8in; float: left;">Contact No :</div>
                 <div style="">
-                    <div style="border-bottom: 1px solid #000; width: 1.69in; height: 0.23in;"></div>
+                    <div style="border-bottom: 1px solid #000; width: 1.69in; height: 0.23in;">{{ $profile->present_mobile }}</div>
                 </div>
             </div>
             <div style="overflow: hidden; float: left; width: 3in;">
@@ -120,8 +126,8 @@
     <div style="overflow: hidden; float: left; width: 3.5in;">
         <div style="width: 1.2in; float: left;">04. Date of Birth :</div>
         <div style="width: 2in;">
-            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.24in;"></div>
-            <div style="text-align: center;"><small>DD/MM/YY</small></div>
+            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.24in;">{{ date('d/m/Y', strtotime($profile->dob)) }}</div>
+            <div style="text-align: center;"><small></small></div>
         </div>
     </div>
     <div style="overflow: hidden; float: left; width: 3.6in;">
@@ -131,13 +137,21 @@
                 <div style="overflow: hidden; float: left; width: 0.8in;">
                     <div style="width: 0.4in; float: left;">Male</div>
                     <div style="">
-                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;"></div>
+                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;">
+                            @if($profile->sex == 'male')
+                            <img style="margin-left: 0.03in" src="{{ storage_path(env('PDF_CSS_STORAGE_PATH')).'/checked.png' }}" alt="">
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div style="overflow: hidden; float: left; width: 0.8in;">
                     <div style="width: 0.5in; float: left;">Female</div>
                     <div style="">
-                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;"></div>
+                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;">
+                            @if($profile->sex == 'female')
+                                <img style="margin-left: 0.03in" src="{{ storage_path(env('PDF_CSS_STORAGE_PATH')).'/checked.png' }}" alt="">
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -151,13 +165,13 @@
     <div style="overflow: hidden; float: left; width: 3.6in">
         <div style="width: 1.5in; float: left;">06. Place of Birth :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">{{ $profile->place_of_birth }}</div>
         </div>
     </div>
     <div style="overflow: hidden; float: right; width: 3.6in;">
         <div style="width: 1.5in; float: left;">07. Present Nationality :</div>
         <div style="">
-            <div style="border: 1px solid #000; float: right; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; float: right; width: 2in; height: 0.23in;">{{ $profile->present_nationality }}</div>
         </div>
     </div>
 </div>
@@ -167,7 +181,7 @@
     <div style="overflow: hidden; float: left; width: 3.6in">
         <div style="width: 1.5in; float: left;">08. Nationality at Birth :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">{{ $profile->country_of_birth }}</div>
         </div>
     </div>
     <div style="overflow: hidden; float: right; width: 3.6in;">
@@ -188,25 +202,41 @@
                 <div style="overflow: hidden; float: left; width: 1.4in;">
                     <div style="width: 0.7in; float: left;">Unmarried</div>
                     <div style="">
-                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;"></div>
+                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;">
+                            @if($profile->marital_status == 'unmarried')
+                                <img style="margin-left: 0.03in" src="{{ storage_path(env('PDF_CSS_STORAGE_PATH')).'/checked.png' }}" alt="">
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div style="overflow: hidden; float: left; width: 1.4in;">
                     <div style="width: 0.7in; float: left;">Married</div>
                     <div style="">
-                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;"></div>
+                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;">
+                            @if($profile->marital_status == 'married')
+                                <img style="margin-left: 0.03in" src="{{ storage_path(env('PDF_CSS_STORAGE_PATH')).'/checked.png' }}" alt="">
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div style="overflow: hidden; float: left; width: 1.5in;">
                     <div style="width: 1in; float: left;">Widower/Widow</div>
                     <div style="">
-                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;"></div>
+                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;">
+                            @if($profile->marital_status == 'widower')
+                                <img style="margin-left: 0.03in" src="{{ storage_path(env('PDF_CSS_STORAGE_PATH')).'/checked.png' }}" alt="">
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div style="overflow: hidden; float: left; width: 1.4in;">
                     <div style="width: 0.7in; float: left;">Divorced</div>
                     <div style="">
-                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;"></div>
+                        <div style="border: 1px solid #000; width: 0.24in; height: 0.23in;">
+                            @if($profile->marital_status == 'divorced')
+                                <img style="margin-left: 0.03in" src="{{ storage_path(env('PDF_CSS_STORAGE_PATH')).'/checked.png' }}" alt="">
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -223,13 +253,13 @@
     <div style="overflow: hidden; float: left; width: 3.6in">
         <div style="width: 1.5in; float: left;">11. Passport No :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">{{ $profile->passport_no }}</div>
         </div>
     </div>
     <div style="overflow: hidden; float: right; width: 3.6in;">
         <div style="width: 1.3in; float: left;">12. Type of Passport :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">{{ $profile->type_of_passport }}</div>
         </div>
     </div>
 </div>
@@ -238,7 +268,7 @@
     <div style="overflow: hidden; float: left; width: 7.3in">
         <div style="width: 1.5in; float: left;">13. Place of Issue :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">{{ $profile->place_of_issue }}</div>
         </div>
     </div>
 </div>
@@ -248,14 +278,14 @@
     <div style="overflow: hidden; float: left; width: 3.6in;">
         <div style="width: 1.5in; float: left;">14. Date of Issue :</div>
         <div style="width: 2in;">
-            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;">{{ date('d/m/Y', strtotime($profile->date_of_issue)) }}</div>
             <div style="text-align: center;"><small>DD/MM/YY</small></div>
         </div>
     </div>
     <div style="overflow: hidden; float: right; width: 3.6in;">
         <div style="width: 1.2in; float: left;">15. Date of Expiry :</div>
         <div style="width: 2in;">
-            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;">{{ date('d/m/Y', strtotime($profile->date_of_expire)) }}</div>
             <div style="text-align: center;"><small>DD/MM/YY</small></div>
         </div>
     </div>
@@ -265,7 +295,7 @@
     <div style="overflow: hidden; float: left; width: 7.3in;">
         <div style="width: 2.2in; float: left;">16. Date of last visit to Bangladesh :</div>
         <div style="width: 2in;">
-            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;">{{ date('d/m/Y', strtotime($profile->date_of_last_visit_bd)) }}</div>
             <div style="text-align: center;"><small>DD/MM/YY</small></div>
         </div>
     </div>
@@ -275,13 +305,13 @@
     <div style="overflow: hidden; float: left; width: 3.6in">
         <div style="width: 1.5in; float: left;">17. Last Visa No :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">{{ $profile->last_visa_no }}</div>
         </div>
     </div>
     <div style="overflow: hidden; float: right; width: 3.6in;">
         <div style="width: 1.1in; float: left;">18. Date of Issue :</div>
         <div style="width: 2in;">
-            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;">{{ date('d/m/Y', strtotime($profile->visa_date_of_issue)) }}</div>
             <div style="text-align: center;"><small>DD/MM/YY</small></div>
         </div>
     </div>
@@ -292,13 +322,13 @@
     <div style="overflow: hidden; float: left; width: 3.6in">
         <div style="width: 1.5in; float: left;">19. Place of Issue :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">{{ $profile->visa_place_of_issue }}</div>
         </div>
     </div>
     <div style="overflow: hidden; float: right; width: 3.6in;">
         <div style="width: 1.2in; float: left;">20. Date of Expiry :</div>
         <div style="width: 2in;">
-            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;">{{ date('d/m/Y', strtotime($profile->visa_date_of_expire)) }}</div>
             <div style="text-align: center;"><small>DD/MM/YY</small></div>
         </div>
     </div>
@@ -418,7 +448,7 @@
     <div style="overflow: hidden; float: left; width: 7.3in">
         <div style="width: 2.7in; float: left;">26. Duration of Proposed Stay in Bangladesh :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">STUDY</div>
         </div>
     </div>
 </div>
@@ -427,7 +457,7 @@
     <div style="overflow: hidden; float: left; width: 7.3in">
         <div style="width: 2.7in; float: left;">27. Tentative Date of Arrival in Bangladesh :</div>
         <div style="width: 2in;">
-            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;">{{ date('d/m/Y', strtotime(date('Y-m-d'). ' + 15 days')) }}</div>
             <div style="text-align: center;"><small>DD/MM/YY</small></div>
         </div>
     </div>
@@ -470,7 +500,21 @@
 <div style="overflow: hidden; margin-bottom:0.07in;">
     <div style="width: 3.1in; float: left;">29. Name of Father/Mother/Spouse/Other(Relation) :</div>
     <div style="">
-        <div style="border-bottom: 1px solid #000; width: 4.15in; height: 0.23in;"></div>
+        <div style="border-bottom: 1px solid #000; width: 4.15in; height: 0.23in;">
+            @if(!empty($profile->father_name))
+                {{ $profile->father_name }}
+            @else
+                @if(!empty($profile->mother_name))
+                    {{ $profile->mother_name }}
+                @else
+                    @if(!empty($profile->spouse_name))
+                        {{ $profile->spouse_name }}
+                    @else
+
+                    @endif
+                @endif
+            @endif
+        </div>
     </div>
 </div>
 
@@ -478,20 +522,20 @@
     <div style="overflow: hidden; float: left; width: 3.3in;">
         <div style="width: 1.2in; float: left;">30. Date of Arrival :<br>in Bangladesh</div>
         <div style="width: 2in;">
-            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;">{{ date('d/m/Y', strtotime($profile->date_of_arrival_bd)) }}</div>
             <div style="text-align: center;"><small>DD/MM/YY</small></div>
         </div>
     </div>
     <div style="overflow: hidden; float: left; width: 1.91in;">
         <div style="width: 0.8in; float: left;">31. Visa No :</div>
         <div style="width: 1in;">
-            <div style="border-bottom: 1px solid #000; width: 1in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 1in; height: 0.23in;">{{ $profile->last_visa_no }}</div>
         </div>
     </div>
     <div style="overflow: hidden; float: left; width: 2in;">
         <div style="width: 1in; float: left;">32. Type of Visa :</div>
         <div style="width: 1in;">
-            <div style="border-bottom: 1px solid #000; width: 1in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 1in; height: 0.23in;">{{ $profile->visa_category }}</div>
         </div>
     </div>
 </div>
@@ -500,14 +544,14 @@
     <div style="overflow: hidden; float: left; width: 3.6in;">
         <div style="width: 1.1in; float: left;">33. Date of Issue :</div>
         <div style="width: 2in;">
-            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;">{{ date('d/m/Y', strtotime($profile->visa_date_of_issue)) }}</div>
             <div style="text-align: center;"><small>DD/MM/YY</small></div>
         </div>
     </div>
     <div style="overflow: hidden; float: left; width: 3.6in;">
         <div style="width: 1.2in; float: left;">34. Date of Expiry :</div>
         <div style="width: 2in;">
-            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border-bottom: 1px solid #000; width: 2in; height: 0.23in;">{{ date('d/m/Y', strtotime($profile->visa_date_of_expire)) }}</div>
             <div style="text-align: center;"><small>DD/MM/YY</small></div>
         </div>
     </div>
@@ -517,7 +561,7 @@
     <div style="overflow: hidden; float: left; width: 7.3in">
         <div style="width: 2.2in; float: left;">35. Place of Issue :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">{{ $profile->visa_place_of_issue }}</div>
         </div>
     </div>
 </div>
@@ -526,7 +570,7 @@
     <div style="overflow: hidden; float: left; width: 7.3in">
         <div style="width: 2.2in; float: left;">36. Purpose of Extension of Visa :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">STUDY</div>
         </div>
     </div>
 </div>
@@ -535,7 +579,7 @@
     <div style="overflow: hidden; float: left; width: 7.3in">
         <div style="width: 2.2in; float: left;">36. Duration of Purposed Extension :</div>
         <div style="">
-            <div style="border: 1px solid #000; width: 2in; height: 0.23in;"></div>
+            <div style="border: 1px solid #000; width: 2in; height: 0.23in;">4 Years</div>
         </div>
     </div>
 </div>

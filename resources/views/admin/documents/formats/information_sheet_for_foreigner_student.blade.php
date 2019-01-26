@@ -1,53 +1,56 @@
+@php
+    $profile = $pdf_data['profile'];
+@endphp
 <div style="text-align: center; margin-bottom: 0.5in;">
     <h3 style="margin: 0.05in 0;">Dhaka International University</h3>
     <h2>Information Sheet for foreigner student</h2>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
-        <strong>1.Name of the student:</strong>
+        <strong>1.Name of the student:</strong> {{ $profile->relUser->name }}
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
-        <strong>2.Father's name:</strong>
+        <strong>2.Father's name:</strong> {{ $profile->father_name }}
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
-        <strong>3.Mother's name:</strong>
+        <strong>3.Mother's name:</strong> {{ $profile->mother_name }}
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
-        <strong>4.Permanent address:</strong>
+        <strong>4.Permanent address:</strong> {{ $profile->permanent_address }}
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
-        <strong>5.Present address:</strong>
+        <strong>5.Present address:</strong> {{ $profile->present_address }}
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 3.3in;">
-        <strong>6.Department:</strong>
+        <strong>6.Department:</strong> {{ $profile->department_name }}
     </div>
     <div style="float: right; width: 3.3in;">
-        <strong>7.Batch</strong>
+        <strong>7.Batch:</strong> {{ $profile->batch_name }}
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
-        <strong>8.Roll:</strong>
+        <strong>8.Roll:</strong> {{ $profile->roll }}
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
-        <strong>9.Passport no:</strong>
+        <strong>9.Passport no:</strong> {{ $profile->passport_no }}
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
-        <strong>10.Email Id:</strong>
+        <strong>10.Email Id:</strong> {{ $profile->relUser->email }}
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
@@ -57,9 +60,10 @@
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
-        <strong>12.Contact no:</strong>
+        <strong>12.Contact no:</strong> {{ $profile->bd_mobile }}
     </div>
 </div>
+
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
         <strong><u>Reference in Dhaka</u></strong>
@@ -67,7 +71,7 @@
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">
     <div style="float: left; width: 7.2in;">
-        <strong>Name:</strong>
+        <strong>Name:</strong> {{ $profile->relReferralBy->name }}
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom:0.05in;">

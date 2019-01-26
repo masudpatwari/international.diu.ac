@@ -11,6 +11,18 @@
         @endif
     </div>
     {{ Form::close() }}
+    {{ Form::open(['route' => 'documents.src', 'id' => 'src_by_reg']) }}
+
+    <div class="input-group mb-3">
+        {{ Form::text('email', NULL, ['class' => 'form-control', 'required', 'placeholder' => 'Email no']) }}
+        <div class="input-group-append">
+            {{ Form::button('Search', ['type' => 'submit', 'class' => 'btn btn-sm btn-outline-secondary']) }}
+        </div>
+        @if ($errors->has('email'))
+            <span class="form-text text-danger">{{ $errors->first('email') }}</span>
+        @endif
+    </div>
+    {{ Form::close() }}
     <table id="src_by_reg_table" class="table table-light table-sm table-bordered">
         <thead>
         <tr>
@@ -27,8 +39,8 @@
                     <td>{{ $profile->interested_subject }}</td>
                     <td>{{ $profile->registration_no }}</td>
                     <td>
-                        <p>{{ $profile->relUser->name }}</p>
-                        <p>{{ $profile->relUser->email }}</p>
+                        <p>{{ (!empty($profile->relUser)) ? $profile->relUser->name : '' }}</p>
+                        <p>{{ (!empty($profile->relUser)) ? $profile->relUser->email : '' }}</p>
                     </td>
                     <td>
                         <a class="btn btn-sm btn-warning" href="{{ route('documents.show', $profile->id) }}">Download</a>

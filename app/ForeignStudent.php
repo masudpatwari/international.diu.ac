@@ -12,11 +12,16 @@ class ForeignStudent extends Model
         "t_name_of_exam","t_group","t_roll_no","t_year_of_passing","t_letter_grade","t_cgpa","t_board","t_link_of_certificate",
         "th_name_of_exam","th_group","th_roll_no","th_year_of_passing","th_letter_grade","th_cgpa","th_board","th_link_of_certificate",
         "fo_name_of_exam","fo_group","fo_roll_no","fo_year_of_passing","fo_letter_grade","fo_cgpa","fo_board","fo_link_of_certificate",
-        "registration_no","student_id"
+        "registration_no","student_id","department_name","batch_name","roll","referral_id"
     ];
 
     public function relUser()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
+    }
+
+    public function relReferralBy()
+    {
+        return $this->belongsTo('App\User', 'referral_id', 'id');
     }
 }

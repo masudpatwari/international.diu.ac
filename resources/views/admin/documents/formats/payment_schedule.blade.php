@@ -1,3 +1,6 @@
+@php
+    $profile = $pdf_data['profile'];
+@endphp
 <table style="margin-bottom: 1.5in;">
     <tr>
         <td style="border: 1px solid #000; padding: 0.02in;" colspan="3" align="center">
@@ -7,14 +10,14 @@
     </tr>
     <tr>
         <td style="border: 1px solid #000; padding: 0.02in;" colspan="3">
-            <p>Name of the students :</p>
-            <p>Department:</p>
-            <p>Batch:</p>
-            <p>Roll:</p>
+            <p>Name of the students : {{ $profile->relUser->name }}</p>
+            <p>Department: {{ $profile->department_name }}</p>
+            <p>Batch: {{ $profile->batch_name }}</p>
+            <p>Roll: {{ $profile->roll }}</p>
             <p>Admission date:</p>
-            <p>Nationality:</p>
-            <p>Mobile no:</p>
-            <p>Passport no:</p>
+            <p>Nationality: {{ $profile->present_nationality }}</p>
+            <p>Mobile no: {{ $profile->bd_mobile }}</p>
+            <p>Passport no: {{ $profile->passport_no }}</p>
         </td>
     </tr>
     <tr>

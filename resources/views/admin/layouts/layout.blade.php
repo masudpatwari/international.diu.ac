@@ -68,7 +68,7 @@
                                 <div class="db-account-info">
                                     <a href="{{ route('profile.show') }}">
                                         <p>
-                                            <strong>{{ auth()->user()->first_name.' '.auth()->user()->last_name }}</strong>
+                                            <strong>{{ auth()->user()->name }}</strong>
                                         </p>
                                         <p>{{ auth()->user()->email }}</p>
                                     </a>

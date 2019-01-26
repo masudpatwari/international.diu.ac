@@ -37,6 +37,7 @@ class CreateForeignStudentsTable extends Migration
             $table->string('interested_subject');
             $table->string('passport_no', 20)->nullable();
             $table->string('type_of_passport', 20)->nullable();
+            $table->string('place_of_issue')->nullable();
             $table->date('date_of_issue')->nullable();
             $table->date('date_of_expire')->nullable();
             $table->date('date_of_last_visit_bd')->nullable();
@@ -62,6 +63,12 @@ class CreateForeignStudentsTable extends Migration
             $table->string('emergency_name', 50)->nullable();
             $table->string('emergency_nationality')->nullable();
             $table->string('emergency_mobile', 20)->nullable();
+
+            $table->string('department_name', 50)->nullable();
+            $table->string('batch_name', 50)->nullable();
+            $table->string('roll', 50)->nullable();
+            $table->string('semester', 10)->nullable();
+
             $table->integer('fg_monthly_income')->nullable();
             $table->string('o_name_of_exam', 50)->nullable();
             $table->string('o_group', 20)->nullable();
@@ -98,6 +105,7 @@ class CreateForeignStudentsTable extends Migration
             $table->string('student_id')->nullable();
             $table->string('registration_no')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->integer('referral_id')->nullable();
             $table->timestamps();
         });
     }

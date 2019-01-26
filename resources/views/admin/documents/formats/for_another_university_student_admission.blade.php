@@ -1,10 +1,13 @@
+@php
+    $profile = $pdf_data['profile'];
+@endphp
 <div style="text-align: center; margin-bottom: 0.4in;">
     <h4>For another University's student's admission</h4>
 </div>
 
 <div style="margin-bottom: 0.1in;">
     <p>Date :</p>
-    <p>The Honorable Chairman</p>
+    <p>The Registrar</p>
     <p>Board of Trustees</p>
     <p>Dhaka International University</p>
     <p>Banani, Dhaka-1213</p>
@@ -41,11 +44,12 @@
 
 <div style="margin-top: 0.5in;">
     <p>Yours faithfully,</p>
-    <p>Name :</p>
-    <p>Passport : </p>
-    <p>Nationality : </p>
-    <p>Department : </p>
-    <p>Roll : </p>
-    <p>Semester : </p>
-    <p>Contact no : </p>
+    <p>Name : {{ $profile->relUser->name }}</p>
+    <p>Passport : {{ $profile->passport_no }}</p>
+    <p>Nationality : {{ $profile->present_nationality }}</p>
+    <p>Department : {{ $profile->department_name }}</p>
+    <p>Batch : {{ $profile->batch_name }}</p>
+    <p>Roll : {{ $profile->roll }}</p>
+    <p>Semester :  {{ $profile->semester }}</p>
+    <p>Contact no : {{ $profile->bd_mobile }}</p>
 </div>

@@ -43,10 +43,11 @@ class ErpController extends Controller
             $cache_values = Cache::get('erp_student_profile');
             $profile = collect($cache_values);
 
+
             $user = User::create([
                 'name' => $profile['name'],
                 'email' => (!empty($profile['email'])) ? $profile['email'] : 'mail'.time().'@example.com',
-                'password' => (!empty($profile['password'])) ? $profile['password'] : 'diu123',
+                'password' => (!empty($profile['password'])) ? bcrypt($profile['password']) : bcrypt('diu123'),
                 'role' => 'student',
             ]);
 
@@ -96,7 +97,7 @@ class ErpController extends Controller
                 'guardian_mobile' => $profile['g_cellno'],
                 'emergency_name' => $profile['e_name'],
                 'emergency_nationality' => NULL,
-                'guardian_mobile' => $profile['e_cellno'],
+                'emergency_mobile ' => $profile['e_cellno'],
                 'o_name_of_exam' => $profile['e_exam_name1'],
                 'o_group' => $profile['e_group1'],
                 'o_roll_no' => $profile['e_roll_no_1'],
@@ -131,6 +132,10 @@ class ErpController extends Controller
                 'fo_link_of_certificate' => NULL,
                 'registration_no' => $profile['reg_code'],
                 'student_id' => $profile['id'],
+                'department_name' => $profile['department']->name,
+                'batch_name' => $profile['batch']->batch_name,
+                'roll' => $profile['roll_no'],
+                'referral_id' => auth()->user()->id,
             ]);
 
             if (!empty($user->id) && !empty($student->id))

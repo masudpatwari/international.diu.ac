@@ -1,10 +1,13 @@
+@php
+    $profile = $pdf_data['profile'];
+@endphp
 <div style="text-align: center; margin-bottom: 0.2in;">
     <h3>Dhaka International University</h3>
     <h4>Admission Letter</h4>
 </div>
 
 <div style="margin-bottom: 0.2in;">
-    <p>Dear :</p>
+    <p>Date :</p>
     <p>The Register</p>
     <p>Dhaka International University</p>
     <p>Banani, Dhaka-1213</p>
@@ -14,34 +17,44 @@
 <div style="overflow: hidden;">
     <div style="width: 0.3in; float: left">I am</div>
     <div style="float: left;">
-        <div style="border-bottom: 1px dotted #000; height: 0.2in;"></div>
+        <div style="border-bottom: 1px dotted #000; height: 0.2in;">
+            <div style="padding: 0 0.1in;">{{ $profile->relUser->name }}</div>
+        </div>
     </div>
 </div>
 <div style="overflow: hidden;">
     <div style="overflow: hidden; float: left; width: 3.3in;">
         <div style="width: 0.8in; float: left">Nationality</div>
         <div style="float: left;">
-            <div style="border-bottom: 1px dotted #000; height: 0.2in;"></div>
+            <div style="border-bottom: 1px dotted #000; height: 0.2in;">
+                <div style="padding: 0 0.1in;">{{ $profile->present_nationality }}</div>
+            </div>
         </div>
     </div>
     <div style="overflow: hidden; float: left; width: 3.3in;">
         <div style="width: 0.8in; float: left">Passport no</div>
         <div style="float: left;">
-            <div style="border-bottom: 1px dotted #000; height: 0.2in;"></div>
+            <div style="border-bottom: 1px dotted #000; height: 0.2in;">
+                <div style="padding: 0 0.1in;">{{ $profile->passport_no }}</div>
+            </div>
         </div>
     </div>
 </div>
 <div style="overflow: hidden;">
     <div style="width: 1.1in; float: left">Present address</div>
     <div style="float: left;">
-        <div style="border-bottom: 1px dotted #000; height: 0.2in;"></div>
+        <div style="border-bottom: 1px dotted #000; height: 0.2in;">
+            <div style="padding: 0 0.1in;">{{ $profile->present_address }}</div>
+        </div>
     </div>
 </div>
 <div style="overflow: hidden; margin-bottom: 0.2in">
     <div style="overflow: hidden; float: left; width: 2.6in;">
         <div style="width: 0.5in; float: left">Cell no</div>
         <div style="float: left;">
-            <div style="border-bottom: 1px dotted #000; height: 0.2in;"></div>
+            <div style="border-bottom: 1px dotted #000; height: 0.2in;">
+                <div style="padding: 0 0.1in;">{{ $profile->bd_mobile }}</div>
+            </div>
         </div>
     </div>
     <div style="overflow: hidden; float: left; width: 4in;">
@@ -49,11 +62,11 @@
     </div>
 </div>
 <div style="margin-bottom: 0.1in;">
-    <p>Name : </p>
-    <p>Passport no : </p>
-    <p>Date of Birth : </p>
-    <p>Nationality : </p>
-    <p>Area of interest : </p>
+    <p>Name : {{ $profile->relUser->name }}</p>
+    <p>Passport no : {{ $profile->passport_no }}</p>
+    <p>Date of Birth : {{ $profile->dob }}</p>
+    <p>Nationality : {{ $profile->present_nationality }}</p>
+    <p>Area of interest / Name of department: {{ $profile->interested_subject }}</p>
     <p>Submitted documents : </p>
 </div>
 <div style="margin-bottom: 0.1in;">
@@ -61,11 +74,11 @@
     <p>2.Photocopy of passport.</p>
 </div>
 <div style="margin-bottom: 0.2in;">
-    <p>After arrival in Bangladesh student must hand over his/her passport to reprsentative of DIU authority and student must complete registration process wihtin five days.</p>
+    <p>After arrival in Bangladesh student must hand over his/her passport to the representative of DIU authority and student must complete registration process wihtin five days.</p>
 </div>
 <div style="margin-bottom: 0;">
     <p>Yours faithfully,</p>
-    <p>Name :</p>
-    <p>Mobile no : </p>
-    <p>Email : </p>
+    <p>Name : {{ $profile->relUser->name }}</p>
+    <p>Mobile no : {{ $profile->bd_mobile }}</p>
+    <p>Email : {{ $profile->relUser->email }}</p>
 </div>

@@ -1,3 +1,6 @@
+@php
+    $profile = $pdf_data['profile'];
+@endphp
 <div style="text-align: center; margin-bottom: 0.2in;">
     <h2>Dhaka International University</h2>
     <h5>House # 04, Road # 01, Block # F, Banani, Dhaka-1213.</h5>
@@ -8,13 +11,17 @@
     <div style="overflow: hidden; float: left; width: 3in;">
         <div style="width: 0.1in; float: left">I</div>
         <div style="float: left;">
-            <div style="border-bottom: 1px dotted #000; height: 0.2in;"></div>
+            <div style="border-bottom: 1px dotted #000; height: 0.2in;">
+                <div style="padding: 0 0.1in;">{{ $profile['rel_user']['name'] }}</div>
+            </div>
         </div>
     </div>
     <div style="overflow: hidden; float: left; width: 3.6in;">
         <div style="width: 1.4in; float: left">bearing Passport no</div>
         <div style="float: left;">
-            <div style="border-bottom: 1px dotted #000; height: 0.2in;"></div>
+            <div style="border-bottom: 1px dotted #000; height: 0.2in;">
+                <div style="padding: 0 0.1in;">{{ $profile['passport_no'] }}</div>
+            </div>
         </div>
     </div>
 </div>
@@ -27,7 +34,7 @@
         </div>
     </div>
     <div style="overflow: hidden; float: left; width: 3.6in;">
-        , am declaring the following statements:
+        , declaring the following statements:
     </div>
 </div>
 
@@ -52,20 +59,21 @@
     <li>I will apply for my visa extension two months before the expiring date.</li>
     <li>I will also provide my house address, mobile number if I change.</li>
     <li>I will show my best behavior with the University teachers, staffs and students as well as with the people of the country. I will maintain the above rules.</li>
-    <li>I must complete my study from this University. I will not apply for Credit transfer. I will not apply for Transcript until the course completion .</li>
+    <li>I must complete my study from this University. I will not apply for Credit transfer. I will not apply for Transcript until the course completion. I will --- the above rules.</li>
 </ol>
 
 <div style="margin-top: 0.2in;">
-    <p>Name -</p>
-    <p>Department -</p>
-    <p>Batch - </p>
-    <p>Roll -</p>
-    <p>Registration -</p>
-    <p>Address -</p>
-    <p>Contact -</p>
+    <p>Name : {{ $profile->relUser->name }}</p>
+    <p>Passport : {{ $profile->passport_no }}</p>
+    <p>Nationality : {{ $profile->present_nationality }}</p>
+    <p>Department : {{ $profile->department_name }}</p>
+    <p>Batch : {{ $profile->batch_name }}</p>
+    <p>Roll : {{ $profile->roll }}</p>
+    <p>Semester :  {{ $profile->semester }}</p>
+    <p>Contact no : {{ $profile->bd_mobile }}</p>
 </div>
 <div style="margin-top: 0.2in;">
-    <p><u>Referred by</u></p>
+    <p>Referred by</p>
     <p>Name -</p>
     <p>Contact -</p>
     <p>Address -</p>

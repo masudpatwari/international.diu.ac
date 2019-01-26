@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('designation');
+            $table->string('mobile_no', 20)->nullable();
             $table->timestamps();
         });
     }

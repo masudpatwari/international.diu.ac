@@ -1,7 +1,7 @@
 {margin: 0; padding: 0;}
 body{
-    font-size: 14px;
-    line-height: 30px;
+    font-size: 14px !important;
+    line-height: 30px !important;;
     background-color: transparent;
 }
 table{

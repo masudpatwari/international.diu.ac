@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\ForeignStudent', 'user_id', 'id');
     }
+
+    public function relEmployee()
+    {
+        return $this->hasOne('App\Employee', 'user_id', 'id');
+    }
 }
