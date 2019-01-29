@@ -103,6 +103,9 @@
                             <a href="{{ route('agent.index') }}" class="">Agent</a>
                         </li>
                         <li>
+                            <a href="{{ route('employee.index') }}" class="">Employee</a>
+                        </li>
+                        <li>
                             <a href="{{ route('erp.index') }}" class="">ERP Student</a>
                         </li>
                         <li>
@@ -112,6 +115,9 @@
                             <a href="{{ route('documents.index') }}" class="">Documents</a>
                         </li>
                         <li>
+                            <a href="{{ route('admission.index') }}" class="">Admission Going On</a>
+                        </li>
+                        <li>
                             <a href="{{ route('ticket.index') }}" class="">Support Tickets</a>
                         </li>
                     </ul>
@@ -119,9 +125,6 @@
             </div>
             <div class="db-column">
                 <div class="db-row">
-                    <p class="">
-                        <small>Copyright &copy <a href="">mesbaul.info</a></small>
-                    </p>
                 </div>
             </div>
         </aside>

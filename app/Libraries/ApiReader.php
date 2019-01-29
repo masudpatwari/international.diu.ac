@@ -3,6 +3,7 @@
 namespace App\Libraries;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class ApiReader
 {
@@ -212,6 +213,24 @@ class ApiReader
     {
         $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/student_by_id/'.$id.'', false, self::ssl()));
         return collect($decode_values);
+    }
+
+    public static function wp_emp($request)
+    {
+        if (Cache::has('wp_emp')) {
+            $cache_values = Cache::get('wp_emp');
+            $collection = collect($cache_values);
+        }
+        else
+        {
+            $expiresAt = now()->addMinutes(1000);
+            $collection = json_decode(file_get_contents('' . env('RMS_URL') . '/all_employees/', false, self::ssl()));
+            Cache::put('wp_emp', collect($collection), $expiresAt);
+        }
+
+        return $collection->filter(function ($value, $key) use ($request) {
+            return false !== stristr($value->name, $request->name);
+        });
     }
 
 }

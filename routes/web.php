@@ -40,6 +40,13 @@ Route::group(['middleware' => ['Logged_in']], function () {
         'index'
     ]);
 
+    Route::GET('admission', 'AdmissionGoingOnController@index')->name('admission.index');
+
+    Route::GET('employee', 'EmployeeController@index')->name('employee.index');
+    Route::POST('employee', 'EmployeeController@index')->name('employee.src');
+    Route::GET('employee/{id}', 'EmployeeController@show')->name('employee.show');
+    Route::POST('employee/{id}', 'EmployeeController@update')->name('employee.save');
+
 
     Route::GET('documents', 'DocumentsController@index')->name('documents.index');
     Route::POST('documents', 'DocumentsController@index')->name('documents.src');

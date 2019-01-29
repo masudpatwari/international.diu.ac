@@ -29,22 +29,6 @@ class DocumentsController extends Controller
             );
             $data['profiles'] = ForeignStudent::with('relUser')->where('registration_no', 'like', '%'.$request->reg_no.'%')->get();
         }
-        if ($request->input('email')) {
-            $request->validate(
-                [
-                    'email' => 'required',
-                ],
-                [
-                    'email.required' => 'Email is required',
-                ]
-            );
-
-            $value = $request->email;
-
-            $data['profiles'] = ForeignStudent::with(['relUser' => function($query) use ($value){
-                $query->where('email', 'like', '%'.$value.'%')->first();
-            }])->get();
-        }
         return view('admin.documents.index', $data);
     }
 
