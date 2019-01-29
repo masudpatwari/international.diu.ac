@@ -8,7 +8,7 @@ use App\ForeignStudent;
 use App\Libraries\ApiReader;
 use Illuminate\Support\Facades\Cache;
 
-class StudentsController extends Controller
+class MoveStudentController extends Controller
 {
     public function index()
     {

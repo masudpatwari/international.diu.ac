@@ -99,30 +99,71 @@
             <div class="db-column db-nav">
                 <div class="db-row">
                     <ul class="db-navigation">
-                        <li>
-                            <a href="{{ route('agent.index') }}" class="">Agent</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('employee.index') }}" class="">Employee</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('erp.index') }}" class="">ERP Student</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('student.index') }}" class="">Students</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('students.index') }}" class="">Foreign Student</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('documents.index') }}" class="">Documents</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admission.index') }}" class="">Admission Going On</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('ticket.index') }}" class="">Support Tickets</a>
-                        </li>
+                        @if(auth()->user()->role == 'administrator')
+                            <li>
+                                <a href="{{ route('ticket.index') }}" class="">Support Tickets</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('employee.index') }}" class="">Employee</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('erp.index') }}" class="">Import Exists Student</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('student.index') }}" class="">Register Student</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('documents.index') }}" class="">Print Document</a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->role == 'employee')
+                            <li>
+                                <a href="{{ route('ticket.index') }}" class="">Support Tickets</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('agent.index') }}" class="">Agents</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('employee.index') }}" class="">Employee</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('erp.index') }}" class="">Import Exists Student</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('students.index') }}" class="">Final Admission</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('student.index') }}" class="">Register Student</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('documents.index') }}" class="">Print Document</a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->role == 'agent')
+                            <li>
+                                <a href="{{ route('ticket.index') }}" class="">Support Tickets</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('profile.show') }}" class="">Update Information</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('student.index') }}" class="">Enroll A Student</a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->role == 'student')
+                            <li>
+                                <a href="{{ route('ticket.index') }}" class="">Support Tickets</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('profile.show') }}" class="">Update Information</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('student.index') }}" class="">Apply for FNF</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>

@@ -135,7 +135,6 @@ class ErpController extends Controller
                 'department_name' => $profile['department']->name,
                 'batch_name' => $profile['batch']->batch_name,
                 'roll' => $profile['roll_no'],
-                'referral_id' => auth()->user()->id,
             ]);
 
             if (!empty($user->id) && !empty($student->id))

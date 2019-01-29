@@ -36,7 +36,7 @@ Route::group(['middleware' => ['Logged_in']], function () {
 
     Route::resource('agent', 'AgentController');
     Route::resource('student', 'StudentController');
-    Route::resource('students', 'StudentsController');
+    Route::resource('students', 'MoveStudentController');
     Route::resource('/dashboard', 'DashboardController')->only([
         'index'
     ]);
@@ -60,9 +60,9 @@ Route::group(['middleware' => ['Logged_in']], function () {
     Route::GET('erp/{id}/store', 'ErpController@store')->name('erp.store');
 
 
-    Route::GET('/move_to/{id}/step_one', 'StudentsController@move_to_step_one')->name('students.move_to_step_one');
-    Route::GET('/move_to/{id}/{batch_id}/step_two', 'StudentsController@move_to_step_two')->name('students.move_to_step_two');
-    Route::POST('/move_to/{id}/{batch_id}/confirm', 'StudentsController@move_to_confirm')->name('students.move_to_confirm');
+    Route::GET('/move_to/{id}/step_one', 'MoveStudentController@move_to_step_one')->name('students.move_to_step_one');
+    Route::GET('/move_to/{id}/{batch_id}/step_two', 'MoveStudentController@move_to_step_two')->name('students.move_to_step_two');
+    Route::POST('/move_to/{id}/{batch_id}/confirm', 'MoveStudentController@move_to_confirm')->name('students.move_to_confirm');
 
     Route::GET('/ticket', 'MailTicket@index')->name('ticket.index');
     Route::GET('/ticket/{id}', 'MailTicket@show')->name('ticket.show');

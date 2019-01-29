@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Libraries\ApiReader;
 
 class DashboardController extends Controller
 {
@@ -15,7 +16,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $data['admission_batch'] = ApiReader::admission_on_going_batch();
+        return view('admin.dashboard', $data);
     }
 
     /**
