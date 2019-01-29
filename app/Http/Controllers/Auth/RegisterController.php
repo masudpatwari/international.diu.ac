@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Libraries\CountriesArray;
+use App\Ticket;
 use App\User;
 use App\ForeignStudent;
 use App\Agent;
@@ -93,6 +94,15 @@ class RegisterController extends Controller
         $user->password = bcrypt($request->password);
         $user->role = 'student';
         $user->save();
+
+        $ticket = new Ticket();
+        $ticket->name = $request->name;
+        $ticket->email = $request->email;
+        $ticket->present_nationality = $request->present_nationality;
+        $ticket->interested_subject = $request->interested_subject;
+        $ticket->body = "Please give me the information about this {$request->interested_subject}";
+        $ticket->status = 1;
+        $ticket->save();
 
         $student = new ForeignStudent();
         $student->user_id = $user->id;

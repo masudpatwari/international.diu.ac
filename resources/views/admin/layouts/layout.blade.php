@@ -109,6 +109,9 @@
                             <a href="{{ route('erp.index') }}" class="">ERP Student</a>
                         </li>
                         <li>
+                            <a href="{{ route('student.index') }}" class="">Students</a>
+                        </li>
+                        <li>
                             <a href="{{ route('students.index') }}" class="">Foreign Student</a>
                         </li>
                         <li>

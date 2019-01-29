@@ -35,6 +35,7 @@ Route::group(['middleware' => ['Logged_in']], function () {
     Route::PUT('/profile/edit/student', 'ProfileController@student_profile_update')->name('student.profile.update');
 
     Route::resource('agent', 'AgentController');
+    Route::resource('student', 'StudentController');
     Route::resource('students', 'StudentsController');
     Route::resource('/dashboard', 'DashboardController')->only([
         'index'
