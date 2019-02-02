@@ -11,10 +11,6 @@
     <section class="diu-contact-us diu-section-bg">
         <div class="container diu-left-bottom">
             {{ Form::open(['route' => 'register', 'class' => '']) }}
-            @if (session()->has('message'))
-                @component('alert')
-                @endcomponent
-            @endif
             <div class="diu-fg form-group">
                 {{ Form::label('name', 'Name') }}
                 {{ Form::text('name', NULL, ['class' => ['form-control', $errors->has('name') ? ' is-invalid' : ''], 'required'])  }}
