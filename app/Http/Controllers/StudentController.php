@@ -67,6 +67,7 @@ class StudentController extends Controller
         $ticket->interested_subject = $request->interested_subject;
         $ticket->body = "Please give me the information about this {$request->interested_subject}";
         $ticket->status = 1;
+        $ticket->agent_id = (auth()->user()->role == 'agent') ? auth()->user()->id : NULL;
         $ticket->save();
 
         $student = new ForeignStudent();

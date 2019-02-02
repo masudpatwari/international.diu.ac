@@ -7,26 +7,29 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <p>
-                    <strong>Agent ID : </strong>
-                    {{ sprintf('FA%04u', $profile->id) }}
-                </p>
-                <p class="form-control-plaintext">
-                    <strong>Name of Agent : </strong>
-                    {{ $profile->name }}
-                </p>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
+                        <p>
+                            <strong>Agent ID : </strong>
+                            {{ sprintf('FA%04u', $profile->id) }}
+                        </p>
+                        <p class="form-control-plaintext">
+                            <strong>Name of Agent : </strong>
+                            {{ $profile->name }}
+                        </p>
                         <p class="form-control-plaintext text-capitalize">
                             <strong>Type of Agent : </strong>
                             {{ $profile->relAgent->type_of_agent }}
                         </p>
-                    </div>
-                    <div class="col-md-6">
                         <p class="form-control-plaintext">
                             <strong>Country Name : </strong>
                             {{ $profile->relAgent->country_name }}
                         </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="db-profile-photo">
+                            <img src="{{ asset('uploads/'.$profile->profile_photo.'') }}">
+                        </div>
                     </div>
                 </div>
                 <div class="row">

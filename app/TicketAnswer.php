@@ -16,4 +16,9 @@ class TicketAnswer extends Model
     {
         return $this->belongsTo('App\Ticket', 'ticket_id', 'id');
     }
+
+    public function relAnswerBy()
+    {
+        return $this->belongsTo('App\User', 'answer_by', 'id');
+    }
 }

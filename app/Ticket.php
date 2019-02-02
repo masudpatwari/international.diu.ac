@@ -10,9 +10,4 @@ class Ticket extends Model
     {
         return $this->hasMany('App\TicketAnswer', 'ticket_id', 'id');
     }
-
-    public function relTicketAttachment()
-    {
-        return $this->hasMany('App\TicketAttachment', 'ticket_id', 'id');
-    }
 }

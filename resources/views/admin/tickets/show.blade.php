@@ -5,7 +5,7 @@
             <div class="db-ticket-header">
                 <div class="row">
                     <div class="col-md-4">
-                        <h5 class="mb-0"><p>{{ $ticket->first_name." ".$ticket->last_name }}</p></h5>
+                        <h5 class="mb-0"><p>{{ $ticket->name }}</p></h5>
                         <p>{{ $ticket->email }}</p>
                     </div>
                     <div class="col-md-8">
@@ -17,7 +17,7 @@
             <div class="db-ticket-chat">
                 <div class="db-ticket-message">
                     <p>
-                        <small>{{ $ticket->first_name." ".$ticket->last_name }}</small>
+                        <small>{{ $ticket->name }}</small>
                         <small class="float-right">{{ date('d M', strtotime($ticket->created_at)) }} at {{ date('h:i A', strtotime($ticket->created_at)) }}</small>
                     </p>
                     <p>{!! $ticket->body !!}</p>
@@ -26,10 +26,31 @@
                     @foreach($ticket->relTicketAnswer as $answer)
                         <div class="db-ticket-replay">
                             <p>
-                                <small>{{ ($answer->type == 'author') ? 'Dhaka International University' : $ticket->first_name." ".$ticket->last_name }}</small>
+                                @if($answer->type == 'author')
+                                    <small>{{ $answer->relAnswerBy->name }} Dhaka International University</small>
+                                @endif
+                                @if($answer->type == 'client')
+                                        <small>{{ $answer->relAnswerBy->name }}</small>
+                                @endif
                                 <small class="float-right">{{ date('d M', strtotime($answer->created_at)) }} at {{ date('h:i A', strtotime($answer->created_at)) }}</small>
                             </p>
                             <p>{!! $answer->ticket_answer !!}</p>
+                            @if($answer->relTicketAnswerAttachment->count() > 0)
+                                <p><strong>Attachments!</strong></p>
+                                <ul style="margin: 5px 0; padding: 0 10px">
+                                    @foreach($answer->relTicketAnswerAttachment as $attachment)
+                                        <li style="display: block; list-style: none">
+                                            <a href="{{ asset(env('UPLOAD_PATH').''.$attachment->filename) }}" download>{{ $attachment->original }}</a>
+                                            <span style="float: right">
+                                                <a href="{{ asset(env('UPLOAD_PATH').''.$attachment->filename) }}" download>Download</a>
+                                                @if(in_array($attachment->type, ['jpg', 'jpeg', 'gif', 'png']))
+                                                    <a href="{{ asset(env('UPLOAD_PATH').''.$attachment->filename) }}">&nbsp;&nbsp;|&nbsp;&nbsp;View</a>
+                                                @endif
+                                            </span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </div>
                     @endforeach
                 @endif

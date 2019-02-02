@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('ice-cream/assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('ice-cream/assets/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link rel="stylesheet" href="{{ asset('ice-cream/assets/css/icecream.css') }}">
 
@@ -18,6 +19,7 @@
     <!-- jquery latest version -->
     <script src="{{ asset('ice-cream/assets/bootstrap/js/popper.min.js') }}"></script>
     <script src="{{ asset('ice-cream/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('ice-cream/assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{ asset('ice-cream/assets/js/icecream.js') }}"></script>
 </head>
@@ -42,7 +44,7 @@
         </div>
         <div class="db-tools db-flex db-dropdown">
             <div class="db-tools-icon">
-                <a href="" class="text-dark"><i class="material-icons">info</i></a>
+                {{ auth()->user()->role }}
             </div>
             <div class="db-tools-icon">
                 <a href="" class="text-dark"><i class="material-icons">notifications_active</i></a>
@@ -58,7 +60,7 @@
                         <img src="{{ asset('uploads/'.auth()->user()->profile_photo.'') }}" alt="">
                     </div>
                 </a>
-                <div class="db-dropdown-menu">
+                <div class="db-dropdown-menu" style="display: none">
                     <div class="db-card">
                         <div class="db-card-body">
                             <div class="db-profile">

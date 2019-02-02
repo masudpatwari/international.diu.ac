@@ -82,7 +82,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     {{ Form::label('dob', 'Date of Birth') }}
-                    {{ Form::text('dob', $profile->relStudent->dob, ['class' => 'form-control', 'required'])  }}
+                    {{ Form::text('dob', db2d($profile->relStudent->dob), ['class' => 'form-control datepicker', 'required'])  }}
                     @if ($errors->has('dob'))
                         <span class="form-text text-danger">{{ $errors->first('dob') }}</span>
                     @endif
@@ -167,14 +167,14 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     {{ Form::label('date_of_issue', 'Date of Issue') }}
-                    {{ Form::text('date_of_issue', $profile->relStudent->date_of_issue, ['class' => 'form-control', 'required'])  }}
+                    {{ Form::text('date_of_issue', db2d($profile->relStudent->date_of_issue), ['class' => 'form-control datepicker', 'required'])  }}
                     @if ($errors->has('date_of_issue'))
                         <span class="form-text text-danger">{{ $errors->first('date_of_issue') }}</span>
                     @endif
                 </div>
                 <div class="form-group col-md-6">
                     {{ Form::label('date_of_expire', 'Date of Expire') }}
-                    {{ Form::text('date_of_expire', $profile->relStudent->date_of_expire, ['class' => 'form-control', 'required'])  }}
+                    {{ Form::text('date_of_expire', db2d($profile->relStudent->date_of_expire), ['class' => 'form-control datepicker', 'required'])  }}
                     @if ($errors->has('date_of_expire'))
                         <span class="form-text text-danger">{{ $errors->first('date_of_expire') }}</span>
                     @endif
@@ -182,7 +182,7 @@
             </div>
             <div class="form-group">
                 {{ Form::label('date_of_last_visit_bd', 'Date of Last Visit to Bangladesh') }}
-                {{ Form::text('date_of_last_visit_bd', $profile->relStudent->date_of_last_visit_bd, ['class' => 'form-control', 'required'])  }}
+                {{ Form::text('date_of_last_visit_bd', db2d($profile->relStudent->date_of_last_visit_bd), ['class' => 'form-control datepicker', 'required'])  }}
                 @if ($errors->has('date_of_last_visit_bd'))
                     <span class="form-text text-danger">{{ $errors->first('date_of_last_visit_bd') }}</span>
                 @endif
@@ -213,14 +213,14 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     {{ Form::label('visa_date_of_issue', 'Date of Issue') }}
-                    {{ Form::text('visa_date_of_issue', $profile->relStudent->visa_date_of_issue, ['class' => 'form-control', 'required'])  }}
+                    {{ Form::text('visa_date_of_issue', db2d($profile->relStudent->visa_date_of_issue), ['class' => 'form-control datepicker', 'required'])  }}
                     @if ($errors->has('visa_date_of_issue'))
                         <span class="form-text text-danger">{{ $errors->first('visa_date_of_issue') }}</span>
                     @endif
                 </div>
                 <div class="form-group col-md-6">
                     {{ Form::label('visa_date_of_expire', 'Date of Expiry') }}
-                    {{ Form::text('visa_date_of_expire', $profile->relStudent->visa_date_of_expire, ['class' => 'form-control', 'required'])  }}
+                    {{ Form::text('visa_date_of_expire', db2d($profile->relStudent->visa_date_of_expire), ['class' => 'form-control datepicker', 'required'])  }}
                     @if ($errors->has('visa_date_of_expire'))
                         <span class="form-text text-danger">{{ $errors->first('visa_date_of_expire') }}</span>
                     @endif
@@ -229,7 +229,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     {{ Form::label('date_of_arrival_bd', 'Date of Arrival in Bangladesh') }}
-                    {{ Form::text('date_of_arrival_bd', $profile->relStudent->date_of_arrival_bd, ['class' => 'form-control', 'required'])  }}
+                    {{ Form::text('date_of_arrival_bd', db2d($profile->relStudent->date_of_arrival_bd), ['class' => 'form-control datepicker', 'required'])  }}
                     @if ($errors->has('date_of_arrival_bd'))
                         <span class="form-text text-danger">{{ $errors->first('date_of_arrival_bd') }}</span>
                     @endif

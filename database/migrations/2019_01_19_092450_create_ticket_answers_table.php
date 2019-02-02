@@ -19,6 +19,8 @@ class CreateTicketAnswersTable extends Migration
             $table->foreign('ticket_id')->references('id')->on('tickets');
             $table->text('ticket_answer');
             $table->string('type', 50);
+            $table->unsignedInteger('answer_by');
+            $table->foreign('answer_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

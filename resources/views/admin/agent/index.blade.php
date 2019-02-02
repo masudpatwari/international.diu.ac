@@ -24,7 +24,7 @@
             <td>{{ $profile->country_name }}</td>
             <td class="text-capitalize">{{ $profile->status }}</td>
             <td>
-                <a href="{{ route('agent.show', ['id' => $profile->relUser->id]) }}">Details</a>
+                <a class="btn btn-sm btn-warning" href="{{ route('agent.show', ['id' => $profile->relUser->id]) }}">Details</a>
             </td>
         </tr>
         @endforeach

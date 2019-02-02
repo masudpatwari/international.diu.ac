@@ -12,7 +12,7 @@
 */
 
 Route::GET('/', 'FrontEndController@index')->name('/');
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::GET('/register/agent', 'Auth\RegisterController@showAgentRegistrationForm')->name('register.agent');
 Route::POST('/register/agent', 'Auth\RegisterController@registerAgent')->name('register.agent');
 
@@ -26,7 +26,7 @@ Route::GET('contact_us', 'FrontEndController@contact_us')->name('contact_us');
 Route::GET('faculty/{id}', 'FrontEndController@faculty')->name('faculty.show');
 
 
-Route::POST('/ticket', 'MailTicket@make_ticket')->name('ticket.create');
+Route::POST('/ticket', 'MailTicketController@make_ticket')->name('ticket.create');
 
 Route::group(['middleware' => ['Logged_in']], function () {
     Route::GET('/profile', 'ProfileController@show')->name('profile.show');
@@ -41,7 +41,6 @@ Route::group(['middleware' => ['Logged_in']], function () {
         'index'
     ]);
 
-    Route::GET('admission', 'AdmissionGoingOnController@index')->name('admission.index');
 
     Route::GET('employee', 'EmployeeController@index')->name('employee.index');
     Route::POST('employee', 'EmployeeController@index')->name('employee.src');
@@ -64,8 +63,8 @@ Route::group(['middleware' => ['Logged_in']], function () {
     Route::GET('/move_to/{id}/{batch_id}/step_two', 'MoveStudentController@move_to_step_two')->name('students.move_to_step_two');
     Route::POST('/move_to/{id}/{batch_id}/confirm', 'MoveStudentController@move_to_confirm')->name('students.move_to_confirm');
 
-    Route::GET('/ticket', 'MailTicket@index')->name('ticket.index');
-    Route::GET('/ticket/{id}', 'MailTicket@show')->name('ticket.show');
-    Route::POST('/ticket/{id}/answer', 'MailTicket@make_ticket_answer')->name('ticket.answer');
+    Route::GET('/ticket', 'MailTicketController@index')->name('ticket.index');
+    Route::GET('/ticket/{id}', 'MailTicketController@show')->name('ticket.show');
+    Route::POST('/ticket/{id}/answer', 'MailTicketController@make_ticket_answer')->name('ticket.answer');
 });
 

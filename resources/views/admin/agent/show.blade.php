@@ -2,40 +2,33 @@
 @section('content')
     <div class="mx-auto" style="max-width: 768px">
         <div class="pt-4 pb-4 clearfix">
-            <h4 class="d-inline">Agent {{ $profile->first_name ." ". $profile->last_name }}</h4>
+            <h4 class="d-inline">Agent {{ $profile->name }}</h4>
         </div>
         <div class="card">
             <div class="card-body">
-                <p>
-                    <strong>Agent ID : </strong>
-                    {{ sprintf('FA%04u', $profile->id) }}
-                </p>
                 <div class="row">
-                    <div class="col-md-6">
-                        <p class="form-control-plaintext">
-                            <strong>First Name : </strong>
-                            {{ $profile->first_name }}
+                    <div class="col-md-8">
+                        <p>
+                            <strong>Agent ID : </strong>
+                            {{ sprintf('FA%04u', $profile->id) }}
                         </p>
-                    </div>
-                    <div class="col-md-6">
                         <p class="form-control-plaintext">
-                            <strong>Last Name : </strong>
-                            {{ $profile->last_name }}
+                            <strong>Name of Agent : </strong>
+                            {{ $profile->name }}
                         </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
                         <p class="form-control-plaintext text-capitalize">
                             <strong>Type of Agent : </strong>
                             {{ $profile->relAgent->type_of_agent }}
                         </p>
-                    </div>
-                    <div class="col-md-6">
                         <p class="form-control-plaintext">
                             <strong>Country Name : </strong>
                             {{ $profile->relAgent->country_name }}
                         </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="db-profile-photo">
+                            <img src="{{ asset('uploads/'.$profile->profile_photo.'') }}">
+                        </div>
                     </div>
                 </div>
                 <div class="row">

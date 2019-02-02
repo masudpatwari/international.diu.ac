@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -41,5 +41,20 @@ class User extends Authenticatable
     public function relEmployee()
     {
         return $this->hasOne('App\Employee', 'user_id', 'id');
+    }
+
+    public function relEmployeeCreatedBy()
+    {
+        return $this->hasMany('App\Employee', 'created_by', 'id');
+    }
+
+    public function relStudentReferralId()
+    {
+        return $this->hasMany('App\ForeignStudent', 'referral_id', 'id');
+    }
+
+    public function relTicketAnswerBy()
+    {
+        return $this->hasMany('App\TicketAnswer', 'answer_by', 'id');
     }
 }

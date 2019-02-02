@@ -7,6 +7,10 @@ use App\Libraries\ApiReader;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
 
 
     /**

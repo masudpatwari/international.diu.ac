@@ -106,6 +106,7 @@ class EmployeeController extends Controller
                 'emp_id' => $employee->id,
                 'designation' => $employee->position,
                 'mobile_no' => $employee->mno1,
+                'created_by' => auth()->user()->id,
             ]);
 
             if (!empty($users->id) && !empty($employees->id))

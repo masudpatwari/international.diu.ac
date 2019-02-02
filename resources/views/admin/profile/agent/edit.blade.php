@@ -183,8 +183,7 @@
                     <span class="form-text text-danger">{{ $errors->first('profile_photo') }}</span>
                 @endif
             </div>
-            {{ Form::button('Register', ['type'=>'submit', 'class' => 'btn btn-sm btn-primary']) }}
-            {{ link_to_route('login', 'Back to login', NULL, ['class' => 'diu-login-btn ml-3']) }}
+            {{ Form::button('Submit', ['type'=>'submit', 'class' => 'btn btn-sm btn-primary']) }}
             {{ Form::close() }}
         </div>
     </div>

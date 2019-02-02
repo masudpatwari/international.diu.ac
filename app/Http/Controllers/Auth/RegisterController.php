@@ -8,8 +8,10 @@ use App\User;
 use App\ForeignStudent;
 use App\Agent;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\CourseFee;
@@ -46,34 +48,11 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function showRegistrationForm()
     {
-        /*return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);*/
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        /*return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);*/
+        $data['courses'] = CourseFee::all()->pluck('name', 'name');
+        $data['country'] = CountriesArray::country()->pluck('name', 'name');
+        return view('auth.register', $data);
     }
 
     public function register(Request $request)
@@ -93,7 +72,10 @@ class RegisterController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->role = 'student';
+        $user->email_verified = sha1(time());
         $user->save();
+
+        event(new Registered($user));
 
         $ticket = new Ticket();
         $ticket->name = $request->name;
@@ -102,6 +84,7 @@ class RegisterController extends Controller
         $ticket->interested_subject = $request->interested_subject;
         $ticket->body = "Please give me the information about this {$request->interested_subject}";
         $ticket->status = 1;
+        $ticket->agent_id = NULL;
         $ticket->save();
 
         $student = new ForeignStudent();
@@ -110,15 +93,12 @@ class RegisterController extends Controller
         $student->present_nationality = $request->present_nationality;
         $student->save();
 
-        return redirect()->back()->with('message', ['success' => 'Registration successful!']);
+        $this->guard()->login($user);
+
+        return redirect()->route('verification.notice')->with('message', ['success' => 'Registration successful!']);
     }
 
-    public function showRegistrationForm()
-    {
-        $data['courses'] = CourseFee::all()->pluck('name', 'name');
-        $data['country'] = CountriesArray::country()->pluck('name', 'name');
-        return view('auth.register', $data);
-    }
+
 
     public function showAgentRegistrationForm()
     {
@@ -160,6 +140,8 @@ class RegisterController extends Controller
         $user->password = bcrypt($request->password);
         $user->role = 'agent';
         $user->save();
+
+        event(new Registered($user));
 
         $agent = new Agent();
         $agent->user_id = $user->id;
@@ -211,6 +193,8 @@ class RegisterController extends Controller
         $agent->whatsup_no = $request->whatsup_no;
         $agent->save();
 
-        return redirect()->back()->with('message', ['success' => 'Registration successful!']);
+        $this->guard()->login($user);
+
+        return redirect()->route('verification.notice')->with('message', ['success' => 'Registration successful!']);
     }
 }

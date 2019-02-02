@@ -48,3 +48,28 @@ function bloodGroup()
     ];
     return collect($data);
 }
+
+/*
+ * d2db function for convert any date format to database date format
+ *
+ * */
+function d2db($date)
+{
+    return date('Y-m-d', strtotime($date));
+}
+
+/*
+ * db2d function for convert database date format to normal date format
+ *
+ * */
+function db2d($date)
+{
+    if (!empty($date))
+    {
+        return date('m/d/Y', strtotime($date));
+    }
+    else
+    {
+        return "";
+    }
+}

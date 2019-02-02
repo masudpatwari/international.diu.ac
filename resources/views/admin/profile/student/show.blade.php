@@ -73,7 +73,7 @@
                     <div class="col-md-4">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Date of Birth') }} : </strong>
-                            {{ $profile->relStudent->dob }}
+                            {{ db2d($profile->relStudent->dob) }}
                         </p>
                     </div>
                     <div class="col-md-4">
@@ -119,7 +119,7 @@
                     <div class="col-md-4">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Country of Birth') }} : </strong>
-                            NA
+                            {{ $profile->relStudent->country_of_birth }}
                         </p>
                     </div>
                 </div>
@@ -146,13 +146,13 @@
                     <div class="col-md-6">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Date of Issue') }} : </strong>
-                            {{ $profile->relStudent->date_of_issue }}
+                            {{ db2d($profile->relStudent->date_of_issue) }}
                         </p>
                     </div>
                     <div class="col-md-6">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Date of Expire') }} : </strong>
-                            {{ $profile->relStudent->date_of_expire }}
+                            {{ db2d($profile->relStudent->date_of_expire) }}
                         </p>
                     </div>
                 </div>
@@ -185,13 +185,13 @@
                     <div class="col-md-6">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Date of Issue') }} : </strong>
-                            {{ $profile->relStudent->visa_date_of_issue }}
+                            {{ db2d($profile->relStudent->visa_date_of_issue) }}
                         </p>
                     </div>
                     <div class="col-md-6">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Date of Expiry') }} : </strong>
-                            {{ $profile->relStudent->visa_date_of_expire }}
+                            {{ db2d($profile->relStudent->visa_date_of_expire) }}
                         </p>
                     </div>
                 </div>
@@ -199,7 +199,7 @@
                     <div class="col-md-6">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Date of Arrival in Bangladesh') }} : </strong>
-                            {{ $profile->relStudent->date_of_arrival_bd }}
+                            {{ db2d($profile->relStudent->date_of_arrival_bd) }}
                         </p>
                     </div>
                     <div class="col-md-6">

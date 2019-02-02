@@ -226,6 +226,7 @@ class ApiReader
             $expiresAt = now()->addMinutes(1000);
             $collection = json_decode(file_get_contents('' . env('RMS_URL') . '/all_employees/', false, self::ssl()));
             Cache::put('wp_emp', collect($collection), $expiresAt);
+            $collection = collect($collection);
         }
 
         return $collection->filter(function ($value, $key) use ($request) {

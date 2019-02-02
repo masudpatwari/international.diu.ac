@@ -18,6 +18,7 @@ class FrontEndController extends Controller
 
     public function index()
     {
+        /*CourseFee::insert(CourseFee::course_fees());*/
         $data['usd'] = ConvertCurrency::currency_rate('USD');
         $code = ImmediateCountry::country();
         $data['other'] = ConvertCurrency::currency_rate($code['currencyCode']);

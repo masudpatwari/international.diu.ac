@@ -20,6 +20,8 @@ class CreateEmployeesTable extends Migration
             $table->integer('emp_id');
             $table->string('designation');
             $table->string('mobile_no', 20)->nullable();
+            $table->unsignedInteger('created_by');
+            $table->foreign('created_by')->references('id')->on('users');
             $table->timestamps();
         });
     }
