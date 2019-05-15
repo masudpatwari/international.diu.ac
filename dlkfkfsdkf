@@ -1,0 +1,143 @@
+commit 2356276f1ba36a68f1d588f19952731e278eece4
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Wed May 15 14:20:43 2019 +0600
+
+    overall check
+
+commit ab978c14b28928dad584604912c7191bbd1b274b
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Sat Feb 2 18:25:18 2019 +0600
+
+    forget password implement
+
+commit 622af8797cc6d4817c0ed8e96a5a542a006dc87d
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Sat Feb 2 17:59:11 2019 +0600
+
+    update email verification
+
+commit 5369f973781e424879f7174f98e0331e9c593905
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Tue Jan 29 18:46:11 2019 +0600
+
+    master roll create complete
+
+commit 53a4d014de000ea8a1d41d50cdb84ff35132464e
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Tue Jan 29 16:15:46 2019 +0600
+
+    create student ok
+
+commit 31fbced0fee360601d46be02083b6bc3cf14a649
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Tue Jan 29 14:41:22 2019 +0600
+
+    employee panel ok
+
+commit 4c11d42318ff7e643e40ba86db90b9bdf036cdb1
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Sat Jan 26 19:45:13 2019 +0600
+
+    pdf updated
+
+commit 3e9477813c46b641163b2110be38fd9f5de0319b
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Fri Jan 25 17:06:11 2019 +0600
+
+    pdf implement
+
+commit bb4dd93673c52386b70eb385728547812ee3d29f
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Thu Jan 24 16:02:11 2019 +0600
+
+    updated
+
+commit 87f3c840cd651b15743eba28ab3b6057e3f06656
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Wed Jan 23 18:58:27 2019 +0600
+
+    import export implement pending
+
+commit d092f0d31d47bc19f792405b85ced7cbd78d3e52
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Tue Jan 22 19:59:26 2019 +0600
+
+    update
+
+commit c992eb6a1e78ab84785c38006684ab121f3a5606
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Sun Jan 20 17:49:38 2019 +0600
+
+    ticket updated
+
+commit b23853cde08bd4b0b2d6c1a13563311c0954dfd2
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Sun Jan 20 14:36:49 2019 +0600
+
+    ticket updated
+
+commit a3bcc5f40922ae3d14296eed7e8a52f9b2efa662
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Sat Jan 19 17:23:55 2019 +0600
+
+    ticket implement
+
+commit 2f8baa5008385024fc3008039baa0354267255dd
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Sat Jan 19 14:05:50 2019 +0600
+
+    fresh packet upload
+
+commit 22589565609c2ac6bcaeb73403ac1f434effbdca
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Fri Jan 18 18:46:52 2019 +0600
+
+    frontend updated
+
+commit 8d0a0b9372b3141c8ea841fc9de1c939fc6347c4
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Fri Jan 18 12:18:54 2019 +0600
+
+    virtual visit dynamic
+
+commit fdd50f20f49c11f83a91d17e5d2a148920e6bfac
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Thu Jan 17 17:57:28 2019 +0600
+
+    currency implatement
+
+commit 4ab2ff1245acf9360ba5dc19f148bf672e2db8d8
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Wed Jan 16 21:35:15 2019 +0600
+
+    updated
+
+commit a7c81b259ad880548bc5cdb48ca6920d480e602b
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Fri Jan 11 17:26:00 2019 +0600
+
+    agent profile update
+
+commit 20ba8674be66c4512b65d3cd8c2e4a064f11360e
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Fri Jan 11 16:02:15 2019 +0600
+
+    student profile updated
+
+commit eb7eddbe143cfdcac63177903ef1e2690d1270bb
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Wed Jan 9 18:00:03 2019 +0600
+
+    cumpas life menu off
+
+commit e246db1f8dc2d1c271f2be3df42862a14d1f9102
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Wed Jan 9 17:58:49 2019 +0600
+
+    menu updated
+
+commit ee066c1ebdcd05621e62688d9e118f3a7571dc20
+Author: Mesbaul Islam <rony.max24@gmail.com>
+Date:   Wed Jan 9 17:55:33 2019 +0600
+
+    project upload
