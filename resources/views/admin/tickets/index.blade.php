@@ -1,22 +1,28 @@
 @extends('admin.layouts.layout')
 @section('content')
-    @if(!empty($tickets))
-        @foreach($tickets as $ticket)
-        <a href="{{ route('ticket.show', $ticket->id) }}" class="bg-light mb-1 p-2 d-block text-dark">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5 class="mb-0"><p>{{ $ticket->name }}</p></h5>
-                    <p>{{ $ticket['email'] }}</p>
-                </div>
-                <div class="col-md-6">
-                    <p class="text-truncate">{{ $ticket->body }}</p>
-                </div>
-                <div class="col-md-2">
-                    <p class="text-capitalize">{{ setLevel($ticket->status) }}</p>
-                </div>
-            </div>
-        </a>
-        @endforeach
-        {{ $tickets->links() }}
-    @endif
+<div class="mb-3 clearfix">
+    <h5 class="d-inline mb-0">Supports Tickets</h5>
+</div>
+@if(!empty($tickets))
+    <table class="table table-sm">
+    @foreach($tickets as $ticket)
+        <tr>
+            <td>
+                <p><strong>{{ $ticket->name }}</strong></p>
+                <p>{{ $ticket['email'] }}</p>
+            </td>
+            <td>
+                <p class="text-truncate">{{ $ticket->body }}</p>
+            </td>
+            <td>
+                <p class="text-capitalize">{{ setLevel($ticket->status) }}</p>
+            </td>
+            <td>
+                <a href="{{ route('ticket.show', $ticket->id) }}" class="btn btn-primary btn-sm">View</a>
+            </td>
+        </tr>
+    @endforeach
+    </table>
+    {{ $tickets->links() }}
+@endif
 @endsection

@@ -73,3 +73,14 @@ function db2d($date)
         return "";
     }
 }
+
+/*
+try {
+    DB::beginTransaction();
+    DB::commit();
+    session()->flash();
+} catch (\PDOException $e) {
+    DB::rollBack();
+    session()->flash();
+}
+*/

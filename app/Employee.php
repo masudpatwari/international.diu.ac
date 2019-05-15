@@ -8,7 +8,7 @@ class Employee extends Model
 {
 
     protected $fillable = [
-        'user_id', 'designation', 'mobile_no','emp_id','created_by',
+        'user_id', 'position', 'department', 'mobile_no','emp_id','created_by', 'merit',
     ];
 
     public function relUser()

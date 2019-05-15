@@ -10,6 +10,9 @@
                     <strong>Name : </strong>
                     {{ $profile['name'] }}
                 </p>
+                <p>
+                    <strong>Registration No : </strong>{{ $profile['reg_code'] }}
+                </p>
                 <hr>
                 <p class="form-control-plaintext">
                     <strong>{{ __('Permanent Address') }} : </strong>
@@ -67,7 +70,7 @@
                     <div class="col-md-4">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Date of Birth') }} : </strong>
-                            {{ $profile['dob'] }}
+                            {{ db2d($profile['dob']) }}
                         </p>
                     </div>
                     <div class="col-md-4">

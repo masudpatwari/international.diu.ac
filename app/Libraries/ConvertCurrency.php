@@ -11,19 +11,19 @@ class ConvertCurrency
         if (!Cache::has($currency_code)) {
             $currency = 'BDT_'.$currency_code;
             $ch = curl_init ();
-            curl_setopt ($ch, CURLOPT_URL, "http://free.currencyconverterapi.com/api/v5/convert?q=".$currency."&compact=y");
+            curl_setopt ($ch, CURLOPT_URL, "https://free.currencyconverterapi.com/api/v6/convert?q=".$currency."&compact=ultra&apiKey=469782a968dc57b69bd8");
             curl_setopt ($ch, CURLOPT_HEADER, 0);
             curl_setopt ($ch, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec ($ch);
             $json = json_decode($response);
 
-            if(!empty($json->$currency->val))
+            if(!empty($json->$currency))
             {
-                $expiresAt = now()->addMinutes(100);
-                Cache::put($currency_code, $json->$currency->val, $expiresAt);
+                $expiresAt = now()->addMinutes(1440);
+                Cache::put($currency_code, $json->$currency, $expiresAt);
                 return [
                     'currencyCode' => $currency_code,
-                    'currency' => $json->$currency->val,
+                    'currency' => $json->$currency,
                 ];
             }
         }

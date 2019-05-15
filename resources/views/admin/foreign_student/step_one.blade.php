@@ -23,7 +23,7 @@
                             <td>{{ $batch->group }}</td>
                             <td>{{ $batch->campus }}</td>
                             <td class="text-right">
-                                <a class="btn btn-sm btn-warning" href="{{ route('students.move_to_step_two', [$profile->id, $batch->id]) }}">Next Step</a>
+                                <a class="btn btn-sm btn-warning" href="{{ route('admitted.move_to_step_two', [$profile->id, $batch->id]) }}">Next Step</a>
                             </td>
                         </tr>
                     @endforeach

@@ -36,32 +36,32 @@ Route::group(['middleware' => ['Logged_in']], function () {
 
     Route::resource('agent', 'AgentController');
     Route::resource('student', 'StudentController');
-    Route::resource('students', 'MoveStudentController');
+    Route::resource('admitted', 'MoveStudentController');
     Route::resource('/dashboard', 'DashboardController')->only([
         'index'
     ]);
 
 
     Route::GET('employee', 'EmployeeController@index')->name('employee.index');
-    Route::POST('employee', 'EmployeeController@index')->name('employee.src');
+    Route::POST('employee', 'EmployeeController@index')->name('employee.search');
     Route::GET('employee/{id}', 'EmployeeController@show')->name('employee.show');
-    Route::POST('employee/{id}', 'EmployeeController@update')->name('employee.save');
+    Route::POST('employee/{id}', 'EmployeeController@update')->name('employee.store');
+    Route::DELETE('employee/{id}', 'EmployeeController@destroy')->name('employee.delete');
 
 
     Route::GET('documents', 'DocumentsController@index')->name('documents.index');
-    Route::POST('documents', 'DocumentsController@index')->name('documents.src');
+    Route::POST('documents', 'DocumentsController@index')->name('documents.search');
     Route::GET('documents/{id}', 'DocumentsController@show')->name('documents.show');
     Route::GET('documents/{id}/pdf', 'DocumentsController@pdf')->name('documents.pdf');
 
-    Route::GET('erp', 'ErpController@index')->name('erp.index');
-    Route::POST('erp', 'ErpController@index')->name('erp.src');
-    Route::GET('erp/{id}', 'ErpController@show')->name('erp.show');
-    Route::GET('erp/{id}/store', 'ErpController@store')->name('erp.store');
+
+    Route::resource('erp', 'ErpController');
+    Route::POST('erp/search', 'ErpController@index')->name('erp.search');
 
 
-    Route::GET('/move_to/{id}/step_one', 'MoveStudentController@move_to_step_one')->name('students.move_to_step_one');
-    Route::GET('/move_to/{id}/{batch_id}/step_two', 'MoveStudentController@move_to_step_two')->name('students.move_to_step_two');
-    Route::POST('/move_to/{id}/{batch_id}/confirm', 'MoveStudentController@move_to_confirm')->name('students.move_to_confirm');
+    Route::GET('/move_to/{id}/step_one', 'MoveStudentController@move_to_step_one')->name('admitted.move_to_step_one');
+    Route::GET('/move_to/{id}/{batch_id}/step_two', 'MoveStudentController@move_to_step_two')->name('admitted.move_to_step_two');
+    Route::POST('/move_to/{id}/{batch_id}/confirm', 'MoveStudentController@move_to_confirm')->name('admitted.move_to_confirm');
 
     Route::GET('/ticket', 'MailTicketController@index')->name('ticket.index');
     Route::GET('/ticket/{id}', 'MailTicketController@show')->name('ticket.show');

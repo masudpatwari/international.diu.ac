@@ -4,9 +4,19 @@ $(document).ready(function(){
         $(this).parent('li').siblings().removeClass('open');
     })
 
-    $('a[data-toggle="db-dropdown"]').click(function (e) {
-        e.stopPropagation();
-        $(this).next('.db-dropdown-menu').toggle();
-    })
+
+
+    $('.datepicker').datepicker();
+
+    $(document).mouseup(function (e) {
+        if ($('.db-dropdown-menu').has(e.target).length === 0)
+        {
+            $('.db-dropdown-menu').css('display', 'none');
+        }
+    });
+
+    $('a[data-toggle="db-dropdown"]').click(function () {
+        $('.db-dropdown-menu').toggle();
+    });
 })
 

@@ -17,6 +17,9 @@ body{
 	font-family: 'Roboto Condensed', sans-serif;
 	background-color: rgba(0,0,0,0.1);
 }
+body.admin{
+	background-color: #fff;
+}
 h1, h2, h3, h4, h5, h6{
 	font-family: 'Roboto Condensed', sans-serif;
 	font-weight: 700;
@@ -154,8 +157,10 @@ img.diu-thumbs{
     outline: transparent;
 	position: relative;
 	z-index: 99;
-	color: #fff;
+	color: rgba(255, 255, 255, 1);
 }
+.diu-fg select.form-control option{
+	color: #333;}
 .diu-fg .form-control:active,
 .diu-fg .form-control:focus{
     background: transparent;
@@ -225,6 +230,7 @@ nav.navbar .navbar-nav .nav-item{
 	text-transform: uppercase;
 	
 }
+
 nav.navbar .navbar-nav .nav-item a{
 	color: #fff;
 	padding: .5rem .8rem;
@@ -559,6 +565,11 @@ article ul li{
     position: relative;
 }
 
+.diu-contact-us .alert{
+	max-width: 640px;
+	margin: 0 auto 20px;
+}
+
 
 .diu-lr-header,
 .diu-lr-footer{
@@ -757,7 +768,16 @@ footer.diu-footer .diu-contact-info ul li p{
 	line-height: 22px;
 }
 
-
-
 footer.diu-footer .diu-scroll-top:hover,
 footer.diu-footer .diu-scroll-top:focus{color: rgba(255, 255, 255, 0.8)}
+
+select option {
+	color: #333 !important;
+}
+
+body.admin nav.navbar .navbar-nav .nav-item a{
+	color: #333;
+}
+.dropdown-item.logout{
+	padding: .5rem .8rem;
+}

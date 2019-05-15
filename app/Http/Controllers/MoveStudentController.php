@@ -12,8 +12,8 @@ class MoveStudentController extends Controller
 {
     public function index()
     {
-        $data['profiles'] = ForeignStudent::with('relUser')->get();
-        return view('admin.foreign_student.index', $data);
+        $data['profiles'] = ForeignStudent::with('relUser')->whereNull('student_id')->get();
+        return view('admin.admitted.index', $data);
     }
 
     /**
@@ -40,7 +40,7 @@ class MoveStudentController extends Controller
     public function show($id)
     {
         $data['profile'] = User::with('relStudent')->find($id);
-        return view('admin.foreign_student.show', $data);
+        return view('admin.admitted.show', $data);
     }
 
     public function move_to_step_one($id)
@@ -52,7 +52,7 @@ class MoveStudentController extends Controller
         $data['admission_batch'] = ApiReader::admission_on_going_batch();
 
         Cache::put('move_to', $data, $expiresAt);
-        return view('admin.foreign_student.step_one', $data);
+        return view('admin.admitted.step_one', $data);
     }
 
     public function move_to_step_two($id, $batch_id)
@@ -131,7 +131,7 @@ class MoveStudentController extends Controller
                 'E_DIV_CLS_CGPA4' => $profile['rel_student']['fo_cgpa'],
                 'E_BOARD_UNIVERSITY4' => $profile['rel_student']['fo_board'],
             ];
-            return view('admin.foreign_student.step_two', $data);
+            return view('admin.admitted.step_two', $data);
         }
     }
 }

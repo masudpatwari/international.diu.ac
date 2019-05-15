@@ -1,10 +1,10 @@
 @extends('admin.layouts.layout')
 @section('content')
     <div class="mx-auto" style="max-width: 768px">
-        <div class="pt-4 pb-4 clearfix">
-            <h4 class="d-inline">Agent {{ $profile->name }}</h4>
-        </div>
         <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Agent : {{ $profile->name }}</h5>
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
@@ -200,5 +200,6 @@
                 </p>
             </div>
         </div>
+        <a href="{{ route('student.index') }}" class="btn btn-danger btn-sm mt-3 mb-5">Back</a>
     </div>
 @endsection

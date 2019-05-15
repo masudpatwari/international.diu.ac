@@ -20,7 +20,7 @@
             <td class="text-capitalize">{{ $profile->present_nationality }}</td>
             <td>{{ $profile->interested_subject }}</td>
             <td>
-                <a class="btn btn-sm btn-warning" href="{{ route('students.show', $profile->relUser->id) }}">Details</a>
+                <a class="btn btn-sm btn-warning" href="{{ route('admitted.show', $profile->relUser->id) }}">Details</a>
             </td>
         </tr>
         @endforeach

@@ -25,9 +25,12 @@ class ApiReader
             'cse','eete','law','eng','pha','soc','bba','civil'
         ];
         foreach ($departments_array as $department) {
-            $decode_values = json_decode(file_get_contents( ''.env('API_URL').'/'.$department.'', false, self::ssl()));
-            foreach ($decode_values as $values) {
-                $collection[] = collect($values)->toArray();
+            $decode_values = json_decode(@file_get_contents( ''.env('API_URL').'/'.$department.'', false, self::ssl()));
+            if (!empty($decode_values))
+            {
+                foreach ($decode_values as $values) {
+                    $collection[] = collect($values)->toArray();
+                }
             }
         }
 
@@ -97,19 +100,16 @@ class ApiReader
             ],
         ];
 
-        if (array_key_exists($faculty, $faculty_array)) {
-            $scc = stream_context_create(
-            [
-                'ssl' => [
-                    'verify_peer' => false,
-                    'verify_peer_name' => false
-                ]
-            ]);
+        if (array_key_exists($faculty, $faculty_array))
+        {
             $collection = [];
             foreach ($faculty_array[$faculty]['department'] as $department) {
-                $decode_values = json_decode(file_get_contents('' . env('API_URL') . '/' . $department . '', false, $scc));
-                foreach ($decode_values as $values) {
-                    $collection[] = collect($values)->toArray();
+                $decode_values = json_decode(@file_get_contents('' . env('API_URL') . '/' . $department . '', false, self::ssl()));
+                if (!empty($decode_values))
+                {
+                    foreach ($decode_values as $values) {
+                        $collection[] = collect($values)->toArray();
+                    }
                 }
             }
 
@@ -185,33 +185,26 @@ class ApiReader
 
     public static function admission_on_going_batch($id = NULL)
     {
-        $scc = stream_context_create(
-        [
-            'ssl' => [
-                'verify_peer' => false,
-                'verify_peer_name' => false
-            ]
-        ]);
-        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/admission_on_going_batch', false, $scc));
+        $decode_values = json_decode(@file_get_contents('' . env('RMS_URL') . '/admission_on_going_batch', false, self::ssl()));
 
         return $decode_values;
     }
 
     public static function religion()
     {
-        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/religion', false, self::ssl()));
+        $decode_values = json_decode(@file_get_contents('' . env('RMS_URL') . '/religion', false, self::ssl()));
         return collect($decode_values);
     }
 
     public static function src_by_reg($reg_no)
     {
-        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/src_by_reg/'.$reg_no.'', false, self::ssl()));
+        $decode_values = json_decode(@file_get_contents('' . env('RMS_URL') . '/src_by_reg/'.$reg_no.'', false, self::ssl()));
         return collect($decode_values);
     }
 
     public static function student_by_id($id)
     {
-        $decode_values = json_decode(file_get_contents('' . env('RMS_URL') . '/student_by_id/'.$id.'', false, self::ssl()));
+        $decode_values = json_decode(@file_get_contents('' . env('RMS_URL') . '/student_by_id/'.$id.'', false, self::ssl()));
         return collect($decode_values);
     }
 
@@ -224,7 +217,7 @@ class ApiReader
         else
         {
             $expiresAt = now()->addMinutes(1000);
-            $collection = json_decode(file_get_contents('' . env('RMS_URL') . '/all_employees/', false, self::ssl()));
+            $collection = json_decode(@file_get_contents('' . env('RMS_URL') . '/all_employees/', false, self::ssl()));
             Cache::put('wp_emp', collect($collection), $expiresAt);
             $collection = collect($collection);
         }

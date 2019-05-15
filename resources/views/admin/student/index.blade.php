@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 @section('content')
-<div class="pt-4 pb-4 clearfix">
-    <h4 class="d-inline">Students</h4>
+<div class="mb-3 clearfix">
+    <h5 class="d-inline mb-0">Register Students</h5>
     <a class="btn btn-sm btn-warning float-right" href="{{ route('student.create') }}">Create Student</a>
 </div>
 <table class="table table-light table-sm table-bordered">

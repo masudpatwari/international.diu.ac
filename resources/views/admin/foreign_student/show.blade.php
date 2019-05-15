@@ -3,12 +3,16 @@
     <div class="mx-auto" style="max-width: 768px">
         <div class="pt-4 pb-4 clearfix">
             <h4 class="d-inline">Profile of {{ $profile->name }}</h4>
+            <a class="btn btn-sm btn-warning float-right" href="{{ route('student.edit', $profile->id) }}">Edit Profile</a>
         </div>
         <div class="card">
             <div class="card-body">
                 <p class="form-control-plaintext">
                     <strong>Name : </strong>
                     {{ $profile->name }}
+                </p>
+                <p>
+                    <strong>Registration No : </strong>{{ $profile->relStudent->registration_no }}
                 </p>
                 <hr>
                 <p class="form-control-plaintext">
@@ -72,7 +76,7 @@
                     <div class="col-md-4">
                         <p class="form-control-plaintext">
                             <strong>{{ __('Date of Birth') }} : </strong>
-                            {{ $profile->relStudent->dob }}
+                            {{ db2d($profile->relStudent->dob) }}
                         </p>
                     </div>
                     <div class="col-md-4">
@@ -448,7 +452,7 @@
             </div>
             @if(empty($profile->relStudent->student_id))
             <div class="card-footer">
-                <a class="btn btn-sm btn-warning" href="{{ route('students.move_to_step_one', [$profile->id]) }}">Next Step</a>
+                <a class="btn btn-sm btn-warning" href="{{ route('admitted.move_to_step_one', [$profile->id]) }}">Next Step</a>
             </div>
             @endif
         </div>

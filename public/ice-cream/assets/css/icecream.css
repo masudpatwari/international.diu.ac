@@ -22,6 +22,13 @@ img{
     max-width: 100%;
 }
 
+a,
+a:hover,
+a:focus{
+    text-decoration: none;
+    outline: none;
+}
+
 header.db-header{
     position: relative;
     background-color: transparent;
@@ -113,7 +120,6 @@ header.db-header .db-dropdown-menu{
     border: 1px solid #ccc;
     color: #000;
     box-shadow: 0 2px 10px rgba(0,0,0,.2);
-    display: none;
     outline: none;
     position: absolute;
     right: 0;
@@ -125,10 +131,6 @@ header.db-header .db-dropdown-menu{
     -moz-user-select: text;
     z-index: 99;
 }
-
-
-
-
 
 section.db-section .db-area{
     box-sizing: border-box;
@@ -270,6 +272,7 @@ aside.db-aside .db-navigation li.db-dropdown.open > a::before {
     vertical-align: top;
     height: 96px;
     width: 96px;
+    background-color: rgba(60,64,67,0.12);
 }
 .db-profile .db-profile-pic img{
     width: 100%;
@@ -286,7 +289,70 @@ aside.db-aside .db-navigation li.db-dropdown.open > a::before {
     margin-bottom: 2px;
 }
 
+.db-tickets{
+    float: right;
+    width: calc(340px - 15px);
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #fff;
+}
+.db-tickets a.active{background-color: #dae0e5}
+.db-ticket-room{
+    position: relative;
+    height: 100%;
+    width: calc(100% - 340px);
+    float: left;
+}
+.db-ticket-room .db-ticket-header{
+    padding: 5px;
+    background-color: #dae0e5;
+    color: #333;
+}
+.db-ticket-room .db-ticket-chat{
+    position: absolute;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #fff;
+    width: 100%;
+    top: 50px;
+    bottom: 125px;
+}
+.db-ticket-room .db-ticket-chat .db-ticket-message,
+.db-ticket-room .db-ticket-chat .db-ticket-replay{
+    padding: 5px;
+    margin-bottom: 2px;
+    border-bottom: 1px dotted #E6EAEA;
+}
+
+.db-ticket-room .db-ticket-form{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+
 select.form-control.custom-select{
     padding: 0 2rem 0 0.75rem;
     border-radius: 0;
+}
+
+
+/*
+a[data-toggle="db-dropdown"]:focus ~ .db-dropdown-menu{
+    opacity: 1;
+}*/
+.table thead th,
+.table tbody td{
+    vertical-align: middle;
+}
+.table thead th:first-child,
+.table tbody td:first-child{
+    text-align: left;
+}
+.table thead th:last-child,
+.table tbody td:last-child{
+    text-align: right;
 }

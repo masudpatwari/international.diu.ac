@@ -7,7 +7,7 @@ class ImmediateCountry
 
     public static function country()
     {
-        $ip = $_SERVER['REMOTE_ADDR'];
+        $ip = /*$_SERVER['REMOTE_ADDR']*/"149.154.157.19";
         $dataArray = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$ip));
         return [
             'request' => $dataArray->geoplugin_request,

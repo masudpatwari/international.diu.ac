@@ -1,11 +1,11 @@
 @extends('admin.layouts.layout')
 @section('content')
     <div class="mx-auto" style="max-width: 768px">
-        <div class="pt-4 pb-4 clearfix">
-            <h4 class="d-inline">Profile of {{ $profile->name }}</h4>
-            <a class="btn btn-sm btn-warning float-right" href="{{ route('profile.edit') }}">Edit Profile</a>
-        </div>
         <div class="card">
+            <div class="card-header">
+                <h5 class="d-inline mb-0">Profile of {{ $profile->name }}</h5>
+                <a class="btn btn-sm btn-warning float-right" href="{{ route('profile.edit') }}">Edit Profile</a>
+            </div>
             <div class="card-body">
                 <p class="form-control-plaintext">
                     <strong>Name : </strong>
@@ -448,5 +448,6 @@
                 </p>
             </div>
         </div>
+        <a href="{{ route('dashboard.index') }}" class="btn btn-danger btn-sm mt-3 mb-5">Back</a>
     </div>
 @endsection

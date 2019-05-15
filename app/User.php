@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\ResetPassword;
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -16,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'profile_photo',
+        'name', 'email', 'password', 'role', 'profile_photo','email_verified_at'
     ];
 
     /**
@@ -56,5 +58,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function relTicketAnswerBy()
     {
         return $this->hasMany('App\TicketAnswer', 'answer_by', 'id');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+       $this->notify(new ResetPassword($token));
     }
 }

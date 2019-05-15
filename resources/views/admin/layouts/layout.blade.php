@@ -106,10 +106,16 @@
                                 <a href="{{ route('ticket.index') }}" class="">Support Tickets</a>
                             </li>
                             <li>
+                                <a href="{{ route('agent.index') }}" class="">Agents</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('employee.index') }}" class="">Employee</a>
                             </li>
                             <li>
                                 <a href="{{ route('erp.index') }}" class="">Import Exists Student</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admitted.index') }}" class="">Final Admission</a>
                             </li>
                             <li>
                                 <a href="{{ route('student.index') }}" class="">Register Student</a>
@@ -133,7 +139,7 @@
                                 <a href="{{ route('erp.index') }}" class="">Import Exists Student</a>
                             </li>
                             <li>
-                                <a href="{{ route('students.index') }}" class="">Final Admission</a>
+                                <a href="{{ route('admitted.index') }}" class="">Final Admission</a>
                             </li>
                             <li>
                                 <a href="{{ route('student.index') }}" class="">Register Student</a>

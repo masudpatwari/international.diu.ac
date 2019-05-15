@@ -15,11 +15,6 @@ class MailTicketController extends Controller
 {
     public function index()
     {
-        /*$email = new imapMailReader();
-        dd($email->getMessage(338));
-        $data['messages'] = $email->getMessage(338);
-        //return $data['messages'] = $email->inbox();*/
-
         if (auth()->user()->role == 'administrator')
         {
             $data['tickets'] = Ticket::orderBy('status', 'ASC')->paginate(15);
@@ -43,10 +38,13 @@ class MailTicketController extends Controller
         return view('admin.tickets.index', $data);
     }
 
+    /*
+     * Frontend contact page request.
+    */
     public function make_ticket(Request $request)
     {
-        $exists = Ticket::where('email', $request->email)->first();
-        if (empty($exists))
+        $exists = Ticket::where('email', $request->email);
+        if ($exists->exists() == false)
         {
 
             $ticket = new Ticket();
@@ -61,26 +59,19 @@ class MailTicketController extends Controller
         }
         else
         {
+            $answer = $exists->first();
             $ticket = new TicketAnswer();
-            $ticket->ticket_id = $exists->id;
-            $ticket->ticket_answer = $request->body;
+            $ticket->ticket_id = $answer->id;
+            $ticket->ticket_answer = $answer->body;
             $ticket->type = 'client';
             $ticket->answer_by = auth()->user()->id;
             $ticket->save();
 
-            $ticket_ans = Ticket::find($exists->id);
+            $ticket_ans = Ticket::find($answer->id);
             $ticket_ans->status = 2;
             $ticket_ans->save();
         }
-
-        if (!empty($ticket->id))
-        {
-            return redirect()->back()->with('message', ['success' => 'Mail send successful!']);
-        }
-        else
-        {
-            return redirect()->back()->with('message', ['error' => 'Mail send failed!']);
-        }
+        return redirect()->back()->with('message', ['success' => 'Message send successful!']);
     }
 
     public function show($id)
@@ -111,9 +102,6 @@ class MailTicketController extends Controller
 
     public function make_ticket_answer(Request $request, $id)
     {
-        $result = Ticket::find($id);
-        Mail::to($result->email)->send(new SendTicketMail());
-
         $files = [];
         if($request->hasFile('attachment'))
         {
@@ -134,33 +122,32 @@ class MailTicketController extends Controller
             }
         }
 
-        $answer = new TicketAnswer();
-        $answer->ticket_id = $id;
-        $answer->ticket_answer = $request->body;
-        $answer->type = (auth()->user()->role != 'student') ? 'author' : 'client';
-        $answer->answer_by = auth()->user()->id;
-        $answer->save();
+        try {
+            DB::beginTransaction();
+            $answer = new TicketAnswer();
+            $answer->ticket_id = $id;
+            $answer->ticket_answer = $request->body;
+            $answer->type = (auth()->user()->role != 'student') ? 'author' : 'client';
+            $answer->answer_by = auth()->user()->id;
+            $answer->save();
 
-        $ticket = Ticket::find($id);
-        $ticket->status = 3;
-        $ticket->save();
+            $ticket = Ticket::find($id);
+            $ticket->status = 3;
+            $ticket->save();
 
-        if (!empty($files))
-        {
-            foreach ($files as $key => $file)
+            if (!empty($files))
             {
-                $files[$key]['answer_id'] = $answer->id;
+                foreach ($files as $key => $file)
+                {
+                    $files[$key]['answer_id'] = $answer->id;
+                }
+                TicketAnswerAttachment::insert($files);
             }
-            TicketAnswerAttachment::insert($files);
-        }
-
-        if (count(Mail::failures()) > 0 )
-        {
-            return redirect()->back()->with('message', ['error' => 'Mail send failed!']);
-        }
-        else
-        {
-            return redirect()->back()->with('message', ['success' => 'Mail send successful!']);
+            DB::commit();
+            return redirect()->back()->with('message', ['success' => 'Message send successful!']);
+        } catch (\PDOException $e) {
+            DB::rollBack();
+            return redirect()->back()->with('message', ['error' => 'Message send failed!']);
         }
     }
 }

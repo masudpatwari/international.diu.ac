@@ -1,9 +1,9 @@
 @extends('admin.layouts.layout')
 @section('content')
-    @if(!empty($admission_batch))
+@if(!empty($admission_batch))
 <div class="mx-auto">
-    <div class="pt-4 pb-4 clearfix">
-        <h4 class="d-inline">Admission going on batch</h4>
+    <div class="mb-3 clearfix">
+        <h5 class="d-inline mb-0">Admission going on batch</h5>
     </div>
     <table class="table table-sm table-bordered mb-0">
         <tr>

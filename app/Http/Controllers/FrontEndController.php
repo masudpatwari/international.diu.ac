@@ -19,9 +19,9 @@ class FrontEndController extends Controller
     public function index()
     {
         /*CourseFee::insert(CourseFee::course_fees());*/
-        $data['usd'] = ConvertCurrency::currency_rate('USD');
         $code = ImmediateCountry::country();
-        $data['other'] = ConvertCurrency::currency_rate($code['currencyCode']);
+        $data['onlyusd'] = ConvertCurrency::currency_rate('USD');
+        $data['currency'] = ConvertCurrency::currency_rate($code['currencyCode']);
         $data['key_resource_person'] = ApiReader::resource_person();
         $data['courses'] = CourseFee::all();
         return view('index', $data);
@@ -39,7 +39,7 @@ class FrontEndController extends Controller
                     ]
                 ]);
             $expiresAt = now()->addMinutes(100);
-            $decode_values = json_decode(file_get_contents(''.env('RMS_URL').'/api/get_present_foreign_student/1/5000', false, $scc));
+            $decode_values = json_decode(file_get_contents(''.env('RMS_URL').'/get_present_foreign_student/1/5000', false, $scc));
             Cache::put('present_students', $decode_values, $expiresAt);
         }
         $cache_values = Cache::get('present_students');
@@ -60,7 +60,7 @@ class FrontEndController extends Controller
                     ]
                 ]);
             $expiresAt = now()->addMinutes(100);
-            $decode_values = json_decode(file_get_contents(''.env('RMS_URL').'/api/get_past_foreign_student/1/5000', false, $scc));
+            $decode_values = json_decode(file_get_contents(''.env('RMS_URL').'/get_past_foreign_student/1/5000', false, $scc));
             Cache::put('passed_students', $decode_values, $expiresAt);
         }
         $cache_values = Cache::get('passed_students');

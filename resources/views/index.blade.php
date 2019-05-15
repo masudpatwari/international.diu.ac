@@ -135,12 +135,12 @@
                             </h3>
                         </th>
                         <th class="active">
-                            <h3>{{ $usd['currencyCode'] }}<br>
+                            <h3>{{ $onlyusd['currencyCode'] }}<br>
                                 <small>(Approximate)</small>
                             </h3>
                         </th>
                         <th>
-                            <h3>{{ $other['currencyCode'] }}<br>
+                            <h3>{{ $currency['currencyCode'] }}<br>
                                 <small>(Approximate)</small>
                             </h3>
                         </th>
@@ -150,8 +150,8 @@
                         <tr>
                             <td class="text-left">{{ $course['name'] }} ({{ $course['duration'] }})</td>
                             <td>{{ number_format($course['total_fee'], 2) }}</td>
-                            <td>{{ number_format(($course['total_fee'] * $usd['currency']), 2) }}</td>
-                            <td>{{ number_format(($course['total_fee'] * $other['currency']), 2) }}</td>
+                            <td>{{ number_format(($course['total_fee'] * $onlyusd['currency']), 2) }}</td>
+                            <td>{{ number_format(($course['total_fee'] * $currency['currency']), 2) }}</td>
                             <td>
                                 <a href="{{ route('register') }}" class="diu-apply-btn">Apply Now</a>
                             </td>
@@ -161,7 +161,7 @@
             </div>
         </section>
     @endif
-    @if(!empty($key_resource_person))
+    @if($key_resource_person->count() > 0)
         <section class="diu-key-resource-person diu-section-bg">
             <div class="container">
                 <div class="diu-section-title text-center text-light">
@@ -281,6 +281,7 @@
                                             </button>
                                         </div>
                                         <article class="text-justify">
+                                            <img src="{{ asset('images/spotlight/International-Hostel 2.jpg') }}" style="width: 200px; float: left; padding-right: 15px;" alt="">
                                             Dhaka International University offers well decorated hostel modern
                                             facilities. Foreign students are living in the hostels with a comfort. At
                                             present there are seven boy’s hostel ( Nikunja, Khilkhet and Satarkul,
@@ -318,13 +319,14 @@
                                         </div>
                                         <article class="text-justify clearfix">
                                             <p class="mb-4">
+                                                <img src="{{ asset('images/spotlight/Labs-Laboratory.jpg') }}" style="width: 200px; float: left; padding-right: 15px;" alt="">
                                                 Dhaka International University (DIU) has established a strong reputation for
                                                 nurturing innovation and academic excellence across many disciplines. We
                                                 believe that a student cannot learn the subject-matter of a course without
                                                 having any hands-on experience in the laboratory. Keeping this in mind, from
                                                 the very beginning, DIU is trying its level best to establish different laboratories like:
                                             </p>
-                                            <ul>
+                                            <ul style="display: block; overflow: hidden; width: 100%; padding-top: 15px;">
                                                 <li>Materials Lab</li>
                                                 <li>Structural Mechanics Lab</li>
                                                 <li>Hydraulics lab</li>
@@ -420,6 +422,7 @@
                                             </button>
                                         </div>
                                         <article class="text-justify">
+                                            <img src="{{ asset('images/spotlight/Library.jpg') }}" style="width: 200px; float: left; padding-right: 15px;" alt="">
                                             DIU library is equipped with up-to-date books and reading materials. More
                                             than fifty (50) thousand books are available at DIU library. E-library has
                                             already been started. Library is well spacious and well decorated. Wi-Fi and
@@ -454,6 +457,7 @@
                                             </button>
                                         </div>
                                         <article class="text-justify">
+                                            <img src="{{ asset('images/spotlight/Canteen-Common-Room-1.jpg') }}" style="width: 200px; float: left; padding-right: 15px;" alt="">
                                             DIU has its own catering service and each building has big common & leisure
                                             rooms.DIU canteen is the center of refreshment where different types of
                                             hygienic food are available. This well decorated canteen ensures clean
@@ -486,6 +490,7 @@
                                             </button>
                                         </div>
                                         <article class="text-justify">
+                                            <img src="{{ asset('images/spotlight/Transport.jpg') }}" style="width: 200px; float: left; padding-right: 15px;" alt="">
                                             DIU offers free transport service from different corner of the city to
                                             permanent campus. Foreign students get the transport service.
                                         </article>
@@ -516,6 +521,7 @@
                                             </button>
                                         </div>
                                         <article class="text-justify">
+                                            <img src="{{ asset('images/spotlight/Research-cells.jpg') }}" style="width: 200px; float: left; padding-right: 15px;" alt="">
                                             Dhaka International University contributes a lot in field of the research.
                                             DIU has Institutional Quality Assurance Cell ( IQAC), Centre for Excellence
                                             and Career Development (CECD), Tobacco Control and Research Cell (TCRC),
@@ -548,6 +554,7 @@
                                             </button>
                                         </div>
                                         <article class="text-justify">
+                                            <img src="{{ asset('images/spotlight/Clubs-2.jpg') }}" style="width: 200px; float: left; padding-right: 15px;" alt="">
                                             DIU have so many clubs such as DIU Debating Society, DIU Cultural Club, DIU
                                             Sports Club, DIU Volunteer Team, DIU Rover Scout, DIU Prothom Alo
                                             Bandhushava, DIU Shuvo Songho (Daily Kaler Kantha Pathok Forum) and others.

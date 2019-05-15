@@ -72,7 +72,6 @@ class RegisterController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->role = 'student';
-        $user->email_verified = sha1(time());
         $user->save();
 
         event(new Registered($user));

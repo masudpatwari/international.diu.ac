@@ -10,7 +10,7 @@ class AgentController extends Controller
 {
     public function index()
     {
-        $data['profiles'] = Agent::with('relUser')->get();
+        $data['agents'] = Agent::with('relUser')->get();
         return view('admin.agent.index', $data);
     }
 
